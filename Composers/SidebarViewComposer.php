@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Request;
+use Modules\Blog\Composers\BaseSidebarViewComposer;
 
-class SidebarViewComposer
+class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose($view)
     {
@@ -14,18 +15,21 @@ class SidebarViewComposer
                 'route' => '#',
                 'icon-class' => 'fa fa-cogs',
                 'title' => 'Workshop',
+                'permission' => $this->auth->hasAccess('modules.index') or $this->auth->hasAccess('workbench.index')
             ],
             [
                 'request' => "*/{$view->prefix}/modules*",
                 'route' => 'dashboard.modules.index',
                 'icon-class' => 'fa fa-cog',
                 'title' => 'Modules',
+                'permission' => $this->auth->hasAccess('modules.index')
             ],
             [
                 'request' => "*/{$view->prefix}/workbench*",
                 'route' => 'dashboard.workbench.index',
                 'icon-class' => 'fa fa-terminal',
                 'title' => 'Workbench',
+                'permission' => $this->auth->hasAccess('workbench.index')
             ]
         ]));
     }

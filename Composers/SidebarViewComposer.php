@@ -1,12 +1,13 @@
 <?php namespace Modules\Workshop\Composers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Request;
 use Modules\Core\Composers\BaseSidebarViewComposer;
 
 class SidebarViewComposer extends BaseSidebarViewComposer
 {
-    public function compose($view)
+    public function compose(View $view)
     {
         $view->items->put('workbench', Collection::make([
             [

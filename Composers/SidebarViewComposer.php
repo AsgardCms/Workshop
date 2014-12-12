@@ -25,13 +25,13 @@ class SidebarViewComposer extends BaseSidebarViewComposer
                 'title' => 'Modules',
                 'permission' => $this->auth->hasAccess('modules.index')
             ],
-            [
-                'request' => "*/{$view->prefix}/workbench*",
-                'route' => 'dashboard.workbench.index',
-                'icon-class' => 'fa fa-terminal',
-                'title' => 'Workbench',
-                'permission' => $this->auth->hasAccess('workbench.index')
-            ]
+//            [
+//                'request' => "*/{$view->prefix}/workbench*",
+//                'route' => 'dashboard.workbench.index',
+//                'icon-class' => 'fa fa-terminal',
+//                'title' => 'Workbench',
+//                'permission' => $this->auth->hasAccess('workbench.index')
+//            ]
         ]));
     }
 }

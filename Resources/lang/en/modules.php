@@ -3,12 +3,12 @@
 return [
     'title' => 'Module Management',
     'breadcrumb' => [
-        'modules' => 'Modules'
+        'modules' => 'Modules',
     ],
     'tab' => [
-        'module list' => 'Module list'
+        'module list' => 'Module list',
     ],
     'button' => [
-        'save module configuration' => 'Save module configuration'
+        'save module configuration' => 'Save module configuration',
     ]
 ];

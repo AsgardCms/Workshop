@@ -2,8 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-$router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function(Router $router)
-{
+$router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function (Router $router) {
     $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\Workshop\Http\Controllers'],
         function (Router $router) {
             $router->get('modules', ['as' => 'dashboard.modules.index', 'uses' => 'ModulesController@index']);

@@ -12,15 +12,15 @@ return [
         'seed',
     ],
     'generate' => [
-        'generate'
+        'generate',
     ],
     'install' => [
-        'install'
+        'install',
     ],
     'migrate' => [
-        'migrate'
+        'migrate',
     ],
     'seed' => [
-        'seed'
+        'seed',
     ]
 ];

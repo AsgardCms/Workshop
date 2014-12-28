@@ -45,6 +45,7 @@ class ModulesController extends AdminBaseController
         $this->moduleManager->enableModules($modules);
 
         Flash::success('Modules configuration saved!');
+
         return Redirect::route('dashboard.modules.index');
     }
 }

@@ -61,7 +61,7 @@ class ModuleManager
     {
         $enabledModules = $this->module->enabled();
 
-        $enabledModules = array_map(function(Module $module) {
+        $enabledModules = array_map(function (Module $module) {
             return $module->getName();
         }, $enabledModules);
 

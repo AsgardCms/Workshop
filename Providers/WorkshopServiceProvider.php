@@ -19,8 +19,8 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     protected $filters = [
         'Core' => [
-            'permissions' => 'PermissionFilter'
-        ]
+            'permissions' => 'PermissionFilter',
+        ],
     ];
 
     /**
@@ -61,5 +61,4 @@ class WorkshopServiceProvider extends ServiceProvider
     {
         return array();
     }
-
 }

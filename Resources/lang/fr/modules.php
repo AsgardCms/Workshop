@@ -3,12 +3,12 @@
 return [
     'title' => 'Gérer les modules',
     'breadcrumb' => [
-        'modules' => 'Modules'
+        'modules' => 'Modules',
     ],
     'tab' => [
-        'module list' => 'Liste de modules'
+        'module list' => 'Liste de modules',
     ],
     'button' => [
-        'save module configuration' => 'Sauvez la configuration de modules'
+        'save module configuration' => 'Sauvez la configuration de modules',
     ]
 ];

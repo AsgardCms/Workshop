@@ -29,40 +29,42 @@ class WorkbenchController extends AdminBaseController
 
     /**
      * Generate a module given its name
-     * @param GenerateModuleRequest $request
+     * @param  GenerateModuleRequest $request
      * @return mixed
      */
     public function generate(GenerateModuleRequest $request)
     {
-        $output = new BufferedOutput;
+        $output = new BufferedOutput();
         Artisan::call('module:make', ['name' => $request->name], $output);
 
         Flash::message($output->fetch());
+
         return Redirect::route('dashboard.workbench.index');
     }
 
     /**
      * Run the migration for the given module
-     * @param MigrateModuleRequest $request
+     * @param  MigrateModuleRequest $request
      * @return mixed
      */
     public function migrate(MigrateModuleRequest $request)
     {
-        $output = new BufferedOutput;
+        $output = new BufferedOutput();
         Artisan::call('module:migrate', ['module' => $request->module], $output);
 
         Flash::message($output->fetch());
+
         return Redirect::route('dashboard.workbench.index');
     }
 
     /**
      * Run the install command for the given vendor/module
-     * @param InstallModuleRequest $request
+     * @param  InstallModuleRequest $request
      * @return mixed
      */
     public function install(InstallModuleRequest $request)
     {
-        $output = new BufferedOutput;
+        $output = new BufferedOutput();
         $arguments['name'] = $request->vendorName;
         if ($request->subtree) {
             $arguments['--tree'] = '';
@@ -70,20 +72,22 @@ class WorkbenchController extends AdminBaseController
         Artisan::call('module:install', $arguments, $output);
 
         Flash::message($output->fetch());
+
         return Redirect::route('dashboard.workbench.index');
     }
 
     /**
      * Run the seed command for the given module
-     * @param SeedModuleRequest $request
+     * @param  SeedModuleRequest $request
      * @return mixed
      */
     public function seed(SeedModuleRequest $request)
     {
-        $output = new BufferedOutput;
+        $output = new BufferedOutput();
         Artisan::call('module:seed', ['module' => $request->module], $output);
 
         Flash::message($output->fetch());
+
         return Redirect::route('dashboard.workbench.index');
     }
 }

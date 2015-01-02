@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Modules\Workshop\Console\ScaffoldCommand;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
@@ -50,6 +51,7 @@ class WorkshopServiceProvider extends ServiceProvider
         $this->app->booted(function ($app) {
             $this->registerFilters($app['router']);
         });
+        $this->registerCommands();
     }
 
     /**
@@ -60,5 +62,27 @@ class WorkshopServiceProvider extends ServiceProvider
     public function provides()
     {
         return array();
+    }
+
+    /**
+     * Register artisan commands
+     */
+    private function registerCommands()
+    {
+        $this->registerScaffoldCommand();
+
+        $this->commands([
+            'command.asgard.scaffold',
+        ]);
+    }
+
+    /**
+     * Register the scaffold command
+     */
+    private function registerScaffoldCommand()
+    {
+        $this->app->bindShared('command.asgard.scaffold', function ($app) {
+            return new ScaffoldCommand();
+        });
     }
 }

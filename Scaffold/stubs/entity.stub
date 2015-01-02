@@ -8,4 +8,8 @@ use Doctrine\ORM\Mapping AS ORM;
  */
 class $NAME$
 {
+    public function __construct()
+    {
+        // TODO implement stub method
+    }
 }

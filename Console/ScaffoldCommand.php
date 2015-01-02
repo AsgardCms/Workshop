@@ -40,7 +40,7 @@ class ScaffoldCommand extends Command
         $this->moduleScaffold
             ->vendor($vendor)
             ->name($name)
-            ->withEntitites($this->entities)
+            ->withEntities($this->entities)
             ->withValueObjects($this->valueObjects)
             ->scaffold();
     }

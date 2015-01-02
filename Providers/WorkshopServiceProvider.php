@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\ModuleScaffold;
 use Modules\Workshop\Console\ScaffoldCommand;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
@@ -90,7 +91,8 @@ class WorkshopServiceProvider extends ServiceProvider
                 $app['files'],
                 $app['config'],
                 new EntityGenerator($app['files'], $app['config']),
-                new ValueObjectGenerator($app['files'], $app['config'])
+                new ValueObjectGenerator($app['files'], $app['config']),
+                new FilesGenerator($app['files'], $app['config'])
             );
 
             return new ScaffoldCommand($moduleScaffold);

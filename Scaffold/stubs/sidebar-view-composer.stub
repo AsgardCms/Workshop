@@ -1,0 +1,19 @@
+<?php namespace Modules\$MODULE$\Composers;
+
+use Illuminate\Contracts\View\View;
+use Modules\Core\Composers\BaseSidebarViewComposer;
+
+class SidebarViewComposer extends BaseSidebarViewComposer
+{
+    public function compose(View $view)
+    {
+        $view->items->put('$LOWERCASE_MODULE$', [
+            'weight' => 1,
+            'request' => "*/$view->prefix/$PLURAL_MODULE$*",
+            'route' => 'dashboard.$LOWERCASE_MODULE$.index',
+            'icon-class' => 'fa fa-map-marker',
+            'title' => '$PLURAL_MODULE$',
+            'permission' => $this->auth->hasAccess('$PLURAL_MODULE$.index')
+        ]);
+    }
+}

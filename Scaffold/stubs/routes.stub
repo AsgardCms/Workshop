@@ -1,0 +1,22 @@
+<?php
+
+use Illuminate\Routing\Router;
+/** @var Router $router */
+/*
+|--------------------------------------------------------------------------
+| Admin routes
+|--------------------------------------------------------------------------
+*/
+$router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function (Router $router) {
+    $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\$MODULE$\Http\Controllers'], function (Router $router) {
+
+        $router->resource('places', 'Admin\$MODULE$Controller', ['except' => ['show'], 'names' => [
+            'index' => 'dashboard.$LOWERCASE_MODULE$.index',
+            'create' => 'dashboard.$LOWERCASE_MODULE$.create',
+            'store' => 'dashboard.$LOWERCASE_MODULE$.store',
+            'edit' => 'dashboard.$LOWERCASE_MODULE$.edit',
+            'update' => 'dashboard.$LOWERCASE_MODULE$.update',
+            'destroy' => 'dashboard.$LOWERCASE_MODULE$.destroy',
+        ]]);
+    });
+});

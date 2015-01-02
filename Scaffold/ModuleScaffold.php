@@ -4,6 +4,7 @@ use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Application;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 
 class ModuleScaffold
@@ -29,6 +30,14 @@ class ModuleScaffold
      */
     protected $valueObjects;
     /**
+     * @var array of files to generate
+     */
+    protected $files = [
+        'sidebar-view-composer.stub' => 'Composers/SidebarViewComposer',
+        'permissions.stub' => 'Config/permissions',
+        'routes.stub' => 'Http/routes',
+    ];
+    /**
      * @var Application
      */
     private $artisan;
@@ -48,13 +57,18 @@ class ModuleScaffold
      * @var ValueObjectGenerator
      */
     private $valueObjectGenerator;
+    /**
+     * @var FilesGenerator
+     */
+    private $filesGenerator;
 
     public function __construct(
         Application $artisan,
         Filesystem $finder,
         Repository $config,
         EntityGenerator $entityGenerator,
-        ValueObjectGenerator $valueObjectGenerator
+        ValueObjectGenerator $valueObjectGenerator,
+        FilesGenerator $filesGenerator
     )
     {
         $this->artisan = $artisan;
@@ -62,6 +76,7 @@ class ModuleScaffold
         $this->config = $config;
         $this->entityGenerator = $entityGenerator;
         $this->valueObjectGenerator = $valueObjectGenerator;
+        $this->filesGenerator = $filesGenerator;
     }
 
     /**
@@ -71,14 +86,11 @@ class ModuleScaffold
     {
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
-        $this->removeStartFile();
-        $this->renameVendorName();
-        $this->removeViewResources();
+        $this->removeUnneededFiles();
 
         $this->entityGenerator->forModule($this->name)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
-
-        // generate files (repositories, SidebarViewComposer, config/permissions)
+        $this->filesGenerator->forModule($this->name)->generate($this->files);
     }
 
     /**
@@ -166,5 +178,15 @@ class ModuleScaffold
         $this->finder->delete($this->getModulesPath('Resources/views/index.blade.php'));
         $this->finder->delete($this->getModulesPath('Resources/views/layouts/master.blade.php'));
         $this->finder->deleteDirectory($this->getModulesPath('Resources/views/layouts'));
+    }
+
+    private function removeUnneededFiles()
+    {
+        $this->removeStartFile();
+        $this->renameVendorName();
+        $this->removeViewResources();
+
+        $this->finder->delete($this->getModulesPath('Http/routes.php'));
+        $this->finder->delete($this->getModulesPath("Http/Controllers/{$this->name}Controller.php"));
     }
 }

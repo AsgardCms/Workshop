@@ -1,0 +1,12 @@
+<?php
+
+return [
+    '$PLURAL_MODULE$' => [
+        'index',
+        'create',
+        'store',
+        'edit',
+        'update',
+        'destroy',
+    ],
+];

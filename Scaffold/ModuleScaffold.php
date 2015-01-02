@@ -90,7 +90,9 @@ class ModuleScaffold
 
         $this->entityGenerator->forModule($this->name)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
-        $this->filesGenerator->forModule($this->name)->generate($this->files);
+        $this->filesGenerator->forModule($this->name)
+            ->generateControllers()
+            ->generate($this->files);
     }
 
     /**

@@ -18,6 +18,16 @@ class FilesGenerator extends Generator
         }
     }
 
+    public function generateControllers()
+    {
+        $this->writeFile(
+            $this->getModulesPath("Http/Controllers/Admin/{$this->name}Controller"),
+            $this->getContentFor('admin-controller.stub')
+        );
+
+        return $this;
+    }
+
     /**
      * Get the content for the given file
      *

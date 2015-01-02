@@ -1,0 +1,11 @@
+<?php namespace Modules\$MODULE$\Http\Controllers\Admin;
+
+use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+
+class $MODULE$Controller extends AdminBaseController
+{
+    public function index()
+    {
+        return view('$LOWERCASE_MODULE$::admin.index');
+    }
+}

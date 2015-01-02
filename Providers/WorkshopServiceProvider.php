@@ -3,6 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Workshop\Console\ScaffoldCommand;
+use Modules\Workshop\Scaffold\EntityGenerator;
 use Modules\Workshop\Scaffold\ModuleScaffold;
 
 class WorkshopServiceProvider extends ServiceProvider
@@ -83,7 +84,13 @@ class WorkshopServiceProvider extends ServiceProvider
     private function registerScaffoldCommand()
     {
         $this->app->bindShared('command.asgard.scaffold', function ($app) {
-            $moduleScaffold = new ModuleScaffold();
+            $moduleScaffold = new ModuleScaffold(
+                $app['artisan'],
+                $app['files'],
+                $app['config'],
+                new EntityGenerator($app['files'], $app['config'])
+            );
+
             return new ScaffoldCommand($moduleScaffold);
         });
     }

@@ -43,6 +43,8 @@ class ScaffoldCommand extends Command
             ->withEntities($this->entities)
             ->withValueObjects($this->valueObjects)
             ->scaffold();
+
+        $this->info('Module generated and is ready to be used.');
     }
 
     /**

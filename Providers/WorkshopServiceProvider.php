@@ -2,10 +2,10 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use Modules\Workshop\Console\ScaffoldCommand;
-use Modules\Workshop\Scaffold\EntityGenerator;
 use Modules\Workshop\Scaffold\ModuleScaffold;
-use Modules\Workshop\Scaffold\ValueObjectGenerator;
+use Modules\Workshop\Console\ScaffoldCommand;
+use Modules\Workshop\Scaffold\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 
 class WorkshopServiceProvider extends ServiceProvider
 {

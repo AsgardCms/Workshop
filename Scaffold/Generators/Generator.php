@@ -1,4 +1,4 @@
-<?php namespace Modules\Workshop\Scaffold;
+<?php namespace Modules\Workshop\Scaffold\Generators;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Filesystem\Filesystem;
@@ -61,7 +61,7 @@ abstract class Generator
      */
     protected function getStubPath($filename)
     {
-        return __DIR__ . "/stubs/$filename";
+        return __DIR__ . "/../stubs/$filename";
     }
 
     /**

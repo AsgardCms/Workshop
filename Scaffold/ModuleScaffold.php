@@ -3,6 +3,8 @@
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Application;
 use Illuminate\Filesystem\Filesystem;
+use Modules\Workshop\Scaffold\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 
 class ModuleScaffold
 {

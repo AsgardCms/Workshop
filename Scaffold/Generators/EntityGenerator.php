@@ -1,4 +1,4 @@
-<?php namespace Modules\Workshop\Scaffold;
+<?php namespace Modules\Workshop\Scaffold\Generators;
 
 class EntityGenerator extends Generator
 {

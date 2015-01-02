@@ -42,18 +42,24 @@ class ModuleScaffold
      * @var EntityGenerator
      */
     private $entityGenerator;
+    /**
+     * @var ValueObjectGenerator
+     */
+    private $valueObjectGenerator;
 
     public function __construct(
         Application $artisan,
         Filesystem $finder,
         Repository $config,
-        EntityGenerator $entityGenerator
+        EntityGenerator $entityGenerator,
+        ValueObjectGenerator $valueObjectGenerator
     )
     {
         $this->artisan = $artisan;
         $this->finder = $finder;
         $this->config = $config;
         $this->entityGenerator = $entityGenerator;
+        $this->valueObjectGenerator = $valueObjectGenerator;
     }
 
     /**
@@ -68,7 +74,8 @@ class ModuleScaffold
         $this->removeViewResources();
 
         $this->entityGenerator->forModule($this->name)->generate($this->entities);
-        // generate value objects
+        $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
+
         // generate files (repositories, SidebarViewComposer, config/permissions)
     }
 

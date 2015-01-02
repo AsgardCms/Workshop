@@ -1,0 +1,17 @@
+<?php namespace Modules\$MODULE$\ValueObjects;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Embeddable */
+class $NAME$
+{
+    public function __construct()
+    {
+        // TODO implement stub method
+    }
+
+    public function __toString()
+    {
+        return ''; // TODO implement stub method
+    }
+}

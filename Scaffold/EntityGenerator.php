@@ -19,7 +19,7 @@ class EntityGenerator extends Generator
     /**
      * Get the content for the given entity
      * @param $entity
-     * @return void
+     * @return string
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function getContentFor($entity)

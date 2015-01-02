@@ -5,6 +5,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Workshop\Console\ScaffoldCommand;
 use Modules\Workshop\Scaffold\EntityGenerator;
 use Modules\Workshop\Scaffold\ModuleScaffold;
+use Modules\Workshop\Scaffold\ValueObjectGenerator;
 
 class WorkshopServiceProvider extends ServiceProvider
 {
@@ -88,7 +89,8 @@ class WorkshopServiceProvider extends ServiceProvider
                 $app['artisan'],
                 $app['files'],
                 $app['config'],
-                new EntityGenerator($app['files'], $app['config'])
+                new EntityGenerator($app['files'], $app['config']),
+                new ValueObjectGenerator($app['files'], $app['config'])
             );
 
             return new ScaffoldCommand($moduleScaffold);

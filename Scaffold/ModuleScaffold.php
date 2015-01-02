@@ -36,6 +36,7 @@ class ModuleScaffold
         'sidebar-view-composer.stub' => 'Composers/SidebarViewComposer',
         'permissions.stub' => 'Config/permissions',
         'routes.stub' => 'Http/routes',
+        'route-provider.stub' => 'Providers/RouteServiceProvider'
     ];
     /**
      * @var Application

@@ -8,7 +8,7 @@ use Illuminate\Routing\Router;
 |--------------------------------------------------------------------------
 */
 $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function (Router $router) {
-    $router->group(['prefix' => Config::get('core::core.admin-prefix'), 'namespace' => 'Modules\$MODULE$\Http\Controllers'], function (Router $router) {
+    $router->group(['prefix' => Config::get('core::core.admin-prefix') . '/$LOWERCASE_MODULE$', 'namespace' => 'Modules\$MODULE$\Http\Controllers'], function (Router $router) {
 // append
     });
 });

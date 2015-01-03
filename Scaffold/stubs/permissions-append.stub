@@ -1,4 +1,4 @@
-    '$PLURAL_ENTITY_NAME$' => [
+    '$LOWERCASE_MODULE_NAME$.$PLURAL_ENTITY_NAME$' => [
         'index',
         'create',
         'store',

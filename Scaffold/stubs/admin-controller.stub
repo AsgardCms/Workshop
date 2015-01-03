@@ -29,9 +29,9 @@ class $ENTITY_NAME$Controller extends AdminBaseController
      */
     public function index()
     {
-        $$PLURAL_ENTITY_NAME$ = $this->$LOWERCASE_ENTITY_NAME$->all();
+        //$$PLURAL_ENTITY_NAME$ = $this->$LOWERCASE_ENTITY_NAME$->all();
 
-        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.index', compact('$PLURAL_ENTITY_NAME$'));
+        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.index', compact(''));
     }
 
     /**

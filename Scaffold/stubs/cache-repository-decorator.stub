@@ -8,7 +8,7 @@ class Cache$ENTITY_NAME$Decorator extends BaseCacheDecorator implements $ENTITY_
     public function __construct($ENTITY_NAME$Repository $$LOWERCASE_ENTITY_NAME$)
     {
         parent::__construct();
-        $this->entityName = '$PLURAL_ENTITY_NAME$';
+        $this->entityName = '$LOWERCASE_MODULE_NAME$.$PLURAL_ENTITY_NAME$';
         $this->repository = $$LOWERCASE_ENTITY_NAME$;
     }
 }

@@ -2,7 +2,7 @@
 
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
-use Modules\Blog\Entities\Category;
+use Modules\$MODULE_NAME$\Entities\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Modules\$MODULE_NAME$\Repositories\$ENTITY_NAME$Repository;

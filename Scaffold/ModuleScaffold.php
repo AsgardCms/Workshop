@@ -37,7 +37,7 @@ class ModuleScaffold
         'permissions.stub' => 'Config/permissions',
         'routes.stub' => 'Http/routes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',
-        'composers.stub' => 'composers'
+        'composers.stub' => 'composers',
     ];
     /**
      * @var Application
@@ -95,6 +95,7 @@ class ModuleScaffold
         $this->filesGenerator->forModule($this->name)
             ->generateControllers()
             ->generateViews()
+            ->generateModuleProvider()
             ->generate($this->files);
     }
 

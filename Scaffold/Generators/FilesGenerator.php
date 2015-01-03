@@ -26,6 +26,11 @@ class FilesGenerator extends Generator
         }
     }
 
+    /**
+     * Generate controllers
+     *
+     * @return $this
+     */
     public function generateControllers()
     {
         $this->writeFile(
@@ -36,6 +41,11 @@ class FilesGenerator extends Generator
         return $this;
     }
 
+    /**
+     * Generate basic views
+     *
+     * @return $this
+     */
     public function generateViews()
     {
         foreach ($this->views as $stub => $view) {
@@ -44,6 +54,20 @@ class FilesGenerator extends Generator
                 $this->getContentFor($stub)
             );
         }
+
+        return $this;
+    }
+
+    /**
+     * Generate the base module service provider
+     * @return $this
+     */
+    public function generateModuleProvider()
+    {
+        $this->writeFile(
+            $this->getModulesPath("Providers/{$this->name}ServiceProvider"),
+            $this->getContentFor('module-service-provider.stub')
+        );
 
         return $this;
     }

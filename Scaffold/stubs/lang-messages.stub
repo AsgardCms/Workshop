@@ -1,0 +1,8 @@
+<?php
+
+return [
+    '$LOWERCASE_MODULE$ created' => 'Page successfully created.',
+    '$LOWERCASE_MODULE$ not found' => 'Page not found.',
+    '$LOWERCASE_MODULE$ updated' => 'Page successfully updated.',
+    '$LOWERCASE_MODULE$ deleted' => 'Page successfully deleted.',
+];

@@ -12,7 +12,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
         $view->items->put('$LOWERCASE_MODULE$', Collection::make([
             [
                 'weight' => 1,
-                'request' => Request::is("*/$view->prefix/$LOWERCASE_MODULE$/$PLURAL_MODULE$*"),
+                'request' => '' /* append */,
                 'route' => '#',
                 'icon-class' => 'fa fa-copy',
                 'title' => '$UPPERCASE_PLURAL_MODULE$',

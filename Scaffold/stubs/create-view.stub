@@ -27,7 +27,7 @@
                     <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
                     <?php $i++; ?>
                     <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('$LOWERCASE_MODULE_NAME$::admin.$LOWERCASE_ENTITY_NAME$.partials.create-fields', ['lang' => $locale])
+                        @include('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.partials.create-fields', ['lang' => $locale])
                     </div>
                     <?php endforeach; ?>
 

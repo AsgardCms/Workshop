@@ -39,7 +39,7 @@ class WorkbenchController extends AdminBaseController
 
         Flash::message($output->fetch());
 
-        return Redirect::route('dashboard.workbench.index');
+        return Redirect::route('admin.workshop.workbench.index');
     }
 
     /**
@@ -54,7 +54,7 @@ class WorkbenchController extends AdminBaseController
 
         Flash::message($output->fetch());
 
-        return Redirect::route('dashboard.workbench.index');
+        return Redirect::route('admin.workshop.workbench.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class WorkbenchController extends AdminBaseController
 
         Flash::message($output->fetch());
 
-        return Redirect::route('dashboard.workbench.index');
+        return Redirect::route('admin.workshop.workbench.index');
     }
 
     /**
@@ -88,6 +88,6 @@ class WorkbenchController extends AdminBaseController
 
         Flash::message($output->fetch());
 
-        return Redirect::route('dashboard.workbench.index');
+        return Redirect::route('admin.workshop.workbench.index');
     }
 }

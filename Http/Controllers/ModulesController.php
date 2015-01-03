@@ -46,6 +46,6 @@ class ModulesController extends AdminBaseController
 
         Flash::success('Modules configuration saved!');
 
-        return Redirect::route('dashboard.modules.index');
+        return Redirect::route('admin.workshop.modules.index');
     }
 }

@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'dashboard.workbench.migrate.index', 'method' => 'post']) !!}
+{!! Form::open(['route' => 'admin.workshop.workbench.migrate.index', 'method' => 'post']) !!}
     <div class="box-body">
         <div class='form-group{{ $errors->has('module') ? ' has-error' : '' }}'>
             {!! Form::label('module', trans('workshop::workbench.form.module name')) !!}

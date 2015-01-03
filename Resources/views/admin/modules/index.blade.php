@@ -15,7 +15,7 @@
 @stop
 
 @section('content')
-{!! Form::open(['route' => 'dashboard.modules.store', 'method' => 'post']) !!}
+{!! Form::open(['route' => 'admin.workshop.modules.store', 'method' => 'post']) !!}
 <div class="row">
     <div class="col-md-12">
         <div class="nav-tabs-custom">

@@ -1,26 +1,27 @@
 <?php
+
 return [
-    'modules' => [
+    'workshop.modules' => [
         'index',
         'store',
     ],
-    'workbench' => [
+    'workshop.workbench' => [
         'index',
         'generate',
         'migrate',
         'install',
         'seed',
     ],
-    'generate' => [
+    'workshop.generate' => [
         'generate',
     ],
-    'install' => [
+    'workshop.install' => [
         'install',
     ],
-    'migrate' => [
+    'workshop.migrate' => [
         'migrate',
     ],
-    'seed' => [
+    'workshop.seed' => [
         'seed',
     ]
 ];

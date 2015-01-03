@@ -12,25 +12,25 @@ class SidebarViewComposer extends BaseSidebarViewComposer
         $view->items->put('workbench', Collection::make([
             [
                 'weight' => '1',
-                'request' => Request::is("*/{$view->prefix}/modules*") or Request::is("*/{$view->prefix}/workbench*"),
+                'request' => Request::is("*/{$view->prefix}/workshop/modules*") or Request::is("*/{$view->prefix}/workshop/workbench*"),
                 'route' => '#',
                 'icon-class' => 'fa fa-cogs',
                 'title' => 'Workshop',
-                'permission' => $this->auth->hasAccess('modules.index') or $this->auth->hasAccess('workbench.index'),
+                'permission' => $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.workbench.index'),
             ],
             [
-                'request' => "*/{$view->prefix}/modules*",
-                'route' => 'dashboard.modules.index',
+                'request' => "*/{$view->prefix}/workshop/modules*",
+                'route' => 'admin.workshop.modules.index',
                 'icon-class' => 'fa fa-cog',
                 'title' => 'Modules',
-                'permission' => $this->auth->hasAccess('modules.index')
+                'permission' => $this->auth->hasAccess('workshop.modules.index')
             ],
 //            [
-//                'request' => "*/{$view->prefix}/workbench*",
-//                'route' => 'dashboard.workbench.index',
+//                'request' => "*/{$view->prefix}/workshop/workbench*",
+//                'route' => 'admin.workshop.workbench.index',
 //                'icon-class' => 'fa fa-terminal',
 //                'title' => 'Workbench',
-//                'permission' => $this->auth->hasAccess('workbench.index')
+//                'permission' => $this->auth->hasAccess('workshop.workbench.index')
 //            ]
         ]));
     }

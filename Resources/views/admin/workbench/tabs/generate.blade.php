@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        {!! Form::open(['route' => 'dashboard.workbench.generate.index', 'method' => 'post']) !!}
+        {!! Form::open(['route' => 'admin.workshop.workbench.generate.index', 'method' => 'post']) !!}
         <div class="box-body">
             <h4>{{ trans('workshop::workbench.subtitle.generate new module') }}</h4>
             <div class='form-group{{ $errors->has('name') ? ' has-error' : '' }}'>
@@ -15,7 +15,7 @@
         {!! Form::close() !!}
     </div>
     <div class="col-md-6">
-        {!! Form::open(['route' => 'dashboard.workbench.install.index', 'method' => 'post']) !!}
+        {!! Form::open(['route' => 'admin.workshop.workbench.install.index', 'method' => 'post']) !!}
         <div class="box-body">
             <h4>{{ trans('workshop::workbench.subtitle.install new module by vendor name') }}</h4>
             <div class='form-group{{ $errors->has('vendorName') ? ' has-error' : '' }}'>

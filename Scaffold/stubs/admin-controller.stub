@@ -1,11 +1,103 @@
 <?php namespace Modules\$MODULE_NAME$\Http\Controllers\Admin;
 
+use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
+use Modules\Blog\Entities\Category;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
+use Modules\$MODULE_NAME$\Repositories\$ENTITY_NAME$Repository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class $ENTITY_NAME$Controller extends AdminBaseController
 {
+    /**
+     * @var $ENTITY_NAME$Repository
+     */
+    private $$LOWERCASE_ENTITY_NAME$;
+
+    public function __construct($ENTITY_NAME$Repository $$LOWERCASE_ENTITY_NAME$)
+    {
+        parent::__construct();
+
+        $this->$LOWERCASE_ENTITY_NAME$ = $$LOWERCASE_ENTITY_NAME$;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function index()
     {
-        return view('$LOWERCASE_MODULE_NAME$::admin.$LOWERCASE_ENTITY_NAME$.index');
+        $$PLURAL_ENTITY_NAME$ = $this->$LOWERCASE_ENTITY_NAME$->all();
+
+        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.index', compact('$PLURAL_ENTITY_NAME$'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $this->$LOWERCASE_ENTITY_NAME$->create($request->all());
+
+        Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_ENTITY_NAME$.messages.$LOWERCASE_ENTITY_NAME$ created'));
+
+        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  $ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$
+     * @return Response
+     */
+    public function edit($ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$)
+    {
+        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_ENTITY_NAME$.edit', compact('$LOWERCASE_ENTITY_NAME$'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  $ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$
+     * @param  Request $request
+     * @return Response
+     */
+    public function update($ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$, Request $request)
+    {
+        $this->$LOWERCASE_ENTITY_NAME$->update($$LOWERCASE_ENTITY_NAME$, $request->all());
+
+        Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_ENTITY_NAME$.messages.$LOWERCASE_ENTITY_NAME$ updated'));
+
+        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$
+     * @return Response
+     */
+    public function destroy($ENTITY_NAME$ $$LOWERCASE_ENTITY_NAME$)
+    {
+        $this->$LOWERCASE_ENTITY_NAME$->destroy($$LOWERCASE_ENTITY_NAME$);
+
+        Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_ENTITY_NAME$.messages.$LOWERCASE_ENTITY_NAME$ deleted'));
+
+        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.index');
     }
 }

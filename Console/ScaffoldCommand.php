@@ -16,6 +16,10 @@ class ScaffoldCommand extends Command
      */
     protected $valueObjects = [];
     /**
+     * @var string The type of entities to generate [Eloquent or Doctrine]
+     */
+    protected $entityType;
+    /**
      * @var ModuleScaffold
      */
     private $moduleScaffold;
@@ -40,6 +44,7 @@ class ScaffoldCommand extends Command
         $this->moduleScaffold
             ->vendor($vendor)
             ->name($name)
+            ->setEntityType($this->entityType)
             ->withEntities($this->entities)
             ->withValueObjects($this->valueObjects)
             ->scaffold();
@@ -52,6 +57,7 @@ class ScaffoldCommand extends Command
      */
     private function askForEntities()
     {
+        $this->entityType = $this->choice('Do you want to use Eloquent or Doctrine ? [eloquent]', ['Eloquent', 'Doctrine'], 0);
         do {
             $entity = $this->ask('Enter entity name. Leaving option empty will continue script.');
             if (!empty($entity))

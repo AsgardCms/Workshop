@@ -40,6 +40,10 @@ class ModuleScaffold
         'composers.stub' => 'composers',
     ];
     /**
+     * @var string The type of entities to generate [Eloquent or Doctrine]
+     */
+    protected $entityType;
+    /**
      * @var Application
      */
     private $artisan;
@@ -90,13 +94,12 @@ class ModuleScaffold
 
         $this->removeUnneededFiles();
 
-        $this->entityGenerator->forModule($this->name)->generate($this->entities);
-        $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
         $this->filesGenerator->forModule($this->name)
-            ->generateControllers()
-            ->generateViews()
             ->generateModuleProvider()
             ->generate($this->files);
+
+        $this->entityGenerator->forModule($this->name)->type($this->entityType)->generate($this->entities);
+        $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
     }
 
     /**
@@ -117,6 +120,13 @@ class ModuleScaffold
     public function name($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function setEntityType($entityType)
+    {
+        $this->entityType = $entityType;
 
         return $this;
     }

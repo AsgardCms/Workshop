@@ -1,0 +1,22 @@
+<?php
+
+return [
+    'title' => [
+        '$PLURAL_ENTITY_NAME$' => '$ENTITY_NAME$',
+        'create $LOWERCASE_ENTITY_NAME$' => 'Create a $LOWERCASE_ENTITY_NAME$',
+        'edit $LOWERCASE_ENTITY_NAME$' => 'Edit a $LOWERCASE_ENTITY_NAME$',
+    ],
+    'button' => [
+        'create $LOWERCASE_ENTITY_NAME$' => 'Create a $LOWERCASE_ENTITY_NAME$',
+    ],
+    'table' => [
+    ],
+    'form' => [
+    ],
+    'messages' => [
+        '$LOWERCASE_ENTITY_NAME$ created' => '$ENTITY_NAME$ successfully created.',
+        '$LOWERCASE_ENTITY_NAME$ not found' => '$ENTITY_NAME$ not found.',
+        '$LOWERCASE_ENTITY_NAME$ updated' => '$ENTITY_NAME$ successfully updated.',
+        '$LOWERCASE_ENTITY_NAME$ deleted' => '$ENTITY_NAME$ successfully deleted.',
+    ],
+];

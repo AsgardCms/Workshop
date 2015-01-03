@@ -1,0 +1,9 @@
+        $router->resource('$PLURAL_ENTITY_NAME$', 'Admin\$ENTITY_NAME$Controller', ['except' => ['show'], 'names' => [
+            'index' => 'dashboard.$LOWERCASE_ENTITY_NAME$.index',
+            'create' => 'dashboard.$LOWERCASE_ENTITY_NAME$.create',
+            'store' => 'dashboard.$LOWERCASE_ENTITY_NAME$.store',
+            'edit' => 'dashboard.$LOWERCASE_ENTITY_NAME$.edit',
+            'update' => 'dashboard.$LOWERCASE_ENTITY_NAME$.update',
+            'destroy' => 'dashboard.$LOWERCASE_ENTITY_NAME$.destroy',
+        ]]);
+// append

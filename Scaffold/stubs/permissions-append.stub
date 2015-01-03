@@ -1,0 +1,9 @@
+    '$PLURAL_ENTITY_NAME$' => [
+        'index',
+        'create',
+        'store',
+        'edit',
+        'update',
+        'destroy',
+    ],
+// append

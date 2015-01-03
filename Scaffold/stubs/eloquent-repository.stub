@@ -1,0 +1,8 @@
+<?php namespace Modules\$MODULE_NAME$\Repositories\Eloquent;
+
+use Modules\$MODULE_NAME$\Repositories\$ENTITY_NAME$Repository;
+use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
+
+class Eloquent$ENTITY_NAME$Repository extends EloquentBaseRepository implements $ENTITY_NAME$Repository
+{
+}

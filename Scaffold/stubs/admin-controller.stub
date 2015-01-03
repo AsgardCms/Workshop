@@ -1,11 +1,11 @@
-<?php namespace Modules\$MODULE$\Http\Controllers\Admin;
+<?php namespace Modules\$MODULE_NAME$\Http\Controllers\Admin;
 
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
-class $MODULE$Controller extends AdminBaseController
+class $ENTITY_NAME$Controller extends AdminBaseController
 {
     public function index()
     {
-        return view('$LOWERCASE_MODULE$::admin.index');
+        return view('$LOWERCASE_MODULE_NAME$::admin.$LOWERCASE_ENTITY_NAME$.index');
     }
 }

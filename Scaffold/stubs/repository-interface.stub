@@ -1,0 +1,7 @@
+<?php namespace Modules\$MODULE_NAME$\Repositories;
+
+use Modules\Core\Repositories\BaseRepository;
+
+interface $ENTITY_NAME$Repository extends BaseRepository
+{
+}

@@ -1,0 +1,12 @@
+<?php namespace Modules\$MODULE$\Entities;
+
+use Dimsav\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
+
+class $NAME$ extends Model
+{
+    use Translatable;
+
+    public $translatedAttributes = [];
+    protected $fillable = [];
+}

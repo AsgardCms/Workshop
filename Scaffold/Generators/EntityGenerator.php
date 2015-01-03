@@ -40,6 +40,11 @@ class EntityGenerator extends Generator
                 $this->getModulesPath("Entities/$entity"),
                 $this->getContentFor($entity)
             );
+            $entityType = strtolower($this->entityType);
+            $this->writeFile(
+                $this->getModulesPath("Entities/{$entity}Translation"),
+                $this->getContentForStub("{$entityType}-entity-translation.stub", $entity)
+            );
             $this->generateRepositoriesFor($entity);
             $this->generateControllerFor($entity);
             $this->generateViewsFor($entity);
@@ -64,8 +69,8 @@ class EntityGenerator extends Generator
         $stub = $this->finder->get($this->getStubPath("entity-{$entityType}.stub"));
 
         return str_replace(
-            ['$MODULE$', '$NAME$', '$PLURALNAME$'],
-            [$this->name, $entity, strtolower(str_plural($entity))],
+            ['$MODULE$', '$NAME$', '$LOWERCASE_ENTITY_NAME$', '$PLURALNAME$'],
+            [$this->name, $entity, strtolower($entity),strtolower(str_plural($entity))],
             $stub
         );
     }

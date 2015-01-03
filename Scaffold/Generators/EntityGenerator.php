@@ -117,11 +117,11 @@ class EntityGenerator extends Generator
      */
     private function generateViewsFor($entity)
     {
-        $lowerCaseEntity = strtolower($entity);
-        $this->finder->makeDirectory($this->getModulesPath("Resources/views/admin/{$lowerCaseEntity}/partials"), 0755, true);
+        $lowerCasePluralEntity = strtolower(str_plural($entity));
+        $this->finder->makeDirectory($this->getModulesPath("Resources/views/admin/{$lowerCasePluralEntity}/partials"), 0755, true);
 
         foreach ($this->views as $stub => $view) {
-            $view = str_replace('$ENTITY_NAME$', strtolower($entity), $view);
+            $view = str_replace('$ENTITY_NAME$', $lowerCasePluralEntity, $view);
             $this->writeFile(
                 $this->getModulesPath($view),
                 $this->getContentForStub($stub, $entity)

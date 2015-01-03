@@ -98,6 +98,8 @@ class ModuleScaffold
             ->generateModuleProvider()
             ->generate($this->files);
 
+        $this->loadProviders();
+
         $this->entityGenerator->forModule($this->name)->type($this->entityType)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
     }
@@ -124,6 +126,11 @@ class ModuleScaffold
         return $this;
     }
 
+    /**
+     * Set the entity type [Eloquent, Doctrine]
+     * @param string $entityType
+     * @return $this
+     */
     public function setEntityType($entityType)
     {
         $this->entityType = $entityType;
@@ -196,6 +203,9 @@ class ModuleScaffold
         $this->finder->deleteDirectory($this->getModulesPath('Resources/views/layouts'));
     }
 
+    /**
+     * Remove all unneeded files
+     */
     private function removeUnneededFiles()
     {
         $this->renameStartFileToComposersFile();
@@ -204,5 +214,19 @@ class ModuleScaffold
 
         $this->finder->delete($this->getModulesPath('Http/routes.php'));
         $this->finder->delete($this->getModulesPath("Http/Controllers/{$this->name}Controller.php"));
+    }
+
+    private function loadProviders()
+    {
+        $providerContent = $this->finder->get($this->getModulesPath('module.json'));
+        $newProviders = <<<JSON
+"providers": [
+        "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
+        "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
+    ],
+JSON;
+
+        $providerContent = str_replace('"providers": [],', $newProviders, $providerContent);
+        $this->finder->put($this->getModulesPath('module.json'), $providerContent);
     }
 }

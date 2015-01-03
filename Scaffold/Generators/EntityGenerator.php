@@ -129,7 +129,7 @@ class EntityGenerator extends Generator
      */
     private function generateLanguageFilesFor($entity)
     {
-        $lowerCaseEntity = strtolower($entity);
+        $lowerCaseEntity = str_plural(strtolower($entity));
         $this->writeFile(
             $this->getModulesPath("Resources/lang/en/{$lowerCaseEntity}"),
             $this->getContentForStub('lang-entity.stub', $entity)

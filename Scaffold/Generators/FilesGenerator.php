@@ -2,6 +2,14 @@
 
 class FilesGenerator extends Generator
 {
+    protected $views = [
+        'index-view.stub' => 'Resources/views/admin/index.blade',
+        'create-view.stub' => 'Resources/views/admin/create.blade',
+        'edit-view.stub' => 'Resources/views/admin/edit.blade',
+        'create-fields.stub' => 'Resources/views/admin/partials/create-fields.blade',
+        'edit-fields.stub' => 'Resources/views/admin/partials/edit-fields.blade',
+    ];
+
     /**
      * Generate the given files
      *
@@ -24,6 +32,18 @@ class FilesGenerator extends Generator
             $this->getModulesPath("Http/Controllers/Admin/{$this->name}Controller"),
             $this->getContentFor('admin-controller.stub')
         );
+
+        return $this;
+    }
+
+    public function generateViews()
+    {
+        foreach ($this->views as $stub => $view) {
+            $this->writeFile(
+                $this->getModulesPath($view),
+                $this->getContentFor($stub)
+            );
+        }
 
         return $this;
     }

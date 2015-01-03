@@ -93,6 +93,7 @@ class ModuleScaffold
         $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
         $this->filesGenerator->forModule($this->name)
             ->generateControllers()
+            ->generateViews()
             ->generate($this->files);
     }
 

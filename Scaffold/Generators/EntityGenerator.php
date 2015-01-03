@@ -47,6 +47,7 @@ class EntityGenerator extends Generator
             $this->appendBindingsToServiceProviderFor($entity);
             $this->appendResourceRoutesToRoutesFileFor($entity);
             $this->appendPermissionsFor($entity);
+            $this->appendSidebarLinksFor($entity);
         }
     }
 
@@ -154,6 +155,7 @@ class EntityGenerator extends Generator
                 '$ENTITY_NAME$',
                 '$LOWERCASE_ENTITY_NAME$',
                 '$PLURAL_ENTITY_NAME$',
+                '$PLURAL_UCWORDS_ENTITY_NAME$',
                 '$ENTITY_TYPE$'
             ],
             [
@@ -163,6 +165,7 @@ class EntityGenerator extends Generator
                 $entity,
                 strtolower($entity),
                 strtolower(str_plural($entity)),
+                str_plural($entity),
                 $this->entityType
             ],
             $stub
@@ -207,5 +210,16 @@ class EntityGenerator extends Generator
         $content = $this->getContentForStub('permissions-append.stub', $entity);
         $permissionsContent = str_replace('// append', $content, $permissionsContent);
         $this->finder->put($this->getModulesPath('Config/permissions.php'), $permissionsContent);
+    }
+
+    /**
+     * @param string $entity
+     */
+    private function appendSidebarLinksFor($entity)
+    {
+        $sidebarComposerContent = $this->finder->get($this->getModulesPath('Composers/SidebarViewComposer.php'));
+        $content = $this->getContentForStub('append-sidebar-composer.stub', $entity);
+        $sidebarComposerContent = str_replace('// append', $content, $sidebarComposerContent);
+        $this->finder->put($this->getModulesPath('Composers/SidebarViewComposer.php'), $sidebarComposerContent);
     }
 }

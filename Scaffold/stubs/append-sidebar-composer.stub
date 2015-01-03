@@ -1,0 +1,8 @@
+            [
+                'request' => "*/{$view->prefix}/$PLURAL_ENTITY_NAME$*",
+                'route' => 'dashboard.$LOWERCASE_ENTITY_NAME$.index',
+                'icon-class' => 'fa fa-file-text',
+                'title' => '$PLURAL_UCWORDS_ENTITY_NAME$',
+                'permission' => $this->auth->hasAccess('$PLURAL_ENTITY_NAME$.index')
+            ],
+// append

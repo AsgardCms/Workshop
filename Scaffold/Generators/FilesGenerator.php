@@ -44,8 +44,8 @@ class FilesGenerator extends Generator
         $stub = $this->finder->get($this->getStubPath($stub));
 
         return str_replace(
-            ['$MODULE$', '$LOWERCASE_MODULE$', '$PLURAL_MODULE$'],
-            [$this->name, strtolower($this->name), strtolower(str_plural($this->name))],
+            ['$MODULE$', '$LOWERCASE_MODULE$', '$PLURAL_MODULE$', '$UPPERCASE_PLURAL_MODULE$'],
+            [$this->name, strtolower($this->name), strtolower(str_plural($this->name)), str_plural($this->name)],
             $stub
         );
     }

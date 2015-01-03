@@ -1,13 +1,13 @@
         $this->app->bind(
             'Modules\$MODULE_NAME$\Repositories\$ENTITY_NAME$Repository',
             function () {
-                $repository = new Modules\$MODULE_NAME$\Repositories\$ENTITY_TYPE$\$ENTITY_TYPE$$ENTITY_NAME$Repository(new Modules\$MODULE_NAME$\Entities\$ENTITY_NAME$());
+                $repository = new \Modules\$MODULE_NAME$\Repositories\$ENTITY_TYPE$\$ENTITY_TYPE$$ENTITY_NAME$Repository(new \Modules\$MODULE_NAME$\Entities\$ENTITY_NAME$());
 
                 if (! Config::get('app.cache')) {
                     return $repository;
                 }
 
-                return new Modules\$MODULE_NAME$\Repositories\Cache\Cache$ENTITY_NAME$Decorator($repository);
+                return new \Modules\$MODULE_NAME$\Repositories\Cache\Cache$ENTITY_NAME$Decorator($repository);
             }
         );
 // add bindings

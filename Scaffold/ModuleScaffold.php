@@ -36,7 +36,8 @@ class ModuleScaffold
         'sidebar-view-composer.stub' => 'Composers/SidebarViewComposer',
         'permissions.stub' => 'Config/permissions',
         'routes.stub' => 'Http/routes',
-        'route-provider.stub' => 'Providers/RouteServiceProvider'
+        'route-provider.stub' => 'Providers/RouteServiceProvider',
+        'composers.stub' => 'composers'
     ];
     /**
      * @var Application
@@ -155,11 +156,11 @@ class ModuleScaffold
      * Remove the start.php start file
      * Also removes the auto loading of that file
      */
-    private function removeStartFile()
+    private function renameStartFileToComposersFile()
     {
         $this->finder->delete($this->getModulesPath('start.php'));
         $moduleJsonContent = $this->finder->get($this->getModulesPath('module.json'));
-        $moduleJsonContent = str_replace('"start.php"', '', $moduleJsonContent);
+        $moduleJsonContent = str_replace('"start.php"', '"composers.php"', $moduleJsonContent);
         $this->finder->put($this->getModulesPath('module.json'), $moduleJsonContent);
     }
 
@@ -186,7 +187,7 @@ class ModuleScaffold
 
     private function removeUnneededFiles()
     {
-        $this->removeStartFile();
+        $this->renameStartFileToComposersFile();
         $this->renameVendorName();
         $this->removeViewResources();
 

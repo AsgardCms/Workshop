@@ -264,4 +264,16 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
     }
+
+    /** @test */
+    public function it_should_generate_value_objects()
+    {
+        $this->scaffoldModuleWithEloquent(['Post'], ['Price', 'TimeRange']);
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/ValueObjects/Price.php');
+        $file2 = $this->finder->isFile($this->testModulePath . '/ValueObjects/TimeRange.php');
+
+        $this->assertTrue($file1);
+        $this->assertTrue($file2);
+    }
 }

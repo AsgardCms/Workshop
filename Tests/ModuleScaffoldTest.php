@@ -244,4 +244,14 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
     }
+
+    /** @test */
+    public function it_should_generate_sidebar_view_composer_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Composers/SidebarViewComposer.php');
+
+        $this->assertTrue($file1);
+    }
 }

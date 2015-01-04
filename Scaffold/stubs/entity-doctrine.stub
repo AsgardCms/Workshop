@@ -1,4 +1,4 @@
-<?php namespace Modules\$MODULE$\Entities;
+<?php namespace Modules\$MODULE_NAME$\Entities;
 
 use Doctrine\ORM\Mapping AS ORM;
 use Modules\Blog\Traits\Translatable;
@@ -7,10 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="$PLURALNAME$")
+ * @ORM\Table(name="$PLURAL_ENTITY_NAME$")
  * @ORM\HasLifecycleCallbacks()
  */
-class $NAME$
+class $ENTITY_NAME$
 {
     use Timestamps, Translatable;
 
@@ -22,7 +22,7 @@ class $NAME$
      private $id;
 
      /**
-      * @ORM\OneToMany(targetEntity="Modules\$MODULE$\Entities\$NAME$Translation", mappedBy="$LOWERCASE_ENTITY_NAME$", cascade={"persist", "remove"})
+      * @ORM\OneToMany(targetEntity="Modules\$MODULE_NAME$\Entities\$ENTITY_NAME$Translation", mappedBy="$LOWERCASE_ENTITY_NAME$", cascade={"persist", "remove"})
       */
      private $translation;
 

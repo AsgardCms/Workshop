@@ -35,12 +35,13 @@ class EntityGenerator extends Generator
      */
     public function generate(array $entities)
     {
+        $entityType = strtolower($this->entityType);
+        $entityTypeStub = "entity-{$entityType}.stub";
         foreach ($entities as $entity) {
             $this->writeFile(
                 $this->getModulesPath("Entities/$entity"),
-                $this->getContentFor($entity)
+                $this->getContentForStub($entityTypeStub, $entity)
             );
-            $entityType = strtolower($this->entityType);
             $this->writeFile(
                 $this->getModulesPath("Entities/{$entity}Translation"),
                 $this->getContentForStub("{$entityType}-entity-translation.stub", $entity)
@@ -54,25 +55,6 @@ class EntityGenerator extends Generator
             $this->appendPermissionsFor($entity);
             $this->appendSidebarLinksFor($entity);
         }
-    }
-
-    /**
-     * Get the content for the given entity
-     *
-     * @param  string                                       $entity
-     * @return string
-     * @throws \Illuminate\Filesystem\FileNotFoundException
-     */
-    private function getContentFor($entity)
-    {
-        $entityType = strtolower($this->entityType);
-        $stub = $this->finder->get($this->getStubPath("entity-{$entityType}.stub"));
-
-        return str_replace(
-            ['$MODULE$', '$NAME$', '$LOWERCASE_ENTITY_NAME$', '$PLURALNAME$'],
-            [$this->name, $entity, strtolower($entity), strtolower(str_plural($entity))],
-            $stub
-        );
     }
 
     /**

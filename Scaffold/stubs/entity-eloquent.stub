@@ -1,9 +1,9 @@
-<?php namespace Modules\$MODULE$\Entities;
+<?php namespace Modules\$MODULE_NAME$\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class $NAME$ extends Model
+class $ENTITY_NAME$ extends Model
 {
     use Translatable;
 

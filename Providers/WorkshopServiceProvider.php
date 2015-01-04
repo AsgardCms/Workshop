@@ -85,17 +85,18 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     private function registerScaffoldCommand()
     {
-        $this->app->bindShared('command.asgard.scaffold', function ($app) {
-            $moduleScaffold = new ModuleScaffold(
-                $app['artisan'],
+        $this->app->singleton('asgard.module.scaffold', function($app) {
+            return new ModuleScaffold(
                 $app['files'],
                 $app['config'],
                 new EntityGenerator($app['files'], $app['config']),
                 new ValueObjectGenerator($app['files'], $app['config']),
                 new FilesGenerator($app['files'], $app['config'])
             );
+        });
 
-            return new ScaffoldCommand($moduleScaffold);
+        $this->app->bindShared('command.asgard.scaffold', function ($app) {
+            return new ScaffoldCommand($app['asgard.module.scaffold']);
         });
     }
 }

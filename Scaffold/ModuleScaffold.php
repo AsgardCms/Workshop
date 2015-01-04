@@ -69,14 +69,13 @@ class ModuleScaffold
     private $filesGenerator;
 
     public function __construct(
-        Application $artisan,
         Filesystem $finder,
         Repository $config,
         EntityGenerator $entityGenerator,
         ValueObjectGenerator $valueObjectGenerator,
         FilesGenerator $filesGenerator
     ) {
-        $this->artisan = $artisan;
+        $this->artisan = app('Illuminate\Contracts\Console\Application');
         $this->finder = $finder;
         $this->config = $config;
         $this->entityGenerator = $entityGenerator;

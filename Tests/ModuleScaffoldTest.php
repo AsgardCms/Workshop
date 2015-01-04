@@ -20,6 +20,10 @@ class ModuleScaffoldTest extends BaseTestCase
      * @var string Path to the module under test
      */
     protected $testModulePath;
+    /**
+     * @var string The name of the module under test
+     */
+    protected $testModuleName;
 
     public function setUp()
     {
@@ -27,7 +31,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->finder = $this->app['files'];
         $this->scaffold = $this->app['asgard.module.scaffold'];
-        $this->testModulePath = base_path('Modules/TestingTestModule');
+        $this->testModuleName = 'TestingTestModule';
+        $this->testModulePath = base_path("Modules/{$this->testModuleName}");
     }
 
     private function cleanUp()
@@ -46,7 +51,7 @@ class ModuleScaffoldTest extends BaseTestCase
         // Run
         $this->scaffold
             ->vendor('asgardcms')
-            ->name('TestingTestModule')
+            ->name($this->testModuleName)
             ->setEntityType('eloquent')
             ->withEntities(['Category'])
             ->withValueObjects([])
@@ -64,7 +69,7 @@ class ModuleScaffoldTest extends BaseTestCase
         // Run
         $this->scaffold
             ->vendor('asgardcms')
-            ->name('TestingTestModule')
+            ->name($this->testModuleName)
             ->setEntityType('Eloquent')
             ->withEntities(['Category', 'Post'])
             ->withValueObjects([])
@@ -83,7 +88,7 @@ class ModuleScaffoldTest extends BaseTestCase
         // Run
         $this->scaffold
             ->vendor('asgardcms')
-            ->name('TestingTestModule')
+            ->name($this->testModuleName)
             ->setEntityType('Doctrine')
             ->withEntities(['Category', 'Post'])
             ->withValueObjects([])
@@ -102,7 +107,7 @@ class ModuleScaffoldTest extends BaseTestCase
         // Run
         $this->scaffold
             ->vendor('asgardcms')
-            ->name('TestingTestModule')
+            ->name($this->testModuleName)
             ->setEntityType('Doctrine')
             ->withEntities(['Category'])
             ->withValueObjects([])

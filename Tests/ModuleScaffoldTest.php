@@ -47,13 +47,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function scaffoldModuleWithEloquent(array $entities = ['Post'], array $valueObjects = [])
     {
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('Eloquent')
-            ->withEntities($entities)
-            ->withValueObjects($valueObjects)
-            ->scaffold();
+        $this->scaffoldModule('Eloquent', $entities, $valueObjects);
     }
 
     /**
@@ -63,10 +57,15 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function scaffoldModuleWithDoctrine(array $entities = ['Post'], array $valueObjects = [])
     {
+        $this->scaffoldModule('Doctrine', $entities, $valueObjects);
+    }
+
+    private function scaffoldModule($type, $entities, $valueObjects)
+    {
         $this->scaffold
             ->vendor('asgardcms')
             ->name($this->testModuleName)
-            ->setEntityType('Doctrine')
+            ->setEntityType($type)
             ->withEntities($entities)
             ->withValueObjects($valueObjects)
             ->scaffold();
@@ -74,7 +73,7 @@ class ModuleScaffoldTest extends BaseTestCase
 
     public function tearDown()
     {
-        $this->finder->deleteDirectory($this->testModulePath);
+        $this->cleanUp();
     }
 
     /** @test */

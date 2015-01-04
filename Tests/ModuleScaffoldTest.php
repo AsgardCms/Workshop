@@ -12,20 +12,87 @@ class ModuleScaffoldTest extends BaseTestCase
      * @var ModuleScaffold
      */
     protected $scaffold;
+    /**
+     * @var \Illuminate\Filesystem\Filesystem
+     */
+    protected $finder;
+    /**
+     * @var string Path to the module under test
+     */
+    protected $testModulePath;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->scaffold = new ModuleScaffold(
-            $this->app['artisan'],
-            $this->app['files'],
-            $this->app['config'],
-            new EntityGenerator($this->app['files'], $this->app['config']),
-            new ValueObjectGenerator($this->app['files'], $this->app['config']),
-            new FilesGenerator($this->app['files'], $this->app['config'])
-        );
+        $this->finder = $this->app['files'];
+        $this->scaffold = $this->app['asgard.module.scaffold'];
+        $this->testModulePath = base_path('Modules/TestingTestModule');
     }
 
+    private function cleanUp()
+    {
+        $this->finder->deleteDirectory($this->testModulePath);
+    }
 
+    public function tearDown()
+    {
+        $this->finder->deleteDirectory($this->testModulePath);
+    }
+
+    /** @test */
+    public function it_should_generate_module_folder()
+    {
+        // Run
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name('TestingTestModule')
+            ->setEntityType('eloquent')
+            ->withEntities(['Category'])
+            ->withValueObjects([])
+            ->scaffold();
+
+        // Assert
+        $this->assertTrue($this->finder->isDirectory($this->testModulePath));
+
+        $this->cleanUp();
+    }
+
+    /** @test */
+    public function it_should_generate_eloquent_entities_with_translations()
+    {
+        // Run
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name('TestingTestModule')
+            ->setEntityType('eloquent')
+            ->withEntities(['Category', 'Post'])
+            ->withValueObjects([])
+            ->scaffold();
+
+        // Assert
+        $entities = $this->finder->allFiles($this->testModulePath . '/Entities');
+        $this->assertCount(4, $entities);
+
+        $this->cleanUp();
+    }
+
+    /** @test */
+    public function it_should_generate_doctrine_entites_with_translations()
+    {
+        // Run
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name('TestingTestModule')
+            ->setEntityType('Doctrine')
+            ->withEntities(['Category', 'Post'])
+            ->withValueObjects([])
+            ->scaffold();
+
+        // Assert
+        $entities = $this->finder->allFiles($this->testModulePath . '/Entities');
+        $this->assertCount(4, $entities);
+
+        $this->cleanUp();
+    }
 }

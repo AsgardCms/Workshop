@@ -65,6 +65,7 @@ class WorkbenchController extends AdminBaseController
     public function install(InstallModuleRequest $request)
     {
         $output = new BufferedOutput();
+        $arguments = [];
         $arguments['name'] = $request->vendorName;
         if ($request->subtree) {
             $arguments['--tree'] = '';

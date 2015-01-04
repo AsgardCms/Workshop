@@ -35,9 +35,44 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->testModulePath = base_path("Modules/{$this->testModuleName}");
     }
 
+    /**
+     *
+     */
     private function cleanUp()
     {
         $this->finder->deleteDirectory($this->testModulePath);
+    }
+
+    /**
+     * Scaffold a test module using eloquent
+     * @param array $entities
+     * @param array $valueObjects
+     */
+    private function scaffoldModuleWithEloquent(array $entities = ['Post'], array $valueObjects = [])
+    {
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name($this->testModuleName)
+            ->setEntityType('Eloquent')
+            ->withEntities($entities)
+            ->withValueObjects($valueObjects)
+            ->scaffold();
+    }
+
+    /**
+     * Scaffold a test module using doctrine
+     * @param array $entities
+     * @param array $valueObjects
+     */
+    private function scaffoldModuleWithDoctrine(array $entities = ['Post'], array $valueObjects = [])
+    {
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name($this->testModuleName)
+            ->setEntityType('Doctrine')
+            ->withEntities($entities)
+            ->withValueObjects($valueObjects)
+            ->scaffold();
     }
 
     public function tearDown()
@@ -49,13 +84,7 @@ class ModuleScaffoldTest extends BaseTestCase
     public function it_should_generate_module_folder()
     {
         // Run
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('eloquent')
-            ->withEntities(['Category'])
-            ->withValueObjects([])
-            ->scaffold();
+        $this->scaffoldModuleWithEloquent();
 
         // Assert
         $this->assertTrue($this->finder->isDirectory($this->testModulePath));
@@ -67,13 +96,7 @@ class ModuleScaffoldTest extends BaseTestCase
     public function it_should_generate_eloquent_entities_with_translations()
     {
         // Run
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('Eloquent')
-            ->withEntities(['Category', 'Post'])
-            ->withValueObjects([])
-            ->scaffold();
+        $this->scaffoldModuleWithEloquent(['Category', 'Post']);
 
         // Assert
         $entities = $this->finder->allFiles($this->testModulePath . '/Entities');
@@ -86,13 +109,7 @@ class ModuleScaffoldTest extends BaseTestCase
     public function it_should_generate_doctrine_entities_with_translations()
     {
         // Run
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('Doctrine')
-            ->withEntities(['Category', 'Post'])
-            ->withValueObjects([])
-            ->scaffold();
+        $this->scaffoldModuleWithDoctrine(['Category', 'Post']);
 
         // Assert
         $entities = $this->finder->allFiles($this->testModulePath . '/Entities');
@@ -105,19 +122,13 @@ class ModuleScaffoldTest extends BaseTestCase
     public function it_should_generate_translation_entities()
     {
         // Run
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('Doctrine')
-            ->withEntities(['Category'])
-            ->withValueObjects([])
-            ->scaffold();
+        $this->scaffoldModuleWithEloquent();
 
         // Assert
-        $categoryEntity = $this->finder->isFile($this->testModulePath . '/Entities/Category.php');
-        $categoryTranslationEntity = $this->finder->isFile($this->testModulePath . '/Entities/CategoryTranslation.php');
-        $this->assertTrue($categoryEntity);
-        $this->assertTrue($categoryTranslationEntity);
+        $entity = $this->finder->isFile($this->testModulePath . '/Entities/Post.php');
+        $translationEntity = $this->finder->isFile($this->testModulePath . '/Entities/PostTranslation.php');
+        $this->assertTrue($entity);
+        $this->assertTrue($translationEntity);
 
         $this->cleanUp();
     }
@@ -126,13 +137,7 @@ class ModuleScaffoldTest extends BaseTestCase
     public function it_should_generate_cache_decorators()
     {
         // Run
-        $this->scaffold
-            ->vendor('asgardcms')
-            ->name($this->testModuleName)
-            ->setEntityType('Doctrine')
-            ->withEntities(['Category', 'Post'])
-            ->withValueObjects([])
-            ->scaffold();
+        $this->scaffoldModuleWithEloquent(['Category', 'Post']);
 
         // Assert
         $categoryDecorator = $this->finder->isFile($this->testModulePath . '/Repositories/Cache/CacheCategoryDecorator.php');

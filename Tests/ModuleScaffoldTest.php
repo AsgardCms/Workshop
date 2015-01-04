@@ -2,9 +2,6 @@
 
 use Modules\Core\Tests\BaseTestCase;
 use Modules\Workshop\Scaffold\ModuleScaffold;
-use Modules\Workshop\Scaffold\Generators\FilesGenerator;
-use Modules\Workshop\Scaffold\Generators\EntityGenerator;
-use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 
 class ModuleScaffoldTest extends BaseTestCase
 {
@@ -212,5 +209,17 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($languageFile1);
         $this->assertTrue($languageFile2);
+    }
+
+    /** @test */
+    public function it_should_generate_service_providers()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Providers/RouteServiceProvider.php');
+        $file2 = $this->finder->isFile($this->testModulePath . "/Providers/{$this->testModuleName}ServiceProvider.php");
+
+        $this->assertTrue($file1);
+        $this->assertTrue($file2);
     }
 }

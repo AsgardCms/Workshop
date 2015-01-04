@@ -38,6 +38,8 @@ class ScaffoldCommand extends Command
         $moduleName = $this->ask('Please enter the module name. Example: vendor/name.');
         list($vendor, $name) = $this->separateVendorAndName($moduleName);
 
+        $this->checkForModuleUniqueness($name);
+
         $this->askForEntities();
         $this->askForValueObjects();
 
@@ -92,5 +94,21 @@ class ScaffoldCommand extends Command
             $explodedFullName[0],
             ucfirst($explodedFullName[1]),
         ];
+    }
+
+    /**
+     * Check if the given module name does not already exists
+     *
+     * @param string $name
+     */
+    private function checkForModuleUniqueness($name)
+    {
+        /** @var \Illuminate\Filesystem\Filesystem $files */
+        $files = app('Illuminate\Filesystem\Filesystem');
+        /** @var \Illuminate\Contracts\Config\Repository $config */
+        $config = app('Illuminate\Contracts\Config\Repository');
+        if ($files->isDirectory($config->get('modules::paths.modules')."/{$name}")) {
+            return $this->error("The module [$name] already exists");
+        }
     }
 }

@@ -2,21 +2,21 @@
 
 return [
     'title' => [
-        '$PLURAL_ENTITY_NAME$' => '$ENTITY_NAME$',
-        'create $LOWERCASE_ENTITY_NAME$' => 'Create a $LOWERCASE_ENTITY_NAME$',
-        'edit $LOWERCASE_ENTITY_NAME$' => 'Edit a $LOWERCASE_ENTITY_NAME$',
+        '$PLURAL_LOWERCASE_CLASS_NAME$' => '$CLASS_NAME$',
+        'create $LOWERCASE_CLASS_NAME$' => 'Create a $LOWERCASE_CLASS_NAME$',
+        'edit $LOWERCASE_CLASS_NAME$' => 'Edit a $LOWERCASE_CLASS_NAME$',
     ],
     'button' => [
-        'create $LOWERCASE_ENTITY_NAME$' => 'Create a $LOWERCASE_ENTITY_NAME$',
+        'create $LOWERCASE_CLASS_NAME$' => 'Create a $LOWERCASE_CLASS_NAME$',
     ],
     'table' => [
     ],
     'form' => [
     ],
     'messages' => [
-        '$LOWERCASE_ENTITY_NAME$ created' => '$ENTITY_NAME$ successfully created.',
-        '$LOWERCASE_ENTITY_NAME$ not found' => '$ENTITY_NAME$ not found.',
-        '$LOWERCASE_ENTITY_NAME$ updated' => '$ENTITY_NAME$ successfully updated.',
-        '$LOWERCASE_ENTITY_NAME$ deleted' => '$ENTITY_NAME$ successfully deleted.',
+        '$LOWERCASE_CLASS_NAME$ created' => '$CLASS_NAME$ successfully created.',
+        '$LOWERCASE_CLASS_NAME$ not found' => '$CLASS_NAME$ not found.',
+        '$LOWERCASE_CLASS_NAME$ updated' => '$CLASS_NAME$ successfully updated.',
+        '$LOWERCASE_CLASS_NAME$ deleted' => '$CLASS_NAME$ successfully deleted.',
     ],
 ];

@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="$LOWERCASE_ENTITY_NAME$_translations")
+ * @ORM\Table(name="$LOWERCASE_CLASS_NAME$_translations")
  */
-class $ENTITY_NAME$Translation
+class $CLASS_NAME$Translation
 {
     /** @ORM\Id
      * @ORM\Column(type="integer")
@@ -15,15 +15,15 @@ class $ENTITY_NAME$Translation
      */
     private $id;
 
-    /** @ORM\ManyToOne(targetEntity="Modules\$MODULE_NAME$\Entities\$ENTITY_NAME$", inversedBy="translation") */
-    private $$LOWERCASE_ENTITY_NAME$;
+    /** @ORM\ManyToOne(targetEntity="Modules\$MODULE_NAME$\Entities\$CLASS_NAME$", inversedBy="translation") */
+    private $$LOWERCASE_CLASS_NAME$;
 
     /** @ORM\Column(length=2) */
     private $locale;
 
     public function __construct()
     {
-        $this->$LOWERCASE_ENTITY_NAME$ = new ArrayCollection();
+        $this->$LOWERCASE_CLASS_NAME$ = new ArrayCollection();
     }
 
     public function __get($name)

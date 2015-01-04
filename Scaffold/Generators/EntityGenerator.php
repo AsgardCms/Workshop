@@ -125,41 +125,6 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * @param  string                                       $stub
-     * @param  string                                       $entity
-     * @return string
-     * @throws \Illuminate\Filesystem\FileNotFoundException
-     */
-    private function getContentForStub($stub, $entity)
-    {
-        $stub = $this->finder->get($this->getStubPath($stub));
-
-        return str_replace(
-            [
-                '$MODULE_NAME$',
-                '$LOWERCASE_MODULE_NAME$',
-                '$PLURAL_MODULE_NAME$',
-                '$ENTITY_NAME$',
-                '$LOWERCASE_ENTITY_NAME$',
-                '$PLURAL_ENTITY_NAME$',
-                '$PLURAL_UCWORDS_ENTITY_NAME$',
-                '$ENTITY_TYPE$',
-            ],
-            [
-                $this->name,
-                strtolower($this->name),
-                strtolower(str_plural($this->name)),
-                $entity,
-                strtolower($entity),
-                strtolower(str_plural($entity)),
-                str_plural($entity),
-                $this->entityType
-            ],
-            $stub
-        );
-    }
-
-    /**
      * Append the IoC bindings for the given entity to the Service Provider
      *
      * @param  string                                       $entity

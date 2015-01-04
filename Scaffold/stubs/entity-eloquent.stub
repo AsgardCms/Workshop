@@ -3,7 +3,7 @@
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class $ENTITY_NAME$ extends Model
+class $CLASS_NAME$ extends Model
 {
     use Translatable;
 

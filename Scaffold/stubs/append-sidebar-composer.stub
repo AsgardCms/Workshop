@@ -1,8 +1,8 @@
             [
-                'request' => "*/{$view->prefix}/$LOWERCASE_MODULE_NAME$/$PLURAL_ENTITY_NAME$*",
-                'route' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.index',
+                'request' => "*/{$view->prefix}/$LOWERCASE_MODULE_NAME$/$PLURAL_LOWERCASE_CLASS_NAME$*",
+                'route' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index',
                 'icon-class' => 'fa fa-file-text',
-                'title' => '$PLURAL_UCWORDS_ENTITY_NAME$',
-                'permission' => $this->auth->hasAccess('$LOWERCASE_MODULE_NAME$.$PLURAL_ENTITY_NAME$.index')
+                'title' => '$PLURAL_UCWORDS_CLASS_NAME$',
+                'permission' => $this->auth->hasAccess('$LOWERCASE_MODULE_NAME$.$PLURAL_LOWERCASE_CLASS_NAME$.index')
             ],
 // append

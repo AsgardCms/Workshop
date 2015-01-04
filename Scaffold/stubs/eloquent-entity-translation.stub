@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class $ENTITY_NAME$Translation extends Model
+class $CLASS_NAME$Translation extends Model
 {
     public $timestamps = false;
     protected $fillable = [];

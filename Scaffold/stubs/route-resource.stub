@@ -1,12 +1,12 @@
-        $router->bind('$PLURAL_ENTITY_NAME$', function ($id) {
-            return app('Modules\$MODULE_NAME$\Repositories\$ENTITY_NAME$Repository')->find($id);
+        $router->bind('$PLURAL_LOWERCASE_CLASS_NAME$', function ($id) {
+            return app('Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository')->find($id);
         });
-        $router->resource('$PLURAL_ENTITY_NAME$', 'Admin\$ENTITY_NAME$Controller', ['except' => ['show'], 'names' => [
-            'index' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.index',
-            'create' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.create',
-            'store' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.store',
-            'edit' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.edit',
-            'update' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.update',
-            'destroy' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_ENTITY_NAME$.destroy',
+        $router->resource('$PLURAL_LOWERCASE_CLASS_NAME$', 'Admin\$CLASS_NAME$Controller', ['except' => ['show'], 'names' => [
+            'index' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index',
+            'create' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.create',
+            'store' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.store',
+            'edit' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.edit',
+            'update' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.update',
+            'destroy' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.destroy',
         ]]);
 // append

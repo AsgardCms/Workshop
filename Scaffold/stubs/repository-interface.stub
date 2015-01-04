@@ -2,6 +2,6 @@
 
 use Modules\Core\Repositories\BaseRepository;
 
-interface $ENTITY_NAME$Repository extends BaseRepository
+interface $CLASS_NAME$Repository extends BaseRepository
 {
 }

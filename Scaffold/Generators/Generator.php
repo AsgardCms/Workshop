@@ -73,4 +73,39 @@ abstract class Generator
     {
         $this->finder->put("$path.php", $content);
     }
+
+    /**
+     * @param  string                                       $stub
+     * @param  string                                       $class
+     * @return string
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    protected function getContentForStub($stub, $class)
+    {
+        $stub = $this->finder->get($this->getStubPath($stub));
+
+        return str_replace(
+            [
+                '$MODULE_NAME$',
+                '$LOWERCASE_MODULE_NAME$',
+                '$PLURAL_LOWERCASE_MODULE_NAME$',
+                '$CLASS_NAME$',
+                '$LOWERCASE_CLASS_NAME$',
+                '$PLURAL_LOWERCASE_CLASS_NAME$',
+                '$PLURAL_UCWORDS_CLASS_NAME$',
+                '$ENTITY_TYPE$',
+            ],
+            [
+                $this->name,
+                strtolower($this->name),
+                strtolower(str_plural($this->name)),
+                $class,
+                strtolower($class),
+                strtolower(str_plural($class)),
+                str_plural($class),
+                $this->entityType
+            ],
+            $stub
+        );
+    }
 }

@@ -78,7 +78,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_doctrine_entites_with_translations()
+    public function it_should_generate_doctrine_entities_with_translations()
     {
         // Run
         $this->scaffold

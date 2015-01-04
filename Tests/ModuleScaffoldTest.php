@@ -183,4 +183,22 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($repository);
         $this->assertTrue($repository2);
     }
+
+    /** @test */
+    public function it_should_generate_views()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $view1 = $this->finder->isFile($this->testModulePath . '/Resources/views/admin/posts/index.blade.php');
+        $view2 = $this->finder->isFile($this->testModulePath . '/Resources/views/admin/posts/create.blade.php');
+        $view3 = $this->finder->isFile($this->testModulePath . '/Resources/views/admin/posts/edit.blade.php');
+        $view4 = $this->finder->isFile($this->testModulePath . '/Resources/views/admin/posts/partials/create-fields.blade.php');
+        $view5 = $this->finder->isFile($this->testModulePath . '/Resources/views/admin/posts/partials/edit-fields.blade.php');
+
+        $this->assertTrue($view1);
+        $this->assertTrue($view2);
+        $this->assertTrue($view3);
+        $this->assertTrue($view4);
+        $this->assertTrue($view5);
+    }
 }

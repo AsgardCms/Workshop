@@ -254,4 +254,14 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
     }
+
+    /** @test */
+    public function it_should_generate_permissions_config_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Config/permissions.php');
+
+        $this->assertTrue($file1);
+    }
 }

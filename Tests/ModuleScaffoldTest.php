@@ -65,7 +65,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffold
             ->vendor('asgardcms')
             ->name('TestingTestModule')
-            ->setEntityType('eloquent')
+            ->setEntityType('Eloquent')
             ->withEntities(['Category', 'Post'])
             ->withValueObjects([])
             ->scaffold();
@@ -92,6 +92,27 @@ class ModuleScaffoldTest extends BaseTestCase
         // Assert
         $entities = $this->finder->allFiles($this->testModulePath . '/Entities');
         $this->assertCount(4, $entities);
+
+        $this->cleanUp();
+    }
+
+    /** @test */
+    public function it_should_generate_translation_entities()
+    {
+        // Run
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name('TestingTestModule')
+            ->setEntityType('Doctrine')
+            ->withEntities(['Category'])
+            ->withValueObjects([])
+            ->scaffold();
+
+        // Assert
+        $categoryEntity = $this->finder->isFile($this->testModulePath . '/Entities/Category.php');
+        $categoryTranslationEntity = $this->finder->isFile($this->testModulePath . '/Entities/CategoryTranslation.php');
+        $this->assertTrue($categoryEntity);
+        $this->assertTrue($categoryTranslationEntity);
 
         $this->cleanUp();
     }

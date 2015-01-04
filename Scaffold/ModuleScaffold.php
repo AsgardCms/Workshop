@@ -3,9 +3,10 @@
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Application;
 use Illuminate\Filesystem\Filesystem;
-use Modules\Workshop\Scaffold\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Generators\FilesGenerator;
+use Modules\Workshop\Scaffold\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
+use Modules\Workshop\Scaffold\Exception\ModuleExistsException;
 
 class ModuleScaffold
 {
@@ -88,6 +89,10 @@ class ModuleScaffold
      */
     public function scaffold()
     {
+        if ($this->finder->isDirectory($this->getModulesPath())) {
+            throw new ModuleExistsException();
+        }
+
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
         $this->removeUnneededFiles();

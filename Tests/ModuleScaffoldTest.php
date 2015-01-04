@@ -155,6 +155,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($interface);
         $this->assertTrue($interface2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -167,6 +169,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($repository);
         $this->assertTrue($repository2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -179,6 +183,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($repository);
         $this->assertTrue($repository2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -197,6 +203,8 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($view3);
         $this->assertTrue($view4);
         $this->assertTrue($view5);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -209,6 +217,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($languageFile1);
         $this->assertTrue($languageFile2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -221,6 +231,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
         $this->assertTrue($file2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -233,6 +245,8 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
         $this->assertTrue($file2);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -243,6 +257,8 @@ class ModuleScaffoldTest extends BaseTestCase
         $file1 = $this->finder->isFile($this->testModulePath . '/Http/routes.php');
 
         $this->assertTrue($file1);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -253,6 +269,8 @@ class ModuleScaffoldTest extends BaseTestCase
         $file1 = $this->finder->isFile($this->testModulePath . '/Composers/SidebarViewComposer.php');
 
         $this->assertTrue($file1);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -263,6 +281,8 @@ class ModuleScaffoldTest extends BaseTestCase
         $file1 = $this->finder->isFile($this->testModulePath . '/Config/permissions.php');
 
         $this->assertTrue($file1);
+
+        $this->cleanUp();
     }
 
     /** @test */
@@ -275,5 +295,18 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($file1);
         $this->assertTrue($file2);
+
+        $this->cleanUp();
+    }
+
+    /** @test */
+    public function it_should_throw_exception_if_module_exists()
+    {
+        $this->setExpectedException('Modules\Workshop\Scaffold\Exception\ModuleExistsException');
+
+        $this->scaffoldModuleWithEloquent();
+        $this->scaffoldModuleWithEloquent();
+
+        $this->getExpectedException();
     }
 }

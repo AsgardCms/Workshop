@@ -147,4 +147,40 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->cleanUp();
     }
+
+    /** @test */
+    public function it_should_generate_repository_interfaces()
+    {
+        $this->scaffoldModuleWithEloquent(['Post', 'Category']);
+
+        $interface = $this->finder->isFile($this->testModulePath . '/Repositories/PostRepository.php');
+        $interface2 = $this->finder->isFile($this->testModulePath . '/Repositories/CategoryRepository.php');
+
+        $this->assertTrue($interface);
+        $this->assertTrue($interface2);
+    }
+
+    /** @test */
+    public function it_should_generate_eloquent_repositories()
+    {
+        $this->scaffoldModuleWithEloquent(['Post', 'Category']);
+
+        $repository = $this->finder->isFile($this->testModulePath . '/Repositories/Eloquent/EloquentPostRepository.php');
+        $repository2 = $this->finder->isFile($this->testModulePath . '/Repositories/Eloquent/EloquentCategoryRepository.php');
+
+        $this->assertTrue($repository);
+        $this->assertTrue($repository2);
+    }
+
+    /** @test */
+    public function it_should_generate_doctrine_repositories()
+    {
+        $this->scaffoldModuleWithDoctrine(['Post', 'Category']);
+
+        $repository = $this->finder->isFile($this->testModulePath . '/Repositories/Doctrine/DoctrinePostRepository.php');
+        $repository2 = $this->finder->isFile($this->testModulePath . '/Repositories/Doctrine/DoctrineCategoryRepository.php');
+
+        $this->assertTrue($repository);
+        $this->assertTrue($repository2);
+    }
 }

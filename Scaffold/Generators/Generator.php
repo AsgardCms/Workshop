@@ -26,14 +26,14 @@ abstract class Generator
 
     /**
      * Generate the given files
-     * @param array $files
+     * @param  array $files
      * @return void
      */
     abstract public function generate(array $files);
 
     /**
      * Set the module name
-     * @param string $moduleName
+     * @param  string $moduleName
      * @return $this
      */
     public function forModule($moduleName)
@@ -45,12 +45,12 @@ abstract class Generator
 
     /**
      * Return the current module path
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getModulesPath($path = '')
     {
-        return $this->config->get('modules::paths.modules') . "/{$this->name}/$path";
+        return $this->config->get('modules::paths.modules')."/{$this->name}/$path";
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class Generator
      */
     protected function getStubPath($filename)
     {
-        return __DIR__ . "/../stubs/$filename";
+        return __DIR__."/../stubs/$filename";
     }
 
     /**

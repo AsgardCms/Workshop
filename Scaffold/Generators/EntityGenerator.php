@@ -18,7 +18,7 @@ class EntityGenerator extends Generator
     /**
      * Set the entity type on the class
      *
-     * @param string $entityType
+     * @param  string $entityType
      * @return $this
      */
     public function type($entityType)
@@ -59,7 +59,7 @@ class EntityGenerator extends Generator
     /**
      * Get the content for the given entity
      *
-     * @param string $entity
+     * @param  string                                       $entity
      * @return string
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
@@ -70,7 +70,7 @@ class EntityGenerator extends Generator
 
         return str_replace(
             ['$MODULE$', '$NAME$', '$LOWERCASE_ENTITY_NAME$', '$PLURALNAME$'],
-            [$this->name, $entity, strtolower($entity),strtolower(str_plural($entity))],
+            [$this->name, $entity, strtolower($entity), strtolower(str_plural($entity))],
             $stub
         );
     }
@@ -143,8 +143,8 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * @param string $stub
-     * @param string $entity
+     * @param  string                                       $stub
+     * @param  string                                       $entity
      * @return string
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
@@ -161,7 +161,7 @@ class EntityGenerator extends Generator
                 '$LOWERCASE_ENTITY_NAME$',
                 '$PLURAL_ENTITY_NAME$',
                 '$PLURAL_UCWORDS_ENTITY_NAME$',
-                '$ENTITY_TYPE$'
+                '$ENTITY_TYPE$',
             ],
             [
                 $this->name,
@@ -180,7 +180,7 @@ class EntityGenerator extends Generator
     /**
      * Append the IoC bindings for the given entity to the Service Provider
      *
-     * @param string $entity
+     * @param  string                                       $entity
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function appendBindingsToServiceProviderFor($entity)
@@ -194,7 +194,7 @@ class EntityGenerator extends Generator
     /**
      * Append the routes for the given entity to the routes file
      *
-     * @param string $entity
+     * @param  string                                       $entity
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function appendResourceRoutesToRoutesFileFor($entity)
@@ -206,7 +206,7 @@ class EntityGenerator extends Generator
     }
 
     /**
-     * @param string $entity
+     * @param  string                                       $entity
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function appendPermissionsFor($entity)

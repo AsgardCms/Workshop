@@ -5,7 +5,7 @@ class FilesGenerator extends Generator
     /**
      * Generate the given files
      *
-     * @param array $files
+     * @param  array $files
      * @return void
      */
     public function generate(array $files)

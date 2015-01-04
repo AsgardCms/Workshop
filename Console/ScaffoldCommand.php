@@ -60,9 +60,10 @@ class ScaffoldCommand extends Command
         $this->entityType = $this->choice('Do you want to use Eloquent or Doctrine ? [eloquent]', ['Eloquent', 'Doctrine'], 0);
         do {
             $entity = $this->ask('Enter entity name. Leaving option empty will continue script.');
-            if (!empty($entity))
+            if (!empty($entity)) {
                 $this->entities[] = ucfirst($entity);
-        } while ( !empty($entity));
+            }
+        } while (!empty($entity));
     }
 
     /**
@@ -72,14 +73,15 @@ class ScaffoldCommand extends Command
     {
         do {
             $valueObject = $this->ask('Enter value object name. Leaving option empty will continue script.');
-            if (!empty($valueObject))
+            if (!empty($valueObject)) {
                 $this->valueObjects[] = ucfirst($valueObject);
-        } while ( !empty($valueObject));
+            }
+        } while (!empty($valueObject));
     }
 
     /**
      * Extract the vendor and module name as two separate values
-     * @param string $fullName
+     * @param  string $fullName
      * @return array
      */
     private function separateVendorAndName($fullName)

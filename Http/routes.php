@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 $router->group(['prefix' => LaravelLocalization::setLocale(), 'before' => 'LaravelLocalizationRedirectFilter|auth.admin|permissions'], function (Router $router) {
-    $router->group(['prefix' => Config::get('core::core.admin-prefix') . '/workshop', 'namespace' => 'Modules\Workshop\Http\Controllers'],
+    $router->group(['prefix' => Config::get('core::core.admin-prefix').'/workshop', 'namespace' => 'Modules\Workshop\Http\Controllers'],
         function (Router $router) {
             $router->get('modules', ['as' => 'admin.workshop.modules.index', 'uses' => 'ModulesController@index']);
             $router->post('modules', ['as' => 'admin.workshop.modules.store', 'uses' => 'ModulesController@store']);

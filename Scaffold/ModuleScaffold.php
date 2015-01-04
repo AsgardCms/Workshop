@@ -75,8 +75,7 @@ class ModuleScaffold
         EntityGenerator $entityGenerator,
         ValueObjectGenerator $valueObjectGenerator,
         FilesGenerator $filesGenerator
-    )
-    {
+    ) {
         $this->artisan = $artisan;
         $this->finder = $finder;
         $this->config = $config;
@@ -105,7 +104,7 @@ class ModuleScaffold
     }
 
     /**
-     * @param string $vendor
+     * @param  string $vendor
      * @return $this
      */
     public function vendor($vendor)
@@ -116,7 +115,7 @@ class ModuleScaffold
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return $this
      */
     public function name($name)
@@ -128,7 +127,7 @@ class ModuleScaffold
 
     /**
      * Set the entity type [Eloquent, Doctrine]
-     * @param string $entityType
+     * @param  string $entityType
      * @return $this
      */
     public function setEntityType($entityType)
@@ -139,7 +138,7 @@ class ModuleScaffold
     }
 
     /**
-     * @param array $entities
+     * @param  array $entities
      * @return $this
      */
     public function withEntities(array $entities)
@@ -150,7 +149,7 @@ class ModuleScaffold
     }
 
     /**
-     * @param array $valueObjects
+     * @param  array $valueObjects
      * @return $this
      */
     public function withValueObjects(array $valueObjects)
@@ -162,12 +161,12 @@ class ModuleScaffold
 
     /**
      * Return the current module path
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     private function getModulesPath($path = '')
     {
-        return $this->config->get('modules::paths.modules') . "/{$this->name}/$path";
+        return $this->config->get('modules::paths.modules')."/{$this->name}/$path";
     }
 
     /**

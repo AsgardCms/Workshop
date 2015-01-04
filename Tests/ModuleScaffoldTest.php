@@ -121,4 +121,25 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->cleanUp();
     }
+
+    /** @test */
+    public function it_should_generate_cache_decorators()
+    {
+        // Run
+        $this->scaffold
+            ->vendor('asgardcms')
+            ->name($this->testModuleName)
+            ->setEntityType('Doctrine')
+            ->withEntities(['Category', 'Post'])
+            ->withValueObjects([])
+            ->scaffold();
+
+        // Assert
+        $categoryDecorator = $this->finder->isFile($this->testModulePath . '/Repositories/Cache/CacheCategoryDecorator.php');
+        $postDecorator = $this->finder->isFile($this->testModulePath . '/Repositories/Cache/CachePostDecorator.php');
+        $this->assertTrue($categoryDecorator);
+        $this->assertTrue($postDecorator);
+
+        $this->cleanUp();
+    }
 }

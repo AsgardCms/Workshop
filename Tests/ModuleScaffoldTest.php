@@ -309,4 +309,14 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->getExpectedException();
     }
+
+    /** @test */
+    public function it_should_generate_migrations_for_eloquent()
+    {
+        $this->scaffoldModuleWithEloquent(['Post', 'Category']);
+
+        $migrations = $this->finder->allFiles($this->testModulePath . '/Database/Migrations');
+
+        $this->assertCount(4, $migrations);
+    }
 }

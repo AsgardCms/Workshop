@@ -1,7 +1,21 @@
 <?php namespace Modules\Workshop\Scaffold\Generators;
 
+use Illuminate\Contracts\Config\Repository;
+use Illuminate\Filesystem\Filesystem;
+
 class EntityGenerator extends Generator
 {
+    /**
+     * @var \Illuminate\Contracts\Console\Application
+     */
+    protected $artisan;
+
+    public function __construct(Filesystem $finder, Repository $config)
+    {
+        parent::__construct($finder, $config);
+        $this->artisan = app('Illuminate\Contracts\Console\Application');
+    }
+
     protected $views = [
         'index-view.stub' => 'Resources/views/admin/$ENTITY_NAME$/index.blade',
         'create-view.stub' => 'Resources/views/admin/$ENTITY_NAME$/create.blade',
@@ -28,6 +42,9 @@ class EntityGenerator extends Generator
                 $this->getModulesPath("Entities/{$entity}Translation"),
                 $this->getContentForStub("{$entityType}-entity-translation.stub", $entity)
             );
+            if ($this->entityType == 'Eloquent') {
+                $this->generateMigrationsFor($entity);
+            }
             $this->generateRepositoriesFor($entity);
             $this->generateControllerFor($entity);
             $this->generateViewsFor($entity);
@@ -103,6 +120,29 @@ class EntityGenerator extends Generator
         $this->writeFile(
             $this->getModulesPath("Resources/lang/en/{$lowerCaseEntity}"),
             $this->getContentForStub('lang-entity.stub', $entity)
+        );
+    }
+
+    /**
+     * Generate migrations file for eloquent entities
+     *
+     * @param string $entity
+     */
+    private function generateMigrationsFor($entity)
+    {
+        $lowercasePluralEntityName = strtolower(str_plural($entity));
+        $lowercaseModuleName = strtolower($this->name);
+        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
+        $this->writeFile(
+            $this->getModulesPath("Database/Migrations/{$migrationName}"),
+            $this->getContentForStub('create-table-migration.stub', $entity)
+        );
+
+        $lowercaseEntityName = strtolower($entity);
+        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
+        $this->writeFile(
+            $this->getModulesPath("Database/Migrations/{$migrationName}"),
+            $this->getContentForStub('create-translation-table-migration.stub', $entity)
         );
     }
 

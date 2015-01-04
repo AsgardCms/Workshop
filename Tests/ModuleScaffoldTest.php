@@ -201,4 +201,16 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($view4);
         $this->assertTrue($view5);
     }
+
+    /** @test */
+    public function it_should_generate_language_files()
+    {
+        $this->scaffoldModuleWithEloquent(['Post', 'Category']);
+
+        $languageFile1 = $this->finder->isFile($this->testModulePath . '/Resources/lang/en/posts.php');
+        $languageFile2 = $this->finder->isFile($this->testModulePath . '/Resources/lang/en/categories.php');
+
+        $this->assertTrue($languageFile1);
+        $this->assertTrue($languageFile2);
+    }
 }

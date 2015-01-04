@@ -222,4 +222,16 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($file1);
         $this->assertTrue($file2);
     }
+
+    /** @test */
+    public function it_should_generate_controllers()
+    {
+        $this->scaffoldModuleWithEloquent(['Post', 'Category']);
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Http/Controllers/Admin/PostController.php');
+        $file2 = $this->finder->isFile($this->testModulePath . '/Http/Controllers/Admin/CategoryController.php');
+
+        $this->assertTrue($file1);
+        $this->assertTrue($file2);
+    }
 }

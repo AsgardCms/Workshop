@@ -2,11 +2,6 @@
 
 class EntityGenerator extends Generator
 {
-    /**
-     * @var string The type of entities to generate [Eloquent or Doctrine]
-     */
-    protected $entityType;
-
     protected $views = [
         'index-view.stub' => 'Resources/views/admin/$ENTITY_NAME$/index.blade',
         'create-view.stub' => 'Resources/views/admin/$ENTITY_NAME$/create.blade',
@@ -14,19 +9,6 @@ class EntityGenerator extends Generator
         'create-fields.stub' => 'Resources/views/admin/$ENTITY_NAME$/partials/create-fields.blade',
         'edit-fields.stub' => 'Resources/views/admin/$ENTITY_NAME$/partials/edit-fields.blade',
     ];
-
-    /**
-     * Set the entity type on the class
-     *
-     * @param  string $entityType
-     * @return $this
-     */
-    public function type($entityType)
-    {
-        $this->entityType = $entityType;
-
-        return $this;
-    }
 
     /**
      * Generate the given entities

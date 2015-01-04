@@ -14,6 +14,10 @@ abstract class Generator
      */
     protected $name;
     /**
+     * @var string The type of entities to generate [Eloquent or Doctrine]
+     */
+    protected $entityType;
+    /**
      * @var Repository
      */
     private $config;
@@ -39,6 +43,21 @@ abstract class Generator
     public function forModule($moduleName)
     {
         $this->name = $moduleName;
+
+        return $this;
+    }
+
+    /**
+     * Set the entity type on the class
+
+
+*
+*@param  string $entityType
+     * @return EntityGenerator
+     */
+    public function type($entityType)
+    {
+        $this->entityType = $entityType;
 
         return $this;
     }

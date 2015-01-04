@@ -1,9 +1,9 @@
-<?php namespace Modules\$MODULE$\ValueObjects;
+<?php namespace Modules\$MODULE_NAME$\ValueObjects;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Embeddable */
-class $NAME$
+class $CLASS_NAME$
 {
     public function __construct()
     {

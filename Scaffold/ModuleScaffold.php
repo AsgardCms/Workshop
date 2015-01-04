@@ -100,7 +100,7 @@ class ModuleScaffold
         $this->loadProviders();
 
         $this->entityGenerator->forModule($this->name)->type($this->entityType)->generate($this->entities);
-        $this->valueObjectGenerator->forModule($this->name)->generate($this->valueObjects);
+        $this->valueObjectGenerator->forModule($this->name)->type($this->entityType)->generate($this->valueObjects);
     }
 
     /**

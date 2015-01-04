@@ -234,4 +234,14 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($file1);
         $this->assertTrue($file2);
     }
+
+    /** @test */
+    public function it_should_generate_routes_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $file1 = $this->finder->isFile($this->testModulePath . '/Http/routes.php');
+
+        $this->assertTrue($file1);
+    }
 }

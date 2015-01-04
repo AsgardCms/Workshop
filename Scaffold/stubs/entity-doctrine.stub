@@ -28,6 +28,6 @@ class $NAME$
 
     public function __construct()
     {
-        // TODO implement stub method
+        // Implement stub method
     }
 }

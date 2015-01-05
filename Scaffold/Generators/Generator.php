@@ -51,8 +51,8 @@ abstract class Generator
      * Set the entity type on the class
 
 
-*
-*@param  string $entityType
+     *
+     *@param  string $entityType
      * @return EntityGenerator
      */
     public function type($entityType)

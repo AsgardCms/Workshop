@@ -85,7 +85,7 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     private function registerScaffoldCommand()
     {
-        $this->app->singleton('asgard.module.scaffold', function($app) {
+        $this->app->singleton('asgard.module.scaffold', function ($app) {
             return new ModuleScaffold(
                 $app['files'],
                 $app['config'],

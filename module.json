@@ -11,6 +11,6 @@
       "Modules\\Workshop\\Providers\\WorkshopServiceProvider"
   ],
   "files": [
-    "start.php"
+    "composers.php"
   ]
 }

@@ -1,7 +1,7 @@
 <?php namespace Modules\Workshop\Scaffold;
 
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Contracts\Console\Application;
+use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
@@ -45,7 +45,7 @@ class ModuleScaffold
      */
     protected $entityType;
     /**
-     * @var Application
+     * @var Kernel
      */
     private $artisan;
     /**

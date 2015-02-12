@@ -6,14 +6,14 @@ use Illuminate\Filesystem\Filesystem;
 class EntityGenerator extends Generator
 {
     /**
-     * @var \Illuminate\Contracts\Console\Application
+     * @var \Illuminate\Contracts\Console\Kernel
      */
     protected $artisan;
 
     public function __construct(Filesystem $finder, Repository $config)
     {
         parent::__construct($finder, $config);
-        $this->artisan = app('Illuminate\Contracts\Console\Application');
+        $this->artisan = app('Illuminate\Contracts\Console\Kernel');
     }
 
     protected $views = [

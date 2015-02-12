@@ -76,7 +76,7 @@ class ModuleScaffold
         ValueObjectGenerator $valueObjectGenerator,
         FilesGenerator $filesGenerator
     ) {
-        $this->artisan = app('Illuminate\Contracts\Console\Application');
+        $this->artisan = app('Illuminate\Contracts\Console\Kernel');
         $this->finder = $finder;
         $this->config = $config;
         $this->entityGenerator = $entityGenerator;

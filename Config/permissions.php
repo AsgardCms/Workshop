@@ -23,5 +23,5 @@ return [
     ],
     'workshop.seed' => [
         'seed',
-    ]
+    ],
 ];

@@ -122,7 +122,7 @@ abstract class Generator
                 strtolower($class),
                 strtolower(str_plural($class)),
                 str_plural($class),
-                $this->entityType
+                $this->entityType,
             ],
             $stub
         );

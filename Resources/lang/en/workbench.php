@@ -21,5 +21,5 @@ return [
         'install new module' => 'Install new module',
         'migrate' => 'Migrate',
         'seed' => 'Seed',
-    ]
+    ],
 ];

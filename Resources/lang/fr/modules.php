@@ -10,5 +10,5 @@ return [
     ],
     'button' => [
         'save module configuration' => 'Sauvez la configuration de modules',
-    ]
+    ],
 ];

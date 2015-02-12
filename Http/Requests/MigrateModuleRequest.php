@@ -7,7 +7,7 @@ class MigrateModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'module' => 'required'
+            'module' => 'required',
         ];
     }
 

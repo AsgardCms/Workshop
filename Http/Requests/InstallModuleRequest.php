@@ -7,7 +7,7 @@ class InstallModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'vendorName' => 'required'
+            'vendorName' => 'required',
         ];
     }
 

@@ -23,7 +23,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
                 'route' => 'admin.workshop.modules.index',
                 'icon-class' => 'fa fa-cog',
                 'title' => 'Modules',
-                'permission' => $this->auth->hasAccess('workshop.modules.index')
+                'permission' => $this->auth->hasAccess('workshop.modules.index'),
             ],
 //            [
 //                'request' => "*/{$view->prefix}/workshop/workbench*",

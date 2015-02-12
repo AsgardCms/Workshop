@@ -7,7 +7,7 @@ class SeedModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'module' => 'required'
+            'module' => 'required',
         ];
     }
 

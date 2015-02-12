@@ -7,7 +7,7 @@ class GenerateModuleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
         ];
     }
 

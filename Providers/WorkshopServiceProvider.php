@@ -1,6 +1,5 @@
 <?php namespace Modules\Workshop\Providers;
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\ModuleScaffold;

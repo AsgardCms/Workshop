@@ -47,7 +47,7 @@ class ModuleManager
      */
     public function getCoreModules()
     {
-        $coreModules = $this->config->get('core::config.CoreModules');
+        $coreModules = $this->config->get('asgard.core.config.CoreModules');
         $coreModules = array_flip($coreModules);
 
         return $coreModules;

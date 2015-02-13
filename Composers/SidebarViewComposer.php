@@ -12,6 +12,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
     public function compose(View $view)
     {
         $view->sidebar->group('Workshop', function (SidebarGroup $group) {
+            $group->weight = 6;
             $group->authorize(
                 $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.workbench.index')
             );

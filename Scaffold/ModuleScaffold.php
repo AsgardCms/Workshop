@@ -3,10 +3,10 @@
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
-use Modules\Workshop\Scaffold\Generators\FilesGenerator;
-use Modules\Workshop\Scaffold\Generators\EntityGenerator;
-use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 use Modules\Workshop\Scaffold\Exception\ModuleExistsException;
+use Modules\Workshop\Scaffold\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Generators\FilesGenerator;
+use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
 
 class ModuleScaffold
 {
@@ -170,7 +170,7 @@ class ModuleScaffold
      */
     private function getModulesPath($path = '')
     {
-        return $this->config->get('modules.paths.modules')."/{$this->name}/$path";
+        return $this->config->get('modules.paths.modules') . "/{$this->name}/$path";
     }
 
     /**

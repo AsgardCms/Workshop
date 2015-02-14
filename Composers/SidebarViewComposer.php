@@ -1,8 +1,6 @@
 <?php namespace Modules\Workshop\Composers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Request;
 use Maatwebsite\Sidebar\SidebarGroup;
 use Maatwebsite\Sidebar\SidebarItem;
 use Modules\Core\Composers\BaseSidebarViewComposer;
@@ -26,6 +24,5 @@ class SidebarViewComposer extends BaseSidebarViewComposer
                 );
             });
         });
-
     }
 }

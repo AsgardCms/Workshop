@@ -107,7 +107,7 @@ class ScaffoldCommand extends Command
         $files = app('Illuminate\Filesystem\Filesystem');
         /** @var \Illuminate\Contracts\Config\Repository $config */
         $config = app('Illuminate\Contracts\Config\Repository');
-        if ($files->isDirectory($config->get('modules.paths.modules')."/{$name}")) {
+        if ($files->isDirectory($config->get('modules.paths.modules') . "/{$name}")) {
             return $this->error("The module [$name] already exists");
         }
     }

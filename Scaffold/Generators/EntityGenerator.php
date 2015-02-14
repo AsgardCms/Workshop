@@ -132,14 +132,14 @@ class EntityGenerator extends Generator
     {
         $lowercasePluralEntityName = strtolower(str_plural($entity));
         $lowercaseModuleName = strtolower($this->name);
-        $migrationName = date('Y_m_d_His_')."create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
+        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-table-migration.stub', $entity)
         );
 
         $lowercaseEntityName = strtolower($entity);
-        $migrationName = date('Y_m_d_His_')."create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
+        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-translation-table-migration.stub', $entity)

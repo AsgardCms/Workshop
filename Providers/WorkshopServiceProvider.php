@@ -1,11 +1,11 @@
 <?php namespace Modules\Workshop\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Workshop\Scaffold\Generators\FilesGenerator;
-use Modules\Workshop\Scaffold\ModuleScaffold;
 use Modules\Workshop\Console\ScaffoldCommand;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
+use Modules\Workshop\Scaffold\ModuleScaffold;
 
 class WorkshopServiceProvider extends ServiceProvider
 {

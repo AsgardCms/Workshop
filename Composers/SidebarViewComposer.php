@@ -9,16 +9,15 @@ class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose(View $view)
     {
-        $view->sidebar->group('Workshop', function (SidebarGroup $group) {
-            $group->weight = 6;
+        $view->sidebar->group(trans('workshop::workshop.title'), function (SidebarGroup $group) {
+            $group->weight = 100;
             $group->authorize(
                 $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.workbench.index')
             );
 
             $group->addItem('Modules', function (SidebarItem $item) {
-                $item->route('admin.workshop.modules.index');
                 $item->icon = 'fa fa-cogs';
-                $item->name = 'Modules';
+                $item->route('admin.workshop.modules.index');
                 $item->authorize(
                     $this->auth->hasAccess('workshop.modules.index')
                 );

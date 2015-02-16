@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'title' => 'Workshop'
+    'title'   => 'Workshop',
+    'modules' => 'Modules'
 ];

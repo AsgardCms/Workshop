@@ -15,7 +15,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
                 $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.workbench.index')
             );
 
-            $group->addItem('Modules', function (SidebarItem $item) {
+            $group->addItem(trans('workshop::workshop.modules'), function (SidebarItem $item) {
                 $item->icon = 'fa fa-cogs';
                 $item->weight = 100;
                 $item->route('admin.workshop.modules.index');

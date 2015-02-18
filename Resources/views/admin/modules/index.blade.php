@@ -26,7 +26,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    <?php foreach($modules->chunk((int)ceil($modules->count()/2)) as $moduleChunk): ?>
+                    <?php foreach ($modules->chunk((int)ceil($modules->count()/2)) as $moduleChunk): ?>
                         <div class="col-md-6">
                             <ul class="list-unstyled">
                                 @foreach($moduleChunk as $module)

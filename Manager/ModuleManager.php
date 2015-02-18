@@ -14,14 +14,19 @@ class ModuleManager
      * @var Config
      */
     private $config;
+    /**
+     * @var PackageVersion
+     */
+    private $packageVersion;
 
     /**
      * @param Config $config
      */
-    public function __construct(Config $config)
+    public function __construct(Config $config, PackageVersion $packageVersion)
     {
         $this->module = app('modules');
         $this->config = $config;
+        $this->packageVersion = $packageVersion;
     }
 
     /**
@@ -30,7 +35,15 @@ class ModuleManager
      */
     public function all()
     {
-        return new Collection($this->module->all());
+        $modules = new Collection($this->module->all());
+
+        foreach ($modules as $module) {
+            $moduleName = $module->getName();
+            $version = $this->packageVersion->getVersionForPackage("asgardcms/$moduleName-module");
+            $module->version = $version;
+        }
+
+        return $modules;
     }
 
     /**

@@ -36,6 +36,7 @@
                                                 <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> <?php echo isset($coreModules[$module->getName()]) ? 'disabled' : ''; ?> value="true" /> {{ $module }}
                                             </label>
                                         </div>
+                                        <span class="label label-default">{{ $module->version }}</span>
                                         <button type="button" data-loading-text="Updating..." class="btn btn-primary btn-xs jsUpdateModule" autocomplete="off" data-module="{{ $module->getName() }}">
                                             Update
                                         </button>

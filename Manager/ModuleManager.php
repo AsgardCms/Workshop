@@ -1,6 +1,7 @@
 <?php namespace Modules\Workshop\Manager;
 
 use Illuminate\Config\Repository as Config;
+use Illuminate\Support\Collection;
 use Pingpong\Modules\Module;
 
 class ModuleManager
@@ -25,11 +26,11 @@ class ModuleManager
 
     /**
      * Return all modules
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
     public function all()
     {
-        return $this->module->all();
+        return new Collection($this->module->all());
     }
 
     /**

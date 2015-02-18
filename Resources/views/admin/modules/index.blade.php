@@ -12,6 +12,11 @@
 
 @section('styles')
     {!! Theme::style('css/vendor/iCheck/flat/blue.css') !!}
+    <style>
+        .jsUpdateModule {
+            transition: all .5s ease-in-out;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -25,12 +30,15 @@
                         <div class="col-md-6">
                             <ul class="list-unstyled">
                                 @foreach($moduleChunk as $module)
-                                    <li>
-                                        <div class="checkbox">
+                                    <li style="margin: 5px 0;">
+                                        <div class="checkbox" style="display: inline;">
                                             <label for="{{ $module }}">
                                                 <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> <?php echo isset($coreModules[$module->getName()]) ? 'disabled' : ''; ?> value="true" /> {{ $module }}
                                             </label>
                                         </div>
+                                        <button type="button" data-loading-text="Updating..." class="btn btn-primary btn-xs jsUpdateModule" autocomplete="off" data-module="{{ $module->getName() }}">
+                                            Update
+                                        </button>
                                     </li>
                                 @endforeach
                             </ul>
@@ -40,7 +48,7 @@
             </div>
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-flat">{{ trans('workshop::modules.button.save module configuration') }}</button>
+                <button type="submit" id="myButton" class="btn btn-primary btn-flat">{{ trans('workshop::modules.button.save module configuration') }}</button>
             </div>
         </div>
     </div>
@@ -54,6 +62,29 @@ $( document ).ready(function() {
     $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
+    });
+    $('.jsUpdateModule').on('click', function(e) {
+        $(this).data('loading-text', '<i class="fa fa-spinner fa-spin"></i> Loading ...');
+        var $btn = $(this).button('loading');
+        var token = '<?= csrf_token() ?>';
+        $.ajax({
+            type: 'POST',
+            url: '<?= route('admin.workshop.modules.update') ?>',
+            data: {module: $btn.data('module'), _token: token},
+            success: function(data) {
+                if (data.updated) {
+                    $btn.button('reset');
+                    $btn.removeClass('btn-primary');
+                    $btn.addClass('btn-success');
+                    $btn.html('<i class="fa fa-check"></i> Module updated!')
+                    setTimeout(function() {
+                        $btn.removeClass('btn-success');
+                        $btn.addClass('btn-primary');
+                        $btn.html('Update')
+                    }, 2000);
+                }
+            }
+        });
     });
 });
 </script>

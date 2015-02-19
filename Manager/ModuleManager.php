@@ -41,7 +41,11 @@ class ModuleManager
             $moduleName = $module->getName();
             $package = $this->packageVersion->getPackageInfo("asgardcms/$moduleName-module");
             $module->version = isset($package->version) ? $package->version: 'N/A';
-            $module->versionUrl = isset($package->source->url) ? $package->source->url . '/tree/' . $package->dist->reference : '#';
+            $module->versionUrl = '#';
+            if (isset($package->source->url)) {
+                $packageUrl = str_replace('.git', '', $package->source->url);
+                $module->versionUrl = $packageUrl . '/tree/' . $package->dist->reference;
+            }
         }
 
         return $modules;

@@ -69,6 +69,6 @@ class ModulesController extends AdminBaseController
         $output = new BufferedOutput();
         Artisan::call('asgard:update', ['module' => $request->get('module')], $output);
 
-        return Response::json(['updated' => true]);
+        return Response::json(['updated' => true, 'message' => $output->fetch()]);
     }
 }

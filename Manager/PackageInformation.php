@@ -2,7 +2,7 @@
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 
-class PackageVersion
+class PackageInformation
 {
     /**
      * @var Filesystem
@@ -19,12 +19,12 @@ class PackageVersion
      * @param string $packageName
      * @return string mixed
      */
-    public function getVersionForPackage($packageName)
+    public function getPackageInfo($packageName)
     {
         $composerLock = json_decode($this->finder->get('composer.lock'));
         foreach ($composerLock->packages as $package) {
             if ($package->name == $packageName)
-                return $package->version;
+                return $package;
         }
     }
 }

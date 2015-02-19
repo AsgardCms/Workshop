@@ -1,7 +1,9 @@
 <?php namespace Modules\Workshop\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Services\Composer;
 use Modules\Workshop\Console\ScaffoldCommand;
+use Modules\Workshop\Console\UpdateModuleCommand;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
@@ -32,9 +34,11 @@ class WorkshopServiceProvider extends ServiceProvider
     private function registerCommands()
     {
         $this->registerScaffoldCommand();
+        $this->registerUpdateCommand();
 
         $this->commands([
             'command.asgard.scaffold',
+            'command.asgard.update',
         ]);
     }
 
@@ -55,6 +59,16 @@ class WorkshopServiceProvider extends ServiceProvider
 
         $this->app->bindShared('command.asgard.scaffold', function ($app) {
             return new ScaffoldCommand($app['asgard.module.scaffold']);
+        });
+    }
+
+    /**
+     * Register the update module command
+     */
+    private function registerUpdateCommand()
+    {
+        $this->app->bindShared('command.asgard.update', function($app) {
+            return new UpdateModuleCommand(new Composer($app['files'], base_path()));
         });
     }
 }

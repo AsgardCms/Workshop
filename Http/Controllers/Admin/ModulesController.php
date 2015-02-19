@@ -1,6 +1,7 @@
 <?php namespace Modules\Workshop\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
@@ -9,6 +10,7 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Services\Composer;
 use Modules\Workshop\Http\Requests\ModulesRequest;
 use Modules\Workshop\Manager\ModuleManager;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModulesController extends AdminBaseController
 {
@@ -64,21 +66,9 @@ class ModulesController extends AdminBaseController
      */
     public function update(Request $request)
     {
-        $module = $request->get('module');
-        $packageName = $this->getModulePackageName($module);
-
-        $this->composer->update($packageName);
+        $output = new BufferedOutput();
+        Artisan::call('asgard:update', ['module' => $request->get('module')], $output);
 
         return Response::json(['updated' => true]);
-    }
-
-    /**
-     * Make the full package name for the given module name
-     * @param string $module
-     * @return string
-     */
-    private function getModulePackageName($module)
-    {
-        return "asgardcms/{$module}-module";
     }
 }

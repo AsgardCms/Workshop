@@ -75,6 +75,7 @@ $( document ).ready(function() {
             url: '<?= route('admin.workshop.modules.update') ?>',
             data: {module: $btn.data('module'), _token: token},
             success: function(data) {
+                console.log(data);
                 if (data.updated) {
                     $btn.button('reset');
                     $btn.removeClass('btn-primary');

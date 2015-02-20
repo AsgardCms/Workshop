@@ -1,7 +1,7 @@
         $router->bind('$PLURAL_LOWERCASE_CLASS_NAME$', function ($id) {
             return app('Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository')->find($id);
         });
-        $router->resource('$PLURAL_LOWERCASE_CLASS_NAME$', 'Admin\$CLASS_NAME$Controller', ['except' => ['show'], 'names' => [
+        $router->resource('$PLURAL_LOWERCASE_CLASS_NAME$', '$CLASS_NAME$Controller', ['except' => ['show'], 'names' => [
             'index' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index',
             'create' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.create',
             'store' => 'admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.store',

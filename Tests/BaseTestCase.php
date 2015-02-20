@@ -20,5 +20,6 @@ abstract class BaseTestCase extends TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app->setBasePath(__DIR__ . '/..');
+        $app['path.base'] = __DIR__ . '/..';
     }
 }

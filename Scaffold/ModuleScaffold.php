@@ -96,6 +96,7 @@ class ModuleScaffold
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
         $this->removeUnneededFiles();
+        $this->addFolders();
 
         $this->filesGenerator->forModule($this->name)
             ->generateModuleProvider()
@@ -231,5 +232,11 @@ JSON;
 
         $providerContent = str_replace('"providers": [],', $newProviders, $providerContent);
         $this->finder->put($this->getModulesPath('module.json'), $providerContent);
+    }
+
+    private function addFolders()
+    {
+        $this->finder->makeDirectory($this->getModulesPath('Composers'));
+        $this->finder->makeDirectory($this->getModulesPath('Repositories/Cache'));
     }
 }

@@ -63,6 +63,10 @@ class EntityGenerator extends Generator
      */
     private function generateRepositoriesFor($entity)
     {
+        if (! $this->finder->isDirectory($this->getModulesPath('Repositories/'.$this->entityType))) {
+            $this->finder->makeDirectory($this->getModulesPath('Repositories/'.$this->entityType));
+        }
+
         $entityType = strtolower($this->entityType);
         $this->writeFile(
             $this->getModulesPath("Repositories/{$entity}Repository"),
@@ -85,6 +89,10 @@ class EntityGenerator extends Generator
      */
     private function generateControllerFor($entity)
     {
+        $path = $this->getModulesPath('Http/Controllers/Admin');
+        if (! $this->finder->isDirectory($path)) {
+            $this->finder->makeDirectory($path);
+        }
         $this->writeFile(
             $this->getModulesPath("Http/Controllers/Admin/{$entity}Controller"),
             $this->getContentForStub('admin-controller.stub', $entity)
@@ -117,6 +125,10 @@ class EntityGenerator extends Generator
     private function generateLanguageFilesFor($entity)
     {
         $lowerCaseEntity = str_plural(strtolower($entity));
+        $path = $this->getModulesPath('Resources/lang/en');
+        if (!$this->finder->isDirectory($path)) {
+            $this->finder->makeDirectory($path);
+        }
         $this->writeFile(
             $this->getModulesPath("Resources/lang/en/{$lowerCaseEntity}"),
             $this->getContentForStub('lang-entity.stub', $entity)

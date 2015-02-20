@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class UpdateModuleCommand extends Command
 {
-    protected $name = 'asgard:update';
+    protected $name = 'asgard:module:update';
     protected $description = 'Update a module';
 
     /**

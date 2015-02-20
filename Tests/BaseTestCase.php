@@ -13,7 +13,7 @@ abstract class BaseTestCase extends TestCase
     {
         return [
             'Modules\Workshop\Providers\WorkshopServiceProvider',
-            'Pingpong\Modules\ModulesServiceProvider'
+            'Pingpong\Modules\ModulesServiceProvider',
         ];
     }
 

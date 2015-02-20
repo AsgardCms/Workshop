@@ -180,10 +180,10 @@ class EntityGenerator extends Generator
      */
     private function appendResourceRoutesToRoutesFileFor($entity)
     {
-        $routeContent = $this->finder->get($this->getModulesPath('Http/routes.php'));
+        $routeContent = $this->finder->get($this->getModulesPath('Http/backendRoutes.php'));
         $content = $this->getContentForStub('route-resource.stub', $entity);
         $routeContent = str_replace('// append', $content, $routeContent);
-        $this->finder->put($this->getModulesPath('Http/routes.php'), $routeContent);
+        $this->finder->put($this->getModulesPath('Http/backendRoutes.php'), $routeContent);
     }
 
     /**

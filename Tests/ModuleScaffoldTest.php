@@ -21,6 +21,8 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     protected $testModuleName;
 
+    protected $testbenchPath = __DIR__ . '/../vendor/orchestra/testbench/fixture/Modules/TestingTestModule';
+
     public function setUp()
     {
         parent::setUp();
@@ -35,7 +37,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function cleanUp()
     {
-        //$this->finder->deleteDirectory($this->testModulePath);
+        $this->finder->deleteDirectory($this->testModulePath);
     }
 
     /**
@@ -58,6 +60,12 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffoldModule('Doctrine', $entities, $valueObjects);
     }
 
+    /**
+     * @param $type
+     * @param $entities
+     * @param $valueObjects
+     * @throws \Modules\Workshop\Scaffold\Exception\ModuleExistsException
+     */
     private function scaffoldModule($type, $entities, $valueObjects)
     {
         $this->scaffold
@@ -67,6 +75,11 @@ class ModuleScaffoldTest extends BaseTestCase
             ->withEntities($entities)
             ->withValueObjects($valueObjects)
             ->scaffold();
+
+        /** @var \Illuminate\Filesystem\Filesystem $finder */
+        $finder = $this->app['files'];
+        $finder->copyDirectory($this->testbenchPath, $this->testModulePath);
+        $finder->deleteDirectory($this->testbenchPath);
     }
 
     public function tearDown()

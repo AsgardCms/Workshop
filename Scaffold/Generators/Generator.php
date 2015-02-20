@@ -69,7 +69,7 @@ abstract class Generator
      */
     protected function getModulesPath($path = '')
     {
-        return $this->config->get('modules::paths.modules') . "/{$this->name}/$path";
+        return $this->config->get('modules.paths.modules') . "/{$this->name}/$path";
     }
 
     /**

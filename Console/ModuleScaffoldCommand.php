@@ -3,9 +3,9 @@
 use Illuminate\Console\Command;
 use Modules\Workshop\Scaffold\ModuleScaffold;
 
-class ScaffoldCommand extends Command
+class ModuleScaffoldCommand extends Command
 {
-    protected $name = 'asgard:scaffold';
+    protected $name = 'asgard:module:scaffold';
     protected $description = 'Scaffold a new module';
     /**
      * @var array

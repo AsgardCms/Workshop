@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Services\Composer;
-use Modules\Workshop\Console\ScaffoldCommand;
+use Modules\Workshop\Console\ModuleScaffoldCommand;
 use Modules\Workshop\Console\UpdateModuleCommand;
 use Modules\Workshop\Scaffold\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Generators\FilesGenerator;
@@ -37,7 +37,7 @@ class WorkshopServiceProvider extends ServiceProvider
         $this->registerUpdateCommand();
 
         $this->commands([
-            'command.asgard.scaffold',
+            'command.asgard.module.scaffold',
             'command.asgard.update',
         ]);
     }
@@ -57,8 +57,8 @@ class WorkshopServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bindShared('command.asgard.scaffold', function ($app) {
-            return new ScaffoldCommand($app['asgard.module.scaffold']);
+        $this->app->bindShared('command.asgard.module.scaffold', function ($app) {
+            return new ModuleScaffoldCommand($app['asgard.module.scaffold']);
         });
     }
 

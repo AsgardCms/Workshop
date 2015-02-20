@@ -27,7 +27,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->finder = $this->app['files'];
         $this->scaffold = $this->app['asgard.module.scaffold'];
         $this->testModuleName = 'TestingTestModule';
-        $this->testModulePath = __DIR__ . "/../Modules/{$this->testModuleName}";
+        $this->testModulePath = base_path("Modules/{$this->testModuleName}");
     }
 
     /**

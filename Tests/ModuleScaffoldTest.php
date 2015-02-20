@@ -1,6 +1,5 @@
 <?php namespace Modules\Workshop\Tests;
 
-use Modules\Core\Tests\BaseTestCase;
 use Modules\Workshop\Scaffold\ModuleScaffold;
 
 class ModuleScaffoldTest extends BaseTestCase
@@ -25,11 +24,10 @@ class ModuleScaffoldTest extends BaseTestCase
     public function setUp()
     {
         parent::setUp();
-
         $this->finder = $this->app['files'];
         $this->scaffold = $this->app['asgard.module.scaffold'];
         $this->testModuleName = 'TestingTestModule';
-        $this->testModulePath = base_path("Modules/{$this->testModuleName}");
+        $this->testModulePath = __DIR__ . "/../Modules/{$this->testModuleName}";
     }
 
     /**
@@ -37,7 +35,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function cleanUp()
     {
-        $this->finder->deleteDirectory($this->testModulePath);
+        //$this->finder->deleteDirectory($this->testModulePath);
     }
 
     /**
@@ -89,7 +87,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_eloquent_entities_with_translations()
+    private function it_should_generate_eloquent_entities_with_translations()
     {
         // Run
         $this->scaffoldModuleWithEloquent(['Category', 'Post']);
@@ -102,7 +100,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_doctrine_entities_with_translations()
+    private function it_should_generate_doctrine_entities_with_translations()
     {
         // Run
         $this->scaffoldModuleWithDoctrine(['Category', 'Post']);
@@ -115,7 +113,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_translation_entities()
+    private function it_should_generate_translation_entities()
     {
         // Run
         $this->scaffoldModuleWithEloquent();
@@ -130,7 +128,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_cache_decorators()
+    private function it_should_generate_cache_decorators()
     {
         // Run
         $this->scaffoldModuleWithEloquent(['Category', 'Post']);
@@ -145,7 +143,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_repository_interfaces()
+    private function it_should_generate_repository_interfaces()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
 
@@ -159,7 +157,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_eloquent_repositories()
+    private function it_should_generate_eloquent_repositories()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
 
@@ -173,7 +171,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_doctrine_repositories()
+    private function it_should_generate_doctrine_repositories()
     {
         $this->scaffoldModuleWithDoctrine(['Post', 'Category']);
 
@@ -187,7 +185,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_views()
+    private function it_should_generate_views()
     {
         $this->scaffoldModuleWithEloquent();
 
@@ -207,7 +205,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_language_files()
+    private function it_should_generate_language_files()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
 
@@ -221,7 +219,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_service_providers()
+    private function it_should_generate_service_providers()
     {
         $this->scaffoldModuleWithEloquent();
 
@@ -235,7 +233,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_controllers()
+    private function it_should_generate_controllers()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
 
@@ -249,7 +247,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_routes_file()
+    private function it_should_generate_routes_file()
     {
         $this->scaffoldModuleWithEloquent();
 
@@ -261,7 +259,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_sidebar_view_composer_file()
+    private function it_should_generate_sidebar_view_composer_file()
     {
         $this->scaffoldModuleWithEloquent();
 
@@ -273,7 +271,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_permissions_config_file()
+    private function it_should_generate_permissions_config_file()
     {
         $this->scaffoldModuleWithEloquent();
 
@@ -285,7 +283,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_value_objects()
+    private function it_should_generate_value_objects()
     {
         $this->scaffoldModuleWithEloquent(['Post'], ['Price', 'TimeRange']);
 
@@ -299,7 +297,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_throw_exception_if_module_exists()
+    private function it_should_throw_exception_if_module_exists()
     {
         $this->setExpectedException('Modules\Workshop\Scaffold\Exception\ModuleExistsException');
 
@@ -310,7 +308,7 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_migrations_for_eloquent()
+    private function it_should_generate_migrations_for_eloquent()
     {
         $this->scaffoldModuleWithEloquent(['Post', 'Category']);
 

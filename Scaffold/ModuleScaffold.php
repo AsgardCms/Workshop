@@ -224,13 +224,12 @@ class ModuleScaffold
     {
         $providerContent = $this->finder->get($this->getModulesPath('module.json'));
         $newProviders = <<<JSON
-"providers": [
-        "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
-        "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
-    ],
+    "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
+            "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
 JSON;
 
-        $providerContent = str_replace('"providers": [],', $newProviders, $providerContent);
+        $oldProvider = '"Modules\\\\'.$this->name.'\\\\Providers\\\\'.$this->name.'ServiceProvider"';
+        $providerContent = str_replace($oldProvider, $newProviders, $providerContent);
         $this->finder->put($this->getModulesPath('module.json'), $providerContent);
     }
 

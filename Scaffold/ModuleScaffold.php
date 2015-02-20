@@ -36,7 +36,7 @@ class ModuleScaffold
     protected $files = [
         'sidebar-view-composer.stub' => 'Composers/SidebarViewComposer',
         'permissions.stub' => 'Config/permissions',
-        'routes.stub' => 'Http/routes',
+        'routes.stub' => 'Http/backendRoutes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',
         'composers.stub' => 'composers',
     ];

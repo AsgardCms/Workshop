@@ -206,11 +206,11 @@ class EntityGenerator extends Generator
         $sidebarComposerContent = $this->finder->get($this->getModulesPath('Composers/SidebarViewComposer.php'));
         $content = $this->getContentForStub('append-sidebar-composer.stub', $entity);
         $sidebarComposerContent = str_replace('// append', $content, $sidebarComposerContent);
-        // Append the active state check
-        $lowerCasePluralEntity = strtolower(str_plural($entity));
-        $lowerCaseModuleName = strtolower($this->name);
-        $content = "Request::is(\"*/\$view->prefix/{$lowerCaseModuleName}/{$lowerCasePluralEntity}*\") || '' /* append */";
-        $sidebarComposerContent = str_replace("'' /* append */", $content, $sidebarComposerContent);
+        // Append the permissions
+//        $lowerCasePluralEntity = strtolower(str_plural($entity));
+//        $lowerCaseModuleName = strtolower($this->name);
+//        $content = "\$this->auth->hasAccess('{$lowerCaseModuleName}.{$lowerCasePluralEntity})/{$lowerCasePluralEntity}') || false /* append */";
+//        $sidebarComposerContent = str_replace("/* append */", $content, $sidebarComposerContent);
 
         $this->finder->put($this->getModulesPath('Composers/SidebarViewComposer.php'), $sidebarComposerContent);
     }

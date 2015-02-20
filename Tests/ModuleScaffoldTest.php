@@ -308,7 +308,6 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->cleanUp();
     }
 
-    /** @test */
     public function it_should_throw_exception_if_module_exists()
     {
         $this->setExpectedException('Modules\Workshop\Scaffold\Exception\ModuleExistsException');
@@ -316,7 +315,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->scaffoldModuleWithEloquent();
         $this->scaffoldModuleWithEloquent();
 
-        $this->getExpectedException();
+        $this->assertEquals('Modules\Workshop\Scaffold\Exception\ModuleExistsException', $this->getExpectedException());
     }
 
     /** @test */

@@ -1,24 +1,22 @@
 <?php namespace Modules\$MODULE$\Composers;
 
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Request;
+use Maatwebsite\Sidebar\SidebarGroup;
+use Maatwebsite\Sidebar\SidebarItem;
 use Modules\Core\Composers\BaseSidebarViewComposer;
 
 class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose(View $view)
     {
-        $view->items->put('$LOWERCASE_MODULE$', Collection::make([
-            [
-                'weight' => 1,
-                'request' => '' /* append */,
-                'route' => '#',
-                'icon-class' => 'fa fa-copy',
-                'title' => '$UPPERCASE_PLURAL_MODULE$',
-                'permission' => $this->auth->hasAccess('$LOWERCASE_MODULE$.$PLURAL_MODULE$.index'),
-            ],
+        $view->sidebar->group(trans('core::sidebar.content'), function (SidebarGroup $group) {
+            $group->weight = 50;
+
+            $group->addItem($LOWERCASE_MODULE$, function (SidebarItem $item) {
+                $item->icon = 'fa fa-copy';
+                $item->weight = 10;
 // append
-        ]));
+            });
+        });
     }
 }

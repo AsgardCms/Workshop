@@ -63,8 +63,8 @@ class EntityGenerator extends Generator
      */
     private function generateRepositoriesFor($entity)
     {
-        if (! $this->finder->isDirectory($this->getModulesPath('Repositories/'.$this->entityType))) {
-            $this->finder->makeDirectory($this->getModulesPath('Repositories/'.$this->entityType));
+        if (! $this->finder->isDirectory($this->getModulesPath('Repositories/' . $this->entityType))) {
+            $this->finder->makeDirectory($this->getModulesPath('Repositories/' . $this->entityType));
         }
 
         $entityType = strtolower($this->entityType);

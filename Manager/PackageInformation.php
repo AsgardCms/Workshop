@@ -23,8 +23,9 @@ class PackageInformation
     {
         $composerLock = json_decode($this->finder->get('composer.lock'));
         foreach ($composerLock->packages as $package) {
-            if ($package->name == $packageName)
+            if ($package->name == $packageName) {
                 return $package;
+            }
         }
     }
 }

@@ -67,7 +67,7 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     private function registerUpdateCommand()
     {
-        $this->app->bindShared('command.asgard.module.update', function($app) {
+        $this->app->bindShared('command.asgard.module.update', function ($app) {
             return new UpdateModuleCommand(new Composer($app['files'], base_path()));
         });
     }

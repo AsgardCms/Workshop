@@ -15,6 +15,9 @@ class SidebarViewComposer extends BaseSidebarViewComposer
             $group->addItem('$MODULE$', function (SidebarItem $item) {
                 $item->icon = 'fa fa-copy';
                 $item->weight = 10;
+                $item->authorize(
+                     /* append */
+                );
 // append
             });
         });

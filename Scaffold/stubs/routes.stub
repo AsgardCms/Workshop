@@ -3,6 +3,6 @@
 use Illuminate\Routing\Router;
 /** @var Router $router */
 
-$router->group(['prefix' =>'/$LOWERCASE_MODULE$', 'namespace' => 'Modules\$MODULE$\Http\Controllers'], function (Router $router) {
+$router->group(['prefix' =>'/$LOWERCASE_MODULE$'], function (Router $router) {
 // append
 });

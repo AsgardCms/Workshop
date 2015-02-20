@@ -21,7 +21,7 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     protected $testModuleName;
 
-    protected $testbenchPath = __DIR__ . '/../vendor/orchestra/testbench/fixture/Modules/TestingTestModule';
+    protected $testbenchPath;
 
     public function setUp()
     {
@@ -29,6 +29,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->finder = $this->app['files'];
         $this->scaffold = $this->app['asgard.module.scaffold'];
         $this->testModuleName = 'TestingTestModule';
+        $this->testbenchPath = __DIR__ . '/../vendor/orchestra/testbench/fixture/Modules/TestingTestModule';
         $this->testModulePath = $this->app->basePath() . "/Modules/{$this->testModuleName}";
     }
 

@@ -38,6 +38,7 @@ class ModuleScaffoldTest extends BaseTestCase
     private function cleanUp()
     {
         $this->finder->deleteDirectory($this->testModulePath);
+        $this->finder->deleteDirectory($this->testbenchPath);
     }
 
     /**
@@ -76,10 +77,8 @@ class ModuleScaffoldTest extends BaseTestCase
             ->withValueObjects($valueObjects)
             ->scaffold();
 
-        /** @var \Illuminate\Filesystem\Filesystem $finder */
-        $finder = $this->app['files'];
-        $finder->copyDirectory($this->testbenchPath, $this->testModulePath);
-        $finder->deleteDirectory($this->testbenchPath);
+        $this->finder->copyDirectory($this->testbenchPath, $this->testModulePath);
+        $this->finder->deleteDirectory($this->testbenchPath);
     }
 
     public function tearDown()
@@ -264,7 +263,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file1 = $this->finder->isFile($this->testModulePath . '/Http/routes.php');
+        $file1 = $this->finder->isFile($this->testModulePath . '/Http/backendRoutes.php');
 
         $this->assertTrue($file1);
 

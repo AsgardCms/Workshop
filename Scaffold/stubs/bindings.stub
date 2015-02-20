@@ -3,7 +3,7 @@
             function () {
                 $repository = new \Modules\$MODULE_NAME$\Repositories\$ENTITY_TYPE$\$ENTITY_TYPE$$CLASS_NAME$Repository(new \Modules\$MODULE_NAME$\Entities\$CLASS_NAME$());
 
-                if (! Config::get('app.cache')) {
+                if (! config('app.cache')) {
                     return $repository;
                 }
 

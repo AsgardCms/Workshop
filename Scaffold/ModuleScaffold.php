@@ -96,6 +96,7 @@ class ModuleScaffold
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
         $this->renameStartFileToComposersFile();
+        $this->addTypeToComposerFile();
         $this->removeUnneededFiles();
         $this->addFolders();
 
@@ -237,5 +238,23 @@ JSON;
     {
         $this->finder->makeDirectory($this->getModulesPath('Composers'));
         $this->finder->makeDirectory($this->getModulesPath('Repositories/Cache'));
+    }
+
+    /**
+     * Add a type to the composer.json file
+     */
+    private function addTypeToComposerFile()
+    {
+        $composerJson = $this->finder->get($this->getModulesPath('composer.json'));
+
+        $search = <<<JSON
+"description": "",
+JSON;
+        $replace = <<<JSON
+"description": "",
+"type": "asgard-module",
+JSON;
+        $composerJson = str_replace($search, $replace, $composerJson);
+        $this->finder->put($this->getModulesPath('composer.json'), $composerJson);
     }
 }

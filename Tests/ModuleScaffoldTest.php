@@ -338,4 +338,15 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue($composerJson);
     }
+
+    /** @test */
+    public function it_should_change_the_type_to_asgard_module()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+
+        $this->assertEquals('asgard-module', $composerJson->type);
+    }
 }

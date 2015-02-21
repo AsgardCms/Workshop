@@ -328,4 +328,14 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertCount(4, $migrations);
     }
+
+    /** @test */
+    public function it_should_generate_composer_json_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->isFile($this->testModulePath . '/composer.json');
+
+        $this->assertTrue($composerJson);
+    }
 }

@@ -95,6 +95,7 @@ class ModuleScaffold
 
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
+        $this->renameStartFileToComposersFile();
         $this->removeUnneededFiles();
         $this->addFolders();
 
@@ -212,7 +213,6 @@ class ModuleScaffold
      */
     private function removeUnneededFiles()
     {
-        $this->renameStartFileToComposersFile();
         $this->renameVendorName();
         $this->removeViewResources();
 

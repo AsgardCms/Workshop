@@ -1,5 +1,7 @@
 <?php namespace Modules\Workshop\Scaffold\Generators;
 
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+
 class FilesGenerator extends Generator
 {
     /**
@@ -37,7 +39,7 @@ class FilesGenerator extends Generator
      *
      * @param $stub
      * @return string
-     * @throws \Illuminate\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     private function getContentFor($stub)
     {

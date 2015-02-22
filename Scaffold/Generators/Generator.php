@@ -1,6 +1,7 @@
 <?php namespace Modules\Workshop\Scaffold\Generators;
 
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 
 abstract class Generator
@@ -97,7 +98,7 @@ abstract class Generator
      * @param  string                                       $stub
      * @param  string                                       $class
      * @return string
-     * @throws \Illuminate\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     protected function getContentForStub($stub, $class)
     {

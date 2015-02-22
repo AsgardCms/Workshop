@@ -1,6 +1,7 @@
 <?php namespace Modules\Workshop\Scaffold\Generators;
 
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 
 class EntityGenerator extends Generator
@@ -162,7 +163,7 @@ class EntityGenerator extends Generator
      * Append the IoC bindings for the given entity to the Service Provider
      *
      * @param  string                                       $entity
-     * @throws \Illuminate\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     private function appendBindingsToServiceProviderFor($entity)
     {
@@ -176,7 +177,7 @@ class EntityGenerator extends Generator
      * Append the routes for the given entity to the routes file
      *
      * @param  string                                       $entity
-     * @throws \Illuminate\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     private function appendResourceRoutesToRoutesFileFor($entity)
     {
@@ -188,7 +189,7 @@ class EntityGenerator extends Generator
 
     /**
      * @param  string                                       $entity
-     * @throws \Illuminate\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     private function appendPermissionsFor($entity)
     {

@@ -97,6 +97,7 @@ class ModuleScaffold
 
         $this->renameStartFileToComposersFile();
         $this->addTypeToComposerFile();
+        $this->addRequiredPackages();
         $this->removeUnneededFiles();
         $this->addFolders();
 
@@ -253,6 +254,39 @@ JSON;
         $replace = <<<JSON
 "description": "",
 "type": "asgard-module",
+JSON;
+        $composerJson = str_replace($search, $replace, $composerJson);
+        $this->finder->put($this->getModulesPath('composer.json'), $composerJson);
+    }
+
+    /**
+     * Add the packages in the require key
+     */
+    private function addRequiredPackages()
+    {
+        $composerJson = $this->finder->get($this->getModulesPath('composer.json'));
+
+        $search = <<<JSON
+"type": "asgard-module",
+JSON;
+        $name = ucfirst($this->name);
+        $replace = <<<JSON
+"type": "asgard-module",
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "asgardcms/core-module": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\\\$name\\\\": ".",
+            "Modules\\\\": "Modules/"
+        }
+    },
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);

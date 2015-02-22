@@ -349,4 +349,40 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertEquals('asgard-module', $composerJson->type);
     }
+
+    /** @test */
+    public function it_should_add_composers_installers_to_require_key()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+        $key = 'composer/installers';
+
+        $this->assertTrue(isset($composerJson->require->$key));
+    }
+
+    /** @test */
+    public function it_should_add_require_dev_to_composer_json()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+        $key = 'require-dev';
+
+        $this->assertTrue(isset($composerJson->$key));
+    }
+
+    /** @test */
+    public function it_should_add_autoload_dev_to_composer_json()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+        $key = 'autoload-dev';
+
+        $this->assertTrue(isset($composerJson->$key));
+    }
 }

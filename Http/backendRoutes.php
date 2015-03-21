@@ -2,6 +2,10 @@
 
 use Illuminate\Routing\Router;
 
+$router->bind('module', function ($module) {
+    return app('Pingpong\Modules\Repository')->find($module);
+});
+
 $router->group(['prefix' => '/workshop'],
     function (Router $router) {
         $router->get('modules', ['as' => 'admin.workshop.modules.index', 'uses' => 'ModulesController@index']);

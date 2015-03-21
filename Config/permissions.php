@@ -3,6 +3,7 @@
 return [
     'workshop.modules' => [
         'index',
+        'show',
         'store',
     ],
     'workshop.workbench' => [

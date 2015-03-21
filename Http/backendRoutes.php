@@ -5,6 +5,7 @@ use Illuminate\Routing\Router;
 $router->group(['prefix' => '/workshop'],
     function (Router $router) {
         $router->get('modules', ['as' => 'admin.workshop.modules.index', 'uses' => 'ModulesController@index']);
+        $router->get('modules/{module}', ['as' => 'admin.workshop.modules.show', 'uses' => 'ModulesController@show']);
         $router->post('modules', ['as' => 'admin.workshop.modules.store', 'uses' => 'ModulesController@store']);
         $router->post('modules/update', ['as' => 'admin.workshop.modules.update', 'uses' => 'ModulesController@update']);
         # Workbench

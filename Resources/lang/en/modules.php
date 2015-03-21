@@ -11,4 +11,11 @@ return [
     'button' => [
         'save module configuration' => 'Save module configuration',
     ],
+    'table' => [
+        'vendor' => 'Vendor',
+        'name' => 'Name',
+        'enabled' => 'Enabled',
+    ],
+    'enabled' => 'Enabled',
+    'disabled' => 'Disabled',
 ];

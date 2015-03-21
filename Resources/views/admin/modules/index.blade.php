@@ -20,46 +20,78 @@
 @stop
 
 @section('content')
-{!! Form::open(['route' => 'admin.workshop.modules.store', 'method' => 'post']) !!}
-<div class="row">
-    <div class="col-md-12">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row">
-                    <?php foreach ($modules->chunk((int)ceil($modules->count()/2)) as $moduleChunk): ?>
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                @foreach($moduleChunk as $module)
-                                    <li style="margin: 5px 0;">
-                                        <div class="checkbox" style="display: inline;">
-                                            <label for="{{ $module }}">
-                                                <input id="{{ $module }}" name="modules[{{ $module }}]" type="checkbox" class="flat-blue" <?php echo Module::active($module) ? 'checked' : '' ?> <?php echo isset($coreModules[$module->getName()]) ? 'disabled' : ''; ?> value="true" /> {{ $module }}
-                                            </label>
-                                        </div>
-                                        <a href="{{ $module->versionUrl }}" target="_blank">
-                                            <span class="label label-default">{{ $module->version }}</span>
-                                        </a>
-                                        <button type="button" data-loading-text="Updating..." class="btn btn-primary btn-xs jsUpdateModule" autocomplete="off" data-module="{{ $module->getName() }}">
-                                            Update
-                                        </button>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    <?php endforeach; ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
                 </div>
-            </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table class="data-table table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th width="15%">{{ trans('workshop::modules.table.enabled') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if (isset($modules)): ?>
+                        <?php foreach ($modules as $module): ?>
 
-            <div class="box-footer">
-                <button type="submit" id="myButton" class="btn btn-primary btn-flat">{{ trans('workshop::modules.button.save module configuration') }}</button>
+                        <tr>
+                            <td>
+                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                    {{ $module->name }} <small>v{{ $module->version }}</small>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                    <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
+                                        {{ $module->enabled() ? trans('workshop::modules.enabled') : trans('workshop::modules.disabled') }}
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th>{{ trans('workshop::modules.table.enabled') }}</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
         </div>
     </div>
-</div>
-{!! Form::close() !!}
 @stop
 
 @section('scripts')
+    <?php $locale = App::getLocale(); ?>
+    <script>
+        $(function () {
+            $('.data-table').dataTable({
+                "paginate": true,
+                "lengthChange": true,
+                "filter": true,
+                "sort": true,
+                "info": true,
+                "autoWidth": true,
+                "order": [[ 0, "desc" ]],
+                "language": {
+                    "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
+                },
+                "columns": [
+                    null,
+                    null,
+                ]
+            });
+        });
+    </script>
 <script>
 $( document ).ready(function() {
     $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({

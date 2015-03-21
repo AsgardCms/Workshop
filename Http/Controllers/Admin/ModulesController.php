@@ -34,9 +34,8 @@ class ModulesController extends AdminBaseController
     public function index()
     {
         $modules = $this->moduleManager->all();
-        $coreModules = $this->moduleManager->getCoreModules();
 
-        return View::make('workshop::admin.modules.index', compact('modules', 'coreModules'));
+        return view('workshop::admin.modules.index', compact('modules'));
     }
 
     public function store(ModulesRequest $request)

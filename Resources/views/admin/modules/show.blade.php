@@ -28,6 +28,9 @@
         .module-type i {
             font-size: 124px;
         }
+        form {
+            display: inline;
+        }
     </style>
 @stop
 
@@ -43,11 +46,14 @@
                             <i class="fa fa-cloud-upload"></i>
                             {{ trans("workshop::modules.publish assets") }}
                         </button>
-                        <button class="btn btn-box-tool" data-toggle="tooltip"
-                                title="" data-original-title="{{ trans("workshop::modules.{$status}") }}">
-                            <i class="fa fa-toggle-{{ $module->enabled() ? 'on' : 'off' }}"></i>
-                            {{ trans("workshop::modules.{$status}") }}
-                        </button>
+                            <?php $routeName = $module->enabled() ? 'disable' : 'enable' ?>
+                        {!! Form::open(['route' => ["admin.workshop.modules.$routeName", $module->getName()], 'method' => 'post']) !!}
+                            <button class="btn btn-box-tool" data-toggle="tooltip" type="submit"
+                                    title="" data-original-title="{{ trans("workshop::modules.{$status}") }}">
+                                <i class="fa fa-toggle-{{ $module->enabled() ? 'on' : 'off' }}"></i>
+                                {{ trans("workshop::modules.{$status}") }}
+                            </button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <div class="box-body">

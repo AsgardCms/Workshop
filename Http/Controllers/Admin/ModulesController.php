@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\View;
 use Laracasts\Flash\Flash;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Services\Composer;
-use Modules\Workshop\Http\Requests\ModulesRequest;
 use Modules\Workshop\Manager\ModuleManager;
 use Pingpong\Modules\Module;
 use Pingpong\Modules\Repository;
@@ -50,24 +49,35 @@ class ModulesController extends AdminBaseController
         return view('workshop::admin.modules.show', compact('module'));
     }
 
-    public function store(ModulesRequest $request)
+    /**
+     * Disable the given module
+     * @param Module $module
+     * @return mixed
+     */
+    public function disable(Module $module)
     {
-        $enabledModules = $this->moduleManager->getFlippedEnabledModules();
-
-        $modules = $request->modules;
-        foreach ($modules as $module => $value) {
-            if (isset($enabledModules[$module])) {
-                unset($enabledModules[$module]);
-                unset($modules[$module]);
-            }
+        if ($this->isCoreModule($module)) {
+            return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])
+                ->with('error', trans('workshop::modules.module cannot be disabled'));
         }
 
-        $this->moduleManager->disableModules($enabledModules);
-        $this->moduleManager->enableModules($modules);
+        $module->disable();
 
-        Flash::success('Modules configuration saved!');
+        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])
+            ->with('success', trans('workshop::modules.module disabled'));
+    }
 
-        return Redirect::route('admin.workshop.modules.index');
+    /**
+     * Enable the given module
+     * @param Module $module
+     * @return mixed
+     */
+    public function enable(Module $module)
+    {
+        $module->enable();
+
+        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])->with('success',
+            trans('workshop::modules.module enabled'));
     }
 
     /**
@@ -81,5 +91,17 @@ class ModulesController extends AdminBaseController
         Artisan::call('asgard:update', ['module' => $request->get('module')], $output);
 
         return Response::json(['updated' => true, 'message' => $output->fetch()]);
+    }
+
+    /**
+     * Check if the given module is a core module that should be be disabled
+     * @param Module $module
+     * @return bool
+     */
+    private function isCoreModule(Module $module)
+    {
+        $coreModules = array_flip(config('asgard.core.config.CoreModules'));
+
+        return isset($coreModules[$module->getLowerName()]);
     }
 }

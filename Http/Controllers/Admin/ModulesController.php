@@ -10,6 +10,8 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Core\Services\Composer;
 use Modules\Workshop\Http\Requests\ModulesRequest;
 use Modules\Workshop\Manager\ModuleManager;
+use Pingpong\Modules\Module;
+use Pingpong\Modules\Repository;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class ModulesController extends AdminBaseController
@@ -22,20 +24,30 @@ class ModulesController extends AdminBaseController
      * @var Composer
      */
     private $composer;
+    /**
+     * @var Repository
+     */
+    private $modules;
 
-    public function __construct(ModuleManager $moduleManager, Composer $composer)
+    public function __construct(ModuleManager $moduleManager, Composer $composer, Repository $modules)
     {
         parent::__construct();
 
         $this->moduleManager = $moduleManager;
         $this->composer = $composer;
+        $this->modules = $modules;
     }
 
     public function index()
     {
-        $modules = $this->moduleManager->all();
+        $modules = $this->modules->all();
 
         return view('workshop::admin.modules.index', compact('modules'));
+    }
+
+    public function show(Module $module)
+    {
+        return view('workshop::admin.modules.show', compact('module'));
     }
 
     public function store(ModulesRequest $request)

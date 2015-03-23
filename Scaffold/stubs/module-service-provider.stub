@@ -1,6 +1,5 @@
 <?php namespace Modules\$MODULE$\Providers;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class $MODULE$ServiceProvider extends ServiceProvider

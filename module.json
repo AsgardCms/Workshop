@@ -1,7 +1,7 @@
 {
   "name": "Workshop",
   "alias": "workshop",
-  "description": "",
+  "description": "Module used to handle the create of new modules.",
   "keywords": [
   ],
   "active": 1,

@@ -3,7 +3,9 @@
 return [
     'workshop.modules' => [
         'index',
-        'store',
+        'show',
+        'disable',
+        'enable',
     ],
     'workshop.workbench' => [
         'index',

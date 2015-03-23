@@ -11,4 +11,19 @@ return [
     'button' => [
         'save module configuration' => 'Save module configuration',
     ],
+    'table' => [
+        'vendor' => 'Vendor',
+        'name' => 'Name',
+        'enabled' => 'Enabled',
+    ],
+    'enabled' => 'Enabled',
+    'enable' => 'Enable',
+    'disabled' => 'Disabled',
+    'disable' => 'Disable',
+    'viewing module' => 'Viewing module',
+    'module' => 'Module',
+    'publish assets' => 'Publish assets',
+    'module enabled' => 'Module enabled.',
+    'module disabled' => 'Module disabled.',
+    'module cannot be disabled' => 'This is a core module, it can not be disabled.',
 ];

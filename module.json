@@ -1,9 +1,10 @@
 {
   "name": "Workshop",
   "alias": "workshop",
-  "description": "",
+  "description": "Module used to handle the create of new modules.",
   "keywords": [
   ],
+  "version": "v0.1.0",
   "active": 1,
   "order": 1,
   "providers": [

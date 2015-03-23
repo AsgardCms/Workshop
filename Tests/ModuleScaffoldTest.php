@@ -21,16 +21,13 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     protected $testModuleName;
 
-    protected $testbenchPath;
-
     public function setUp()
     {
         parent::setUp();
         $this->finder = $this->app['files'];
         $this->scaffold = $this->app['asgard.module.scaffold'];
         $this->testModuleName = 'TestingTestModule';
-        $this->testbenchPath = __DIR__ . '/../vendor/orchestra/testbench/fixture/Modules/TestingTestModule';
-        $this->testModulePath = $this->app->basePath() . "/Modules/{$this->testModuleName}";
+        $this->testModulePath = __DIR__ . "/../Modules/{$this->testModuleName}";
     }
 
     /**
@@ -39,7 +36,6 @@ class ModuleScaffoldTest extends BaseTestCase
     private function cleanUp()
     {
         $this->finder->deleteDirectory($this->testModulePath);
-        $this->finder->deleteDirectory($this->testbenchPath);
     }
 
     /**
@@ -77,9 +73,6 @@ class ModuleScaffoldTest extends BaseTestCase
             ->withEntities($entities)
             ->withValueObjects($valueObjects)
             ->scaffold();
-
-        $this->finder->copyDirectory($this->testbenchPath, $this->testModulePath);
-        $this->finder->deleteDirectory($this->testbenchPath);
     }
 
     public function tearDown()

@@ -17,5 +17,10 @@ return [
         'enabled' => 'Enabled',
     ],
     'enabled' => 'Enabled',
+    'enable' => 'Enable',
     'disabled' => 'Disabled',
+    'disable' => 'Disable',
+    'viewing module' => 'Viewing module',
+    'module' => 'Module',
+    'publish assets' => 'Publish assets',
 ];

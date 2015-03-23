@@ -23,4 +23,7 @@ return [
     'viewing module' => 'Viewing module',
     'module' => 'Module',
     'publish assets' => 'Publish assets',
+    'module enabled' => 'Module enabled.',
+    'module disabled' => 'Module disabled.',
+    'module cannot be disabled' => 'This is a core module, it can not be disabled.',
 ];

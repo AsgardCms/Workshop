@@ -41,7 +41,7 @@
                         <tr>
                             <td>
                                 <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
-                                    {{ $module->name }} <small>v{{ $module->version }}</small>
+                                    {{ $module->name }} <small>{{ $module->version }}</small>
                                 </a>
                             </td>
                             <td>

@@ -5,6 +5,7 @@ return [
         'index',
         'show',
         'disable',
+        'enable',
     ],
     'workshop.workbench' => [
         'index',

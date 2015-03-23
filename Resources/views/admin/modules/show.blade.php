@@ -38,7 +38,7 @@
                 <div class="box-header">
                     <div class="box-tools pull-right">
                         <?php $status = $module->enabled() ? 'disable' : 'enable'; ?>
-                        <button class="btn btn-box-tool" data-toggle="tooltip"
+                        <button class="btn btn-box-tool jsPublishAssets" data-toggle="tooltip"
                                 title="" data-original-title="{{ trans("workshop::modules.publish assets") }}">
                             <i class="fa fa-cloud-upload"></i>
                             {{ trans("workshop::modules.publish assets") }}
@@ -68,4 +68,24 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('scripts')
+    <script>
+        $( document ).ready(function() {
+            $('.jsPublishAssets').on('click',function (event) {
+                event.preventDefault();
+                var $self = $(this);
+                $self.find('i').toggleClass('fa-cloud-upload fa-refresh fa-spin');
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('api.workshop.module.publish', [$module->getName()]) }}',
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function() {
+                        $self.find('i').toggleClass('fa-cloud-upload fa-refresh fa-spin');
+                    }
+                });
+            });
+        });
+    </script>
 @stop

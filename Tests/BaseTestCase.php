@@ -19,7 +19,29 @@ abstract class BaseTestCase extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app->setBasePath(__DIR__ . '/..');
-        $app['path.base'] = __DIR__ . '/..';
+        $app['path.base'] = realpath(__DIR__ . '/../Modules');
+        $app['config']->set('modules.namespace', 'Modules');
+        $app['config']->set('app.locale', 'en');
+        $app['config']->set('modules.paths.generator', [
+            'assets' => 'Assets',
+            'config' => 'Config',
+            'command' => 'Console',
+            'migration' => 'Database/Migrations',
+            'model' => 'Entities',
+            'repository' => 'Repositories',
+            'seeder' => 'Database/Seeders',
+            'controller' => 'Http/Controllers',
+            'filter' => 'Http/Middleware',
+            'request' => 'Http/Requests',
+            'provider' => 'Providers',
+            'lang' => 'Resources/lang',
+            'views' => 'Resources/views',
+            'test' => 'Tests',
+        ]);
+        $app['config']->set('laravellocalization.supportedLocales', [
+            'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English'],
+            'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français'],
+        ]);
+        $app['config']->set('modules.paths.modules', realpath(__DIR__ . '/../Modules'));
     }
 }

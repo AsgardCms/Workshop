@@ -90,7 +90,26 @@
     <?php endif; ?>
 @stop
 
+@section('footer')
+    <a data-toggle="modal" data-target="#keyboardShortcutsModal"><i class="fa fa-keyboard-o"></i></a> &nbsp;
+@stop
+@section('shortcuts')
+    <dl class="dl-horizontal">
+        <dt><code>c</code></dt>
+        <dd>{{ trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.create $LOWERCASE_CLASS_NAME$') }}</dd>
+    </dl>
+@stop
+
 @section('scripts')
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $(document).keypressAction({
+                actions: [
+                    { key: 'c', route: "<?= route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.create') ?>" }
+                ]
+            });
+        });
+    </script>
     <?php $locale = App::getLocale(); ?>
     <script type="text/javascript">
         $(function () {

@@ -46,7 +46,7 @@
 @stop
 @section('shortcuts')
     <dl class="dl-horizontal">
-        <dt><code>c</code></dt>
+        <dt><code>b</code></dt>
         <dd>{{ trans('core::core.back to index') }}</dd>
     </dl>
 @stop
@@ -56,7 +56,7 @@
         $( document ).ready(function() {
             $(document).keypressAction({
                 actions: [
-                    { key: 'c', route: "<?= route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index') ?>" }
+                    { key: 'b', route: "<?= route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index') ?>" }
                 ]
             });
         });

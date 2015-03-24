@@ -6,4 +6,5 @@ class $CLASS_NAME$Translation extends Model
 {
     public $timestamps = false;
     protected $fillable = [];
+    protected $table = '$LOWERCASE_MODULE_NAME$__$PLURAL_LOWERCASE_CLASS_NAME$_translations';
 }

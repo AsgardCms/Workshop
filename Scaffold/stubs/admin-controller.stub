@@ -3,8 +3,6 @@
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Modules\$MODULE_NAME$\Entities\Category;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Redirect;
 use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -31,7 +29,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
     {
         //$$PLURAL_LOWERCASE_CLASS_NAME$ = $this->$LOWERCASE_CLASS_NAME$->all();
 
-        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.index', compact(''));
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.index', compact(''));
     }
 
     /**
@@ -41,7 +39,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
      */
     public function create()
     {
-        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.create');
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.create');
     }
 
     /**
@@ -56,7 +54,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
 
         Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ created'));
 
-        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }
 
     /**
@@ -67,7 +65,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
      */
     public function edit($CLASS_NAME$ $$LOWERCASE_CLASS_NAME$)
     {
-        return View::make('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.edit', compact('$LOWERCASE_CLASS_NAME$'));
+        return view('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.edit', compact('$LOWERCASE_CLASS_NAME$'));
     }
 
     /**
@@ -83,7 +81,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
 
         Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ updated'));
 
-        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }
 
     /**
@@ -98,6 +96,6 @@ class $CLASS_NAME$Controller extends AdminBaseController
 
         Flash::success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ deleted'));
 
-        return Redirect::route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
+        return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }
 }

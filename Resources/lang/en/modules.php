@@ -26,4 +26,6 @@ return [
     'module enabled' => 'Module enabled.',
     'module disabled' => 'Module disabled.',
     'module cannot be disabled' => 'This is a core module, it can not be disabled.',
+    'select all' => 'Select all',
+    'deselect all' => 'Deselect all',
 ];

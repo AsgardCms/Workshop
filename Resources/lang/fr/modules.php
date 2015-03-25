@@ -26,4 +26,6 @@ return [
     'module enabled' => 'Module activer.',
     'module disabled' => 'Module désactiver.',
     'module cannot be disabled' => 'Ceci est un module principal, il ne peut être désactiver.',
+    'select all' => 'Sélectionner tous',
+    'deselect all' => 'Déselectionner tous',
 ];

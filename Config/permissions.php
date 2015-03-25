@@ -7,7 +7,7 @@ return [
         'disable',
         'enable',
     ],
-    'workshop.workbench' => [
+    /*'workshop.workbench' => [
         'index',
         'generate',
         'migrate',
@@ -25,5 +25,5 @@ return [
     ],
     'workshop.seed' => [
         'seed',
-    ],
+    ],*/
 ];

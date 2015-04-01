@@ -11,6 +11,7 @@ class ModulesController extends Controller
     {
         try {
             Artisan::call('module:publish', ['module' => $module->getName()]);
-        } catch (InvalidArgumentException $e) {}
+        } catch (InvalidArgumentException $e) {
+        }
     }
 }

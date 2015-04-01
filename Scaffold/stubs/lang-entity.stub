@@ -19,4 +19,6 @@ return [
         '$LOWERCASE_CLASS_NAME$ updated' => '$CLASS_NAME$ successfully updated.',
         '$LOWERCASE_CLASS_NAME$ deleted' => '$CLASS_NAME$ successfully deleted.',
     ],
+    'validation' => [
+    ],
 ];

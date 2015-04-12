@@ -1,8 +1,10 @@
 <?php namespace Modules\Workshop\Manager;
 
 use Illuminate\Config\Repository as Config;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Pingpong\Modules\Module;
+use Symfony\Component\Yaml\Parser;
 
 class ModuleManager
 {
@@ -18,15 +20,22 @@ class ModuleManager
      * @var PackageInformation
      */
     private $packageVersion;
+    /**
+     * @var Filesystem
+     */
+    private $finder;
 
     /**
      * @param Config $config
+     * @param PackageInformation $packageVersion
+     * @param Filesystem $finder
      */
-    public function __construct(Config $config, PackageInformation $packageVersion)
+    public function __construct(Config $config, PackageInformation $packageVersion, Filesystem $finder)
     {
         $this->module = app('modules');
         $this->config = $config;
         $this->packageVersion = $packageVersion;
+        $this->finder = $finder;
     }
 
     /**
@@ -114,5 +123,22 @@ class ModuleManager
             $module = $this->module->get($moduleToEnable);
             $module->enable();
         }
+    }
+
+    /**
+     * Get the changelog for the given module
+     * @param Module $module
+     * @return array
+     */
+    public function changelogFor(Module $module)
+    {
+        $path = $module->getPath() . '/changelog.yml';
+        if (! $this->finder->isFile($path)) {
+            return [];
+        }
+
+        $yamlParser = new Parser();
+
+        return $yamlParser->parse(file_get_contents($path));
     }
 }

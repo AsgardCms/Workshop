@@ -45,7 +45,9 @@ class ModulesController extends AdminBaseController
 
     public function show(Module $module)
     {
-        return view('workshop::admin.modules.show', compact('module'));
+        $changelog = $this->moduleManager->changelogFor($module);
+
+        return view('workshop::admin.modules.show', compact('module', 'changelog'));
     }
 
     /**

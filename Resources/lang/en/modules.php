@@ -26,4 +26,8 @@ return [
     'module enabled' => 'Module enabled.',
     'module disabled' => 'Module disabled.',
     'module cannot be disabled' => 'This is a core module, it can not be disabled.',
+    'changelog' => 'Changelog',
+    'added' => 'Added',
+    'changed' => 'Changed',
+    'removed' => 'Removed',
 ];

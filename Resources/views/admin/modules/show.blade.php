@@ -74,6 +74,23 @@
             </div>
         </div>
     </div>
+    <?php if (isset($changelog)): ?>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-bars"></i> {{ trans('workshop::modules.changelog')}}</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    @include('workshop::admin.modules.partials.changelog')
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 @stop
 
 @section('scripts')

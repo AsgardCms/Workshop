@@ -36,6 +36,10 @@ class ModulesController extends AdminBaseController
         $this->modules = $modules;
     }
 
+    /**
+     * Display a list of all modules
+     * @return View
+     */
     public function index()
     {
         $modules = $this->modules->all();
@@ -43,6 +47,11 @@ class ModulesController extends AdminBaseController
         return view('workshop::admin.modules.index', compact('modules'));
     }
 
+    /**
+     * Display module info
+     * @param Module $module
+     * @return View
+     */
     public function show(Module $module)
     {
         $changelog = $this->moduleManager->changelogFor($module);

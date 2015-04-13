@@ -253,7 +253,7 @@ JSON;
 JSON;
         $replace = <<<JSON
 "description": "",
-"type": "asgard-module",
+    "type": "asgard-module",
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);

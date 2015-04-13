@@ -337,8 +337,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
 
         $this->assertEquals('asgard-module', $composerJson->type);
     }
@@ -348,8 +347,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
         $key = 'composer/installers';
 
         $this->assertTrue(isset($composerJson->require->$key));
@@ -360,8 +358,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
         $key = 'require-dev';
 
         $this->assertTrue(isset($composerJson->$key));
@@ -372,8 +369,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
         $key = 'autoload-dev';
 
         $this->assertTrue(isset($composerJson->$key));
@@ -384,8 +380,7 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
         $key = 'minimum-stability';
 
         $this->assertTrue(isset($composerJson->$key));
@@ -396,11 +391,22 @@ class ModuleScaffoldTest extends BaseTestCase
     {
         $this->scaffoldModuleWithEloquent();
 
-        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
-        $composerJson = json_decode($composerJson);
+        $composerJson = $this->getComposerFile();
         $key = 'prefer-stable';
 
         $this->assertTrue(isset($composerJson->$key));
         $this->assertTrue($composerJson->$key);
+    }
+
+    /**
+     * Get the contents of composer.json file
+     * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function getComposerFile()
+    {
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+
+        return json_decode($composerJson);
     }
 }

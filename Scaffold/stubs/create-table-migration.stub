@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create$MODULE_NAME$$CLASS_NAME$Table extends Migration
+class Create$MODULE_NAME$$PLURAL_UCWORDS_CLASS_NAME$Table extends Migration
 {
 	/**
 	 * Run the migrations.

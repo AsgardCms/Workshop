@@ -96,8 +96,7 @@ class ModuleScaffold
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
         $this->renameStartFileToComposersFile();
-        $this->addTypeToComposerFile();
-        $this->addRequiredPackages();
+        $this->addDataToComposerFile();
         $this->removeUnneededFiles();
         $this->addFolders();
 
@@ -242,51 +241,41 @@ JSON;
     }
 
     /**
-     * Add a type to the composer.json file
+     * Add more data in composer json
+     * - a asgard/module type
+     * - package requirements
+     * - minimum stability
+     * - prefer stable
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function addTypeToComposerFile()
+    private function addDataToComposerFile()
     {
         $composerJson = $this->finder->get($this->getModulesPath('composer.json'));
 
-        $search = <<<JSON
-"description": "",
-JSON;
-        $replace = <<<JSON
-"description": "",
-    "type": "asgard-module",
-JSON;
-        $composerJson = str_replace($search, $replace, $composerJson);
-        $this->finder->put($this->getModulesPath('composer.json'), $composerJson);
-    }
-
-    /**
-     * Add the packages in the require key
-     */
-    private function addRequiredPackages()
-    {
-        $composerJson = $this->finder->get($this->getModulesPath('composer.json'));
-
-        $search = <<<JSON
-    "type": "asgard-module",
-JSON;
         $name = ucfirst($this->name);
+
+        $search = <<<JSON
+"description": "",
+JSON;
         $replace = <<<JSON
-"type": "asgard-module",
-    "require": {
-        "php": ">=5.4",
-        "composer/installers": "~1.0",
-        "asgardcms/core-module": "dev-master"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "orchestra/testbench": "~3.0"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Modules\\\\$name\\\\": ".",
-            "Modules\\\\": "Modules/"
-        }
-    },
+    "description": "",
+    "type": "asgard-module",
+        "require": {
+            "php": ">=5.4",
+            "composer/installers": "~1.0",
+            "asgardcms/core-module": "dev-master"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "orchestra/testbench": "~3.0"
+        },
+        "autoload-dev": {
+            "psr-4": {
+                "Modules\\\\$name\\\\": ".",
+                "Modules\\\\": "Modules/"
+            }
+        },
+        "minimum-stability": "dev",
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);

@@ -276,6 +276,7 @@ JSON;
             }
         },
         "minimum-stability": "dev",
+        "prefer-stable": true,
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);

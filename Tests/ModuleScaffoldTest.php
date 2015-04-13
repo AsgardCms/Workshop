@@ -378,4 +378,29 @@ class ModuleScaffoldTest extends BaseTestCase
 
         $this->assertTrue(isset($composerJson->$key));
     }
+
+    /** @test */
+    public function it_adds_minimun_stability_key_in_composer_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+        $key = 'minimum-stability';
+
+        $this->assertTrue(isset($composerJson->$key));
+        $this->assertEquals('dev', $composerJson->$key);
+    }
+    /** @test */
+    public function it_adds_prefer_stable_key_in_composer_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+        $composerJson = json_decode($composerJson);
+        $key = 'prefer-stable';
+
+        $this->assertTrue(isset($composerJson->$key));
+        $this->assertTrue($composerJson->$key);
+    }
 }

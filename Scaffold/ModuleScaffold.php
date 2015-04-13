@@ -267,7 +267,7 @@ JSON;
         $composerJson = $this->finder->get($this->getModulesPath('composer.json'));
 
         $search = <<<JSON
-"type": "asgard-module",
+    "type": "asgard-module",
 JSON;
         $name = ucfirst($this->name);
         $replace = <<<JSON

@@ -1,4 +1,4 @@
-<?php foreach($changelog as $version => $info): ?>
+<?php foreach ($changelog as $version => $info): ?>
 <dl class="dl-horizontal">
     <dt><a href="{{ $info['url'] }}" target="_blank"><i class="fa fa-external-link-square"></i> {{ $version }}</a></dt>
     <dd>

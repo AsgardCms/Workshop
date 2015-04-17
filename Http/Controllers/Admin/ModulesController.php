@@ -19,20 +19,15 @@ class ModulesController extends AdminBaseController
      */
     private $moduleManager;
     /**
-     * @var Composer
-     */
-    private $composer;
-    /**
      * @var Repository
      */
     private $modules;
 
-    public function __construct(ModuleManager $moduleManager, Composer $composer, Repository $modules)
+    public function __construct(ModuleManager $moduleManager, Repository $modules)
     {
         parent::__construct();
 
         $this->moduleManager = $moduleManager;
-        $this->composer = $composer;
         $this->modules = $modules;
     }
 

@@ -17,7 +17,7 @@
 @stop
 
 @section('content')
-    {!! Form::open(['route' => ['admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.update', $LOWERCASE_CLASS_NAME$->id], 'method' => 'put']) !!}
+    {!! Form::open(['route' => ['admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.update', $$LOWERCASE_CLASS_NAME$->id], 'method' => 'put']) !!}
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">

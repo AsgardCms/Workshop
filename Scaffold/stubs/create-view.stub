@@ -39,6 +39,7 @@
             </div> {{-- end nav-tabs-custom --}}
         </div>
     {!! Form::close() !!}
+    </div>
 @stop
 
 @section('footer')

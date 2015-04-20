@@ -38,6 +38,7 @@
                 </div>
             </div> {{-- end nav-tabs-custom --}}
         </div>
+    </div>
     {!! Form::close() !!}
 @stop
 

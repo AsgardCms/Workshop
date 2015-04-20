@@ -2,7 +2,7 @@
 
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
-use Modules\$MODULE_NAME$\Entities\Category;
+use Modules\$MODULE_NAME$\Entities\$CLASS_NAME$;
 use Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 

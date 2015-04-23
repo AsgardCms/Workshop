@@ -34,7 +34,6 @@ class ModuleScaffold
      * @var array of files to generate
      */
     protected $files = [
-        'sidebar-view-composer.stub' => 'Composers/SidebarViewComposer',
         'permissions.stub' => 'Config/permissions',
         'routes.stub' => 'Http/backendRoutes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',

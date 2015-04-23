@@ -1,4 +1,4 @@
-<?php namespace Modules\$MODULE$\Composers;
+<?php namespace Modules\$MODULE_NAME$\Composers;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Sidebar\SidebarGroup;
@@ -10,9 +10,7 @@ class SidebarViewComposer extends BaseSidebarViewComposer
     public function compose(View $view)
     {
         $view->sidebar->group(trans('core::sidebar.content'), function (SidebarGroup $group) {
-            $group->weight = 50;
-
-            $group->addItem('$MODULE$', function (SidebarItem $item) {
+            $group->addItem('$MODULE_NAME$', function (SidebarItem $item) {
                 $item->icon = 'fa fa-copy';
                 $item->weight = 10;
                 $item->authorize(

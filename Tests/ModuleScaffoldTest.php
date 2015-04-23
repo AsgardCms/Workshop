@@ -277,6 +277,16 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_should_generate_filled_sidebar_view_composer()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $viewComposer = $this->finder->get($this->testModulePath . '/Composers/SidebarViewComposer.php');
+
+        $this->assertTrue(str_contains($viewComposer, '$view->sidebar'));
+    }
+
+    /** @test */
     public function it_should_generate_permissions_config_file()
     {
         $this->scaffoldModuleWithEloquent();

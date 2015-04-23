@@ -1,0 +1,11 @@
+<?php namespace Modules\$MODULE$\Composers;
+
+use Illuminate\Contracts\View\View;
+use Modules\Core\Composers\BaseSidebarViewComposer;
+
+class SidebarViewComposer extends BaseSidebarViewComposer
+{
+    public function compose(View $view)
+    {
+    }
+}

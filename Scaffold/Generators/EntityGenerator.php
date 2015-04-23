@@ -34,6 +34,9 @@ class EntityGenerator extends Generator
     {
         $entityType = strtolower($this->entityType);
         $entityTypeStub = "entity-{$entityType}.stub";
+
+        $this->generateSidebarViewComposer($entities);
+
         foreach ($entities as $entity) {
             $this->writeFile(
                 $this->getModulesPath("Entities/$entity"),
@@ -209,5 +212,25 @@ class EntityGenerator extends Generator
         $sidebarComposerContent = str_replace('// append', $content, $sidebarComposerContent);
 
         $this->finder->put($this->getModulesPath('Composers/SidebarViewComposer.php'), $sidebarComposerContent);
+    }
+
+    /**
+     * Generate a filled sidebar view composer
+     * Or an empty one of no entities
+     * @param $entities
+     */
+    private function generateSidebarViewComposer($entities)
+    {
+        if (count($entities) > 0) {
+            return $this->writeFile(
+                $this->getModulesPath('Composers/SidebarViewComposer'),
+                $this->getContentForStub('sidebar-view-composer.stub', 'abc')
+            );
+        }
+
+        return $this->writeFile(
+            $this->getModulesPath('Composers/SidebarViewComposer'),
+            $this->getContentForStub('empty-sidebar-view-composer.stub', 'abc')
+        );
     }
 }

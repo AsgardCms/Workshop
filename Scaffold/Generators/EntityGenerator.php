@@ -153,7 +153,7 @@ class EntityGenerator extends Generator
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-table-migration.stub', $entity)
         );
-
+        usleep(250000);
         $lowercaseEntityName = strtolower($entity);
         $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
         $this->writeFile(

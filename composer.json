@@ -25,12 +25,18 @@
     "composer/installers": "~1.0",
     "asgardcms/core-module": "dev-develop",
     "asgardcms/menu-module": "dev-develop",
-    "pingpong/modules": "2.0.*@dev"
+    "pingpong/modules": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
     "orchestra/testbench": "~3.0"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/nWidart/modules"
+    }
+  ],
   "autoload-dev": {
     "psr-4": {
       "Modules\\Workshop\\": ".",

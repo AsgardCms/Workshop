@@ -25,7 +25,7 @@ return [
     'publish assets' => 'Pubblica assets',
     'module enabled' => 'Modulo abilitato.',
     'module disabled' => 'Modulo disabilitato.',
-    'module cannot be disabled' => 'Questo è un modulo base, non può essere disabilitato.',
+    'module cannot be disabled' => 'Questo Ã¨ un modulo base, non puÃ² essere disabilitato.',
     'changelog' => 'Changelog',
     'added' => 'Aggiunto',
     'changed' => 'Cambiato',

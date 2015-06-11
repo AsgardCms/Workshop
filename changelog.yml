@@ -1,0 +1,6 @@
+"1.0.2":
+    url: https://github.com/AsgardCms/Workshop
+    changed:
+        - Worked around the empty value not being alowed in Laravel 5.1
+        - Fixing the bug of migration files having the same timestamp
+        - Cleaning up the questions display in CLI based on new Command class in Laravel 5.1

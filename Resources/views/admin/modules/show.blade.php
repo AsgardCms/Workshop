@@ -11,7 +11,7 @@
         {{ $module->name }} <small>{{ trans('workshop::modules.module') }}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
         <li><a href="{{ route('admin.workshop.modules.index') }}">{{ trans('workshop::modules.breadcrumb.modules') }}</a></li>
         <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $module->name }}</li>
     </ol>

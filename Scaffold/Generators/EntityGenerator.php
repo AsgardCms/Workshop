@@ -146,16 +146,17 @@ class EntityGenerator extends Generator
      */
     private function generateMigrationsFor($entity)
     {
+        usleep(250000);
         $lowercasePluralEntityName = strtolower(str_plural($entity));
         $lowercaseModuleName = strtolower($this->name);
-        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
+        $migrationName = $this->getDateTimePrefix() . "create_{$lowercaseModuleName}_{$lowercasePluralEntityName}_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-table-migration.stub', $entity)
         );
         usleep(250000);
         $lowercaseEntityName = strtolower($entity);
-        $migrationName = date('Y_m_d_His_') . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
+        $migrationName = $this->getDateTimePrefix() . "create_{$lowercaseModuleName}_{$lowercaseEntityName}_translations_table";
         $this->writeFile(
             $this->getModulesPath("Database/Migrations/{$migrationName}"),
             $this->getContentForStub('create-translation-table-migration.stub', $entity)
@@ -232,5 +233,18 @@ class EntityGenerator extends Generator
             $this->getModulesPath('Composers/SidebarViewComposer'),
             $this->getContentForStub('empty-sidebar-view-composer.stub', 'abc')
         );
+    }
+
+    /**
+     * Get the current time with microseconds
+     * @return string
+     */
+    private function getDateTimePrefix()
+    {
+        $t = microtime(true);
+        $micro = sprintf("%06d",($t - floor($t)) * 1000000);
+        $d = new \DateTime(date('Y-m-d H:i:s.'.$micro, $t));
+
+        return $d->format("Y_m_d_Hisu_");
     }
 }

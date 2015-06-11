@@ -5,7 +5,7 @@
     {{ trans('workshop::modules.title') }}
 </h1>
 <ol class="breadcrumb">
-    <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
+    <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
     <li class="active">{{ trans('workshop::modules.breadcrumb.modules') }}</li>
 </ol>
 @stop
@@ -41,17 +41,17 @@
 
                         <tr>
                             <td>
-                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
                                     {{ $module->name }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
                                     {{ $module->version }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
                                     <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
                                         {{ $module->enabled() ? trans('workshop::modules.enabled') : trans('workshop::modules.disabled') }}
                                     </span>
@@ -78,7 +78,7 @@
 @stop
 
 @section('scripts')
-    <?php $locale = App::getLocale(); ?>
+    <?php $locale = locale(); ?>
     <script>
         $(function () {
             $('.data-table').dataTable({

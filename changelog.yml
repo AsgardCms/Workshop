@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.4":
+        changed:
+            - No escaping on the changelog lines to display code blocks
     "1.0.3":
         changed:
             - Limit the amount of versions displayed to 5 last versions

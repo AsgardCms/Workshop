@@ -62,7 +62,7 @@ class ModuleScaffoldCommand extends Command
         $this->entityType = $this->choice('Do you want to use Eloquent or Doctrine ? [eloquent]', ['Eloquent', 'Doctrine'], 0);
         do {
             $entity = $this->ask('Enter entity name. Leaving option empty will continue script.', '<none>');
-            if (!empty($entity)) {
+            if (!empty($entity) && $entity !== '<none>') {
                 $this->entities[] = ucfirst($entity);
             }
         } while ($entity !== '<none>');
@@ -75,7 +75,7 @@ class ModuleScaffoldCommand extends Command
     {
         do {
             $valueObject = $this->ask('Enter value object name. Leaving option empty will continue script.', '<none>');
-            if (!empty($valueObject)) {
+            if (!empty($valueObject) && $valueObject !== '<none>') {
                 $this->valueObjects[] = ucfirst($valueObject);
             }
         } while ($valueObject !== '<none>');

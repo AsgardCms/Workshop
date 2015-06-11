@@ -1,5 +1,5 @@
 "1.0.2":
-    url: https://github.com/AsgardCms/Workshop
+    url: https://github.com/AsgardCms/Workshop/releases/tag/1.0.2
     changed:
         - Worked around the empty value not being alowed in Laravel 5.1
         - Fixing the bug of migration files having the same timestamp

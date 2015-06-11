@@ -74,7 +74,7 @@
             </div>
         </div>
     </div>
-    <?php if (isset($changelog) && count($changelog)): ?>
+    <?php if (isset($changelog) && count($changelog['versions'])): ?>
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">

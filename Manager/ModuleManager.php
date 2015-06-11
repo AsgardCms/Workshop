@@ -139,6 +139,20 @@ class ModuleManager
 
         $yamlParser = new Parser();
 
-        return $yamlParser->parse(file_get_contents($path));
+        $changelog = $yamlParser->parse(file_get_contents($path));
+
+        $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
+
+        return $changelog;
+    }
+
+    /**
+     * Limit the versions to the last 5
+     * @param array $versions
+     * @return array
+     */
+    private function limitLastVersionsAmount(array $versions)
+    {
+        return array_slice($versions, 0, 5);
     }
 }

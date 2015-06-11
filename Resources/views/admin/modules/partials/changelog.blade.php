@@ -1,6 +1,6 @@
-<?php foreach ($changelog as $version => $info): ?>
+<?php foreach ($changelog['versions'] as $version => $info): ?>
 <dl class="dl-horizontal">
-    <dt><a href="{{ $info['url'] }}" target="_blank"><i class="fa fa-external-link-square"></i> {{ $version }}</a></dt>
+    <dt><a href="{{ $changelog['url'].'/releases/tag/'.$version }}" target="_blank"><i class="fa fa-external-link-square"></i> {{ $version }}</a></dt>
     <dd>
         <?php if (isset($info['added'])): ?>
         @include('workshop::admin.modules.partials.changelog-part', [

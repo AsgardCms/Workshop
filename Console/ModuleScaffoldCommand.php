@@ -35,7 +35,7 @@ class ModuleScaffoldCommand extends Command
      */
     public function fire()
     {
-        $moduleName = $this->ask('Please enter the module name. Example: vendor/name.');
+        $moduleName = $this->ask('Please enter the module name in the following format: vendor/name');
         list($vendor, $name) = $this->separateVendorAndName($moduleName);
 
         $this->checkForModuleUniqueness($name);
@@ -61,11 +61,11 @@ class ModuleScaffoldCommand extends Command
     {
         $this->entityType = $this->choice('Do you want to use Eloquent or Doctrine ? [eloquent]', ['Eloquent', 'Doctrine'], 0);
         do {
-            $entity = $this->ask('Enter entity name. Leaving option empty will continue script.');
+            $entity = $this->ask('Enter entity name. Leaving option empty will continue script.', '<none>');
             if (!empty($entity)) {
                 $this->entities[] = ucfirst($entity);
             }
-        } while (!empty($entity));
+        } while ($entity !== '<none>');
     }
 
     /**
@@ -74,11 +74,11 @@ class ModuleScaffoldCommand extends Command
     private function askForValueObjects()
     {
         do {
-            $valueObject = $this->ask('Enter value object name. Leaving option empty will continue script.');
+            $valueObject = $this->ask('Enter value object name. Leaving option empty will continue script.', '<none>');
             if (!empty($valueObject)) {
                 $this->valueObjects[] = ucfirst($valueObject);
             }
-        } while (!empty($valueObject));
+        } while ($valueObject !== '<none>');
     }
 
     /**

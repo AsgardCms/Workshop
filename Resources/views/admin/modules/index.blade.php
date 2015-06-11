@@ -31,6 +31,7 @@
                         <thead>
                         <tr>
                             <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th width="15%">{{ trans('workshop::modules.table.version') }}</th>
                             <th width="15%">{{ trans('workshop::modules.table.enabled') }}</th>
                         </tr>
                         </thead>
@@ -41,7 +42,12 @@
                         <tr>
                             <td>
                                 <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
-                                    {{ $module->name }} <small>{{ $module->version }}</small>
+                                    {{ $module->name }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ URL::route('admin.workshop.modules.show', [$module->getLowerName()]) }}">
+                                    {{ $module->version }}
                                 </a>
                             </td>
                             <td>
@@ -58,6 +64,7 @@
                         <tfoot>
                         <tr>
                             <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th>{{ trans('workshop::modules.table.version') }}</th>
                             <th>{{ trans('workshop::modules.table.enabled') }}</th>
                         </tr>
                         </tfoot>
@@ -86,6 +93,7 @@
                     "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
                 },
                 "columns": [
+                    null,
                     null,
                     null,
                 ]

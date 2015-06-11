@@ -15,6 +15,7 @@ return [
         'vendor' => 'Vendor',
         'name' => 'Nom',
         'enabled' => 'Actif',
+        'version' => 'Version',
     ],
     'enabled' => 'Actif',
     'enable' => 'Activer',

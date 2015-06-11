@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.5":
+        changed:
+            - Add the module version in a separate column so that it can be ordered & filtered
+            - Use the <code>route</code> function helpers
     "1.0.4":
         changed:
             - No escaping on the changelog lines to display code blocks

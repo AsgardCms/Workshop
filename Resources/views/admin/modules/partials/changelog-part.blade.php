@@ -2,7 +2,7 @@
 <ul>
     <?php foreach ($data as $dataLine): ?>
     <li class="text-{{ $color }}">
-        {{ $dataLine }}
+        {!! $dataLine !!}
     </li>
     <?php endforeach; ?>
 </ul>

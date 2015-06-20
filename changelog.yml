@@ -3,6 +3,9 @@ versions:
     "1.0.6":
         changed:
             - Fixing alignements in composer.json file
+            - Fixing alignements in module.json file
+            - Module scaffold now requires stable version of core module
+            - Module scaffold now requires version 3.1 of orchestra/testbench
     "1.0.5":
         changed:
             - Add the module version in a separate column so that it can be ordered & filtered

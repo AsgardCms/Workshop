@@ -183,6 +183,11 @@ class ModuleScaffold
     {
         $this->finder->delete($this->getModulesPath('start.php'));
         $moduleJsonContent = $this->finder->get($this->getModulesPath('module.json'));
+        $jsonContent = json_decode($moduleJsonContent, true);
+        if (!isset($jsonContent['version'])) {
+            $jsonContent['version'] = 'v0.0.1-dev';
+        }
+        $moduleJsonContent = json_encode($moduleJsonContent);
         $moduleJsonContent = str_replace('"start.php"', '"composers.php"', $moduleJsonContent);
         $this->finder->put($this->getModulesPath('module.json'), $moduleJsonContent);
     }
@@ -257,8 +262,8 @@ JSON;
 "description": "",
 JSON;
         $replace = <<<JSON
-    "description": "",
-    "type": "asgard-module",
+        "description": "",
+        "type": "asgard-module",
         "require": {
             "php": ">=5.4",
             "composer/installers": "~1.0",

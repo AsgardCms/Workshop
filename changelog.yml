@@ -2,7 +2,7 @@ url: https://github.com/AsgardCms/Workshop
 versions:
     "1.0.6":
         changed:
-            - Fixing alignements in module.json file
+            - Fixing alignements in composer.json file
     "1.0.5":
         changed:
             - Add the module version in a separate column so that it can be ordered & filtered

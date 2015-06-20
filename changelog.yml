@@ -3,7 +3,6 @@ versions:
     "1.0.6":
         changed:
             - Fixing alignements in module.json file
-            - Adding a version in module.json file
     "1.0.5":
         changed:
             - Add the module version in a separate column so that it can be ordered & filtered

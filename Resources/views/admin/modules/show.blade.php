@@ -61,7 +61,7 @@
                         <div class="col-sm-6 module-details">
                             <div class="module-type pull-left">
                                 <i class="fa fa-cube"></i>
-                                <span>{{ $module->json()->version }}</span>
+                                <span>{{ $module->version }}</span>
                             </div>
                             <h2>{{ ucfirst($module->getName()) }}</h2>
                             <p>{{ $module->getDescription() }}</p>
@@ -74,7 +74,7 @@
             </div>
         </div>
     </div>
-    <?php if (isset($changelog) && count($changelog['versions'])): ?>
+    <?php if (!empty($changelog) && count($changelog['versions'])): ?>
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">

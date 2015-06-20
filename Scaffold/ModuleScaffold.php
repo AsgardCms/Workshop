@@ -225,7 +225,7 @@ class ModuleScaffold
         $providerContent = $this->finder->get($this->getModulesPath('module.json'));
         $newProviders = <<<JSON
 "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
-    "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
+        "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
 JSON;
 
         $oldProvider = '"Modules\\\\' . $this->name . '\\\\Providers\\\\' . $this->name . 'ServiceProvider"';

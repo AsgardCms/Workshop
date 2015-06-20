@@ -262,25 +262,25 @@ JSON;
 "description": "",
 JSON;
         $replace = <<<JSON
-        "description": "",
-        "type": "asgard-module",
-        "require": {
-            "php": ">=5.4",
-            "composer/installers": "~1.0",
-            "asgardcms/core-module": "dev-master"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0",
-            "orchestra/testbench": "~3.0"
-        },
-        "autoload-dev": {
-            "psr-4": {
-                "Modules\\\\$name\\\\": ".",
-                "Modules\\\\": "Modules/"
-            }
-        },
-        "minimum-stability": "dev",
-        "prefer-stable": true,
+"description": "",
+    "type": "asgard-module",
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "asgardcms/core-module": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "~3.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\\\$name\\\\": ".",
+            "Modules\\\\": "Modules/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
 JSON;
         $composerJson = str_replace($search, $replace, $composerJson);
         $this->finder->put($this->getModulesPath('composer.json'), $composerJson);

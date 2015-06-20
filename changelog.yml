@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.7":
+        changed:
+            - Use cleaner version getter in module show view
+            - Check if changelog isn't an empty array on the module show view
     "1.0.6":
         changed:
             - Fixing alignements in composer.json file

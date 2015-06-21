@@ -265,11 +265,11 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_sidebar_view_composer_file()
+    public function it_should_generate_sidebar_extender_file()
     {
         $this->scaffoldModuleWithEloquent();
 
-        $file1 = $this->finder->isFile($this->testModulePath . '/Composers/SidebarViewComposer.php');
+        $file1 = $this->finder->isFile($this->testModulePath . '/Sidebar/SidebarExtender.php');
 
         $this->assertTrue($file1);
 
@@ -277,23 +277,23 @@ class ModuleScaffoldTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_generate_filled_sidebar_view_composer()
+    public function it_should_generate_filled_sidebar_extender()
     {
         $this->scaffoldModuleWithEloquent();
 
-        $viewComposer = $this->finder->get($this->testModulePath . '/Composers/SidebarViewComposer.php');
+        $viewComposer = $this->finder->get($this->testModulePath . '/Sidebar/SidebarExtender.php');
 
-        $this->assertTrue(str_contains($viewComposer, '$view->sidebar'));
+        $this->assertTrue(str_contains($viewComposer, '$menu->group'));
     }
 
     /** @test */
-    public function it_should_generate_empty_view_composer_if_no_entities()
+    public function it_should_generate_empty_sidebar_extender_if_no_entities()
     {
         $this->scaffoldModule('Eloquent', [], []);
 
-        $viewComposer = $this->finder->get($this->testModulePath . '/Composers/SidebarViewComposer.php');
+        $viewComposer = $this->finder->get($this->testModulePath . '/Sidebar/SidebarExtender.php');
 
-        $this->assertFalse(str_contains($viewComposer, '$view->sidebar'));
+        $this->assertFalse(str_contains($viewComposer, '$menu->group'));
     }
 
     /** @test */

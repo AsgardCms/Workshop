@@ -35,7 +35,7 @@ class EntityGenerator extends Generator
         $entityType = strtolower($this->entityType);
         $entityTypeStub = "entity-{$entityType}.stub";
 
-        $this->generateSidebarViewComposer($entities);
+        $this->generateSidebarExtender($entities);
 
         foreach ($entities as $entity) {
             $this->writeFile(
@@ -208,11 +208,11 @@ class EntityGenerator extends Generator
      */
     private function appendSidebarLinksFor($entity)
     {
-        $sidebarComposerContent = $this->finder->get($this->getModulesPath('Composers/SidebarViewComposer.php'));
-        $content = $this->getContentForStub('append-sidebar-composer.stub', $entity);
+        $sidebarComposerContent = $this->finder->get($this->getModulesPath('Sidebar/SidebarExtender.php'));
+        $content = $this->getContentForStub('append-sidebar-extender.stub', $entity);
         $sidebarComposerContent = str_replace('// append', $content, $sidebarComposerContent);
 
-        $this->finder->put($this->getModulesPath('Composers/SidebarViewComposer.php'), $sidebarComposerContent);
+        $this->finder->put($this->getModulesPath('Sidebar/SidebarExtender.php'), $sidebarComposerContent);
     }
 
     /**
@@ -220,12 +220,12 @@ class EntityGenerator extends Generator
      * Or an empty one of no entities
      * @param $entities
      */
-    private function generateSidebarViewComposer($entities)
+    private function generateSidebarExtender($entities)
     {
         if (count($entities) > 0) {
             return $this->writeFile(
-                $this->getModulesPath('Composers/SidebarViewComposer'),
-                $this->getContentForStub('sidebar-view-composer.stub', 'abc')
+                $this->getModulesPath('Sidebar/SidebarExtender'),
+                $this->getContentForStub('sidebar-extender.stub', 'abc')
             );
         }
 

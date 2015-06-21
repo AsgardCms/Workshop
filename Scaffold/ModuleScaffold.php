@@ -37,7 +37,6 @@ class ModuleScaffold
         'permissions.stub' => 'Config/permissions',
         'routes.stub' => 'Http/backendRoutes',
         'route-provider.stub' => 'Providers/RouteServiceProvider',
-        'composers.stub' => 'composers',
     ];
     /**
      * @var string The type of entities to generate [Eloquent or Doctrine]
@@ -94,7 +93,7 @@ class ModuleScaffold
 
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
-        $this->renameStartFileToComposersFile();
+        $this->removeStartPhpFile();
         $this->addDataToComposerFile();
         $this->removeUnneededFiles();
         $this->addFolders();
@@ -179,11 +178,11 @@ class ModuleScaffold
      * Remove the start.php start file
      * Also removes the auto loading of that file
      */
-    private function renameStartFileToComposersFile()
+    private function removeStartPhpFile()
     {
         $this->finder->delete($this->getModulesPath('start.php'));
         $moduleJsonContent = $this->finder->get($this->getModulesPath('module.json'));
-        $moduleJsonContent = str_replace('"start.php"', '"composers.php"', $moduleJsonContent);
+        $moduleJsonContent = str_replace('"start.php"', '', $moduleJsonContent);
         $this->finder->put($this->getModulesPath('module.json'), $moduleJsonContent);
     }
 
@@ -235,7 +234,7 @@ JSON;
 
     private function addFolders()
     {
-        $this->finder->makeDirectory($this->getModulesPath('Composers'));
+        $this->finder->makeDirectory($this->getModulesPath('Sidebar'));
         $this->finder->makeDirectory($this->getModulesPath('Repositories/Cache'));
     }
 

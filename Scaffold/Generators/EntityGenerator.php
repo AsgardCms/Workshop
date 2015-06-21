@@ -230,7 +230,7 @@ class EntityGenerator extends Generator
         }
 
         return $this->writeFile(
-            $this->getModulesPath('Composers/SidebarViewComposer'),
+            $this->getModulesPath('Sidebar/SidebarExtender'),
             $this->getContentForStub('empty-sidebar-view-composer.stub', 'abc')
         );
     }

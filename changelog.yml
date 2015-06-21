@@ -1,5 +1,12 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.8":
+        added:
+            - Using new sidebar extender class
+        changed:
+            - Updating the module generator to generate a SidebarExtender class
+        removed:
+            - Old SidebarViewComposer
     "1.0.7":
         changed:
             - Use cleaner version getter in module show view

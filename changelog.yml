@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.9":
+        changed:
+            - Use the new Laravel-Sidebar api on the generated modules
     "1.0.8":
         added:
             - Using new sidebar extender class

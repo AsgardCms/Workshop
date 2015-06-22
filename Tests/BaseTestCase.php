@@ -1,5 +1,8 @@
 <?php namespace Modules\Workshop\Tests;
 
+use Collective\Html\FormFacade;
+use Collective\Html\HtmlFacade;
+use Collective\Html\HtmlServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 abstract class BaseTestCase extends TestCase
@@ -12,8 +15,19 @@ abstract class BaseTestCase extends TestCase
     protected function getPackageProviders($app)
     {
         return [
+            'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
             'Modules\Workshop\Providers\WorkshopServiceProvider',
             'Pingpong\Modules\ModulesServiceProvider',
+            HtmlServiceProvider::class,
+        ];
+    }
+
+    protected function getPackageAliases($app)
+    {
+        return [
+            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+            'Form' => FormFacade::class,
+            'Html' => HtmlFacade::class,
         ];
     }
 

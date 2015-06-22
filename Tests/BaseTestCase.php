@@ -3,7 +3,11 @@
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
 use Collective\Html\HtmlServiceProvider;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
+use Modules\Workshop\Providers\WorkshopServiceProvider;
 use Orchestra\Testbench\TestCase;
+use Pingpong\Modules\ModulesServiceProvider;
 
 abstract class BaseTestCase extends TestCase
 {
@@ -15,9 +19,9 @@ abstract class BaseTestCase extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-            'Modules\Workshop\Providers\WorkshopServiceProvider',
-            'Pingpong\Modules\ModulesServiceProvider',
+            LaravelLocalizationServiceProvider::class,
+            WorkshopServiceProvider::class,
+            ModulesServiceProvider::class,
             HtmlServiceProvider::class,
         ];
     }
@@ -25,7 +29,7 @@ abstract class BaseTestCase extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+            'LaravelLocalization' => LaravelLocalization::class,
             'Form' => FormFacade::class,
             'Html' => HtmlFacade::class,
         ];

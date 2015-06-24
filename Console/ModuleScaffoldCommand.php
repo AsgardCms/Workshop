@@ -1,7 +1,7 @@
 <?php namespace Modules\Workshop\Console;
 
 use Illuminate\Console\Command;
-use Modules\Workshop\Scaffold\ModuleScaffold;
+use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 
 class ModuleScaffoldCommand extends Command
 {

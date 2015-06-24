@@ -1,12 +1,12 @@
-<?php namespace Modules\Workshop\Scaffold;
+<?php namespace Modules\Workshop\Scaffold\Module;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
-use Modules\Workshop\Scaffold\Exception\ModuleExistsException;
-use Modules\Workshop\Scaffold\Generators\EntityGenerator;
-use Modules\Workshop\Scaffold\Generators\FilesGenerator;
-use Modules\Workshop\Scaffold\Generators\ValueObjectGenerator;
+use Modules\Workshop\Scaffold\Module\Exception\ModuleExistsException;
+use Modules\Workshop\Scaffold\Module\Generators\EntityGenerator;
+use Modules\Workshop\Scaffold\Module\Generators\FilesGenerator;
+use Modules\Workshop\Scaffold\Module\Generators\ValueObjectGenerator;
 
 class ModuleScaffold
 {

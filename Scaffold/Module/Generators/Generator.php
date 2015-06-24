@@ -1,4 +1,4 @@
-<?php namespace Modules\Workshop\Scaffold\Generators;
+<?php namespace Modules\Workshop\Scaffold\Module\Generators;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;

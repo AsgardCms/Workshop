@@ -1,6 +1,6 @@
 <?php namespace Modules\Workshop\Tests;
 
-use Modules\Workshop\Scaffold\ModuleScaffold;
+use Modules\Workshop\Scaffold\Module\ModuleScaffold;
 
 class ModuleScaffoldTest extends BaseTestCase
 {
@@ -62,7 +62,7 @@ class ModuleScaffoldTest extends BaseTestCase
      * @param $type
      * @param $entities
      * @param $valueObjects
-     * @throws \Modules\Workshop\Scaffold\Exception\ModuleExistsException
+     * @throws \Modules\Workshop\Scaffold\Module\Exception\ModuleExistsException
      */
     private function scaffoldModule($type, $entities, $valueObjects)
     {

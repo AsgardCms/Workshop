@@ -2,9 +2,12 @@
 
 use Illuminate\Filesystem\Filesystem;
 use Modules\Workshop\Scaffold\Theme\Exceptions\ThemeExistsException;
+use Modules\Workshop\Scaffold\Theme\Traits\FindsThemePath;
 
 class ThemeScaffold
 {
+    use FindsThemePath;
+
     /**
      * @var array
      */
@@ -14,6 +17,13 @@ class ThemeScaffold
         'packageJson',
         'baseLayout',
     ];
+    /**
+     * Options array containing:
+     *  - name
+     *  - type
+     * @var array
+     */
+    protected $options;
 
     /**
      * @var ThemeGeneratorFactory
@@ -30,17 +40,43 @@ class ThemeScaffold
         $this->finder = $finder;
     }
 
-    public function generate($name)
+    /**
+     * @throws Exceptions\FileTypeNotFoundException
+     * @throws ThemeExistsException
+     */
+    public function generate()
     {
-        if ($this->finder->isDirectory($this->themePath($name))) {
+        if ($this->finder->isDirectory($this->themePath($this->options['name']))) {
             throw new ThemeExistsException();
         }
 
-        $this->finder->makeDirectory($this->themePath($name));
+        $this->finder->makeDirectory($this->themePath($this->options['name']));
 
         foreach ($this->files as $file) {
-            $this->themeGeneratorFactory->make($file)->generate();
+            $this->themeGeneratorFactory->make($file, $this->options)->generate();
         }
+    }
+
+    /**
+     * @param $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->options['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function forType($type)
+    {
+        $this->options['type'] = $type;
+
+        return $this;
     }
 
     /**
@@ -50,14 +86,5 @@ class ThemeScaffold
     public function setFiles(array $files)
     {
         $this->files = $files;
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    private function themePath($name = '')
-    {
-        return config('stylist.themes.paths')[0] . "/$name";
     }
 }

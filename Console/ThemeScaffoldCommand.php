@@ -5,7 +5,7 @@ use Modules\Workshop\Scaffold\Theme\ThemeScaffold;
 
 class ThemeScaffoldCommand extends Command
 {
-    protected $signature = 'asgard:theme:scaffold {name}';
+    protected $signature = 'asgard:theme:scaffold';
     protected $description = 'Scaffold a new theme';
     /**
      * @var ThemeScaffold

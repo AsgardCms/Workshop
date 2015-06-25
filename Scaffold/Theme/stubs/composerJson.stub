@@ -1,5 +1,5 @@
 {
-  "name": "{{vendor}}/{{themeName}}-theme",
+  "name": "{{vendor}}/{{theme-name}}-theme",
   "type": "asgard-theme",
   "description": "",
   "keywords": [

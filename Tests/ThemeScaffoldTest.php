@@ -79,6 +79,6 @@ class ThemeScaffoldTest extends BaseTestCase
 
         $this->scaffold->generate($this->testThemeName);
 
-        $this->finder->isFile($this->testThemePath . '/theme.json');
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
     }
 }

@@ -40,7 +40,7 @@ class ThemeScaffoldTest extends BaseTestCase
 
     private function generateFrontendTheme()
     {
-        $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgarcms')->generate();
+        $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgardcms')->generate();
     }
 
     public function tearDown()
@@ -113,4 +113,14 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"type": "frontend"'));
     }
 
+    /** @test */
+    public function it_creates_composer_json_file()
+    {
+        $this->scaffold->setFiles(['composerJson']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/composer.json'));
+        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/composer.json'), '"name": "asgardcms/TestingTheme-theme",'));
+    }
 }

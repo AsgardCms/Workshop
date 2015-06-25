@@ -38,6 +38,11 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->testThemePath = base_path("Themes/{$this->testThemeName}");
     }
 
+    private function generateFrontendTheme()
+    {
+        $this->scaffold->setName($this->testThemeName)->forType('frontend')->generate();
+    }
+
     public function tearDown()
     {
         $this->finder->deleteDirectory($this->testThemePath);
@@ -49,7 +54,7 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->scaffold->setFiles([]);
 
-        $this->scaffold->generate($this->testThemeName);
+        $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isDirectory($this->testThemePath));
     }
@@ -59,7 +64,7 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->setExpectedException(FileTypeNotFoundException::class);
 
-        $this->scaffold->generate($this->testThemeName);
+        $this->generateFrontendTheme();
     }
 
     /** @test */
@@ -68,8 +73,8 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->setExpectedException(ThemeExistsException::class);
 
         $this->scaffold->setFiles([]);
-        $this->scaffold->generate($this->testThemeName);
-        $this->scaffold->generate($this->testThemeName);
+        $this->generateFrontendTheme();
+        $this->generateFrontendTheme();
     }
 
     /** @test */
@@ -77,7 +82,7 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->scaffold->setFiles(['themeJson']);
 
-        $this->scaffold->generate($this->testThemeName);
+        $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
     }

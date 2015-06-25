@@ -61,5 +61,6 @@ abstract class BaseTestCase extends TestCase
             'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français'],
         ]);
         $app['config']->set('modules.paths.modules', realpath(__DIR__ . '/../Modules'));
+        $app['config']->set('stylist.themes.paths', [base_path('Themes')]);
     }
 }

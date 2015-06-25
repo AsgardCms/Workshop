@@ -40,7 +40,7 @@ class ThemeScaffoldTest extends BaseTestCase
 
     private function generateFrontendTheme()
     {
-        $this->scaffold->setName($this->testThemeName)->forType('frontend')->generate();
+        $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('asgarcms')->generate();
     }
 
     public function tearDown()
@@ -82,7 +82,7 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a name');
 
-        $this->scaffold->setName('')->forType('frontend')->generate();
+        $this->scaffold->setName('')->forType('frontend')->setVendor('asgardcms')->generate();
     }
 
     /** @test */
@@ -90,7 +90,15 @@ class ThemeScaffoldTest extends BaseTestCase
     {
         $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a type');
 
-        $this->scaffold->setName($this->testThemeName)->forType('')->generate();
+        $this->scaffold->setName($this->testThemeName)->forType('')->setVendor('asgardcms')->generate();
+    }
+
+    /** @test */
+    public function it_throws_exception_if_no_vendor_provided()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a vendor name');
+
+        $this->scaffold->setName($this->testThemeName)->forType('frontend')->setVendor('')->generate();
     }
 
     /** @test */

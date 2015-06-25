@@ -13,6 +13,7 @@ class ThemeScaffold
      */
     protected $files = [
         'themeJson',
+        'composerJson',
         'gulpfileJs',
         'packageJson',
         'baseLayout',
@@ -83,6 +84,17 @@ class ThemeScaffold
         }
 
         $this->options['type'] = $type;
+
+        return $this;
+    }
+
+    public function setVendor($vendor)
+    {
+        if (empty($vendor)) {
+            throw new \InvalidArgumentException('You must provide a vendor name');
+        }
+
+        $this->options['vendor'] = $vendor;
 
         return $this;
     }

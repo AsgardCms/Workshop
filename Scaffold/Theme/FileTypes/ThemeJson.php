@@ -2,24 +2,9 @@
 
 use Modules\Workshop\Scaffold\Theme\Traits\FindsThemePath;
 
-class ThemeJson implements FileType
+class ThemeJson extends BaseFileType implements FileType
 {
     use FindsThemePath;
-
-    /**
-     * @var \Illuminate\Filesystem\Filesystem
-     */
-    protected $finder;
-    /**
-     * @var array
-     */
-    private $options;
-
-    public function __construct(array $options)
-    {
-        $this->finder = app('Illuminate\Filesystem\Filesystem');
-        $this->options = $options;
-    }
 
     /**
      * Generate the current file type

@@ -47,7 +47,7 @@ class ThemeScaffold
     public function generate()
     {
         if ($this->finder->isDirectory($this->themePath($this->options['name']))) {
-            throw new ThemeExistsException();
+            throw new ThemeExistsException("The theme [{$this->options['name']}] already exists");
         }
 
         $this->finder->makeDirectory($this->themePath($this->options['name']));

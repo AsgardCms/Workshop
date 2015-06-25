@@ -63,6 +63,10 @@ class ThemeScaffold
      */
     public function setName($name)
     {
+        if (empty($name)) {
+            throw new \InvalidArgumentException('You must provide a name');
+        }
+
         $this->options['name'] = $name;
 
         return $this;
@@ -74,6 +78,10 @@ class ThemeScaffold
      */
     public function forType($type)
     {
+        if (empty($type)) {
+            throw new \InvalidArgumentException('You must provide a type');
+        }
+
         $this->options['type'] = $type;
 
         return $this;

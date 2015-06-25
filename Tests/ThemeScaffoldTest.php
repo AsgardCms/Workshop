@@ -78,6 +78,22 @@ class ThemeScaffoldTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_throws_exception_if_no_name_provided()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a name');
+
+        $this->scaffold->setName('')->forType('frontend')->generate();
+    }
+
+    /** @test */
+    public function it_throws_exception_if_no_type_provided()
+    {
+        $this->setExpectedException(\InvalidArgumentException::class, 'You must provide a type');
+
+        $this->scaffold->setName($this->testThemeName)->forType('')->generate();
+    }
+
+    /** @test */
     public function it_creates_theme_json_file()
     {
         $this->scaffold->setFiles(['themeJson']);

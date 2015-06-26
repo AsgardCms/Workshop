@@ -162,4 +162,21 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/js/.gitignore'));
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/images/.gitignore'));
     }
+
+    /** @test */
+    public function it_creates_empty_assets_folder()
+    {
+        $this->scaffold->setFiles(['assetsFolder']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/assets'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/assets/css'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/assets/js'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/assets/images'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/css/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/js/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/assets/images/.gitignore'));
+    }
 }

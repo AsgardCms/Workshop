@@ -17,6 +17,7 @@ class ThemeScaffold
         'masterBladeLayout',
         'basicView',
         'resourcesFolder',
+        'assetsFolder',
     ];
     /**
      * Options array containing:

@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.11":
+        changed:
+            - Fixed case sensitive issue
     "1.0.10":
         added:
             - Adding a theme scaffold command, you can use it with <code>php artisan asgard:theme:scaffold</code>

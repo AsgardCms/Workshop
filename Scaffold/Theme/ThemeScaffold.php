@@ -14,9 +14,7 @@ class ThemeScaffold
     protected $files = [
         'themeJson',
         'composerJson',
-        'gulpfileJs',
-        'packageJson',
-        'baseLayout',
+        'masterBladeLayout',
     ];
     /**
      * Options array containing:

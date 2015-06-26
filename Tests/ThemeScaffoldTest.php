@@ -62,6 +62,8 @@ class ThemeScaffoldTest extends BaseTestCase
     /** @test */
     public function it_throws_exception_if_file_type_does_not_exist()
     {
+        $this->scaffold->setFiles(['OneTwoThree']);
+
         $this->setExpectedException(FileTypeNotFoundException::class);
 
         $this->generateFrontendTheme();
@@ -122,5 +124,15 @@ class ThemeScaffoldTest extends BaseTestCase
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/composer.json'));
         $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/composer.json'), '"name": "asgardcms/TestingTheme-theme",'));
+    }
+
+    /** @test */
+    public function it_creates_master_blade_layout()
+    {
+        $this->scaffold->setFiles(['masterBladeLayout']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/layouts/master.blade.php'));
     }
 }

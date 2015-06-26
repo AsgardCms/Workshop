@@ -20,13 +20,30 @@ class ThemeScaffoldCommand extends Command
 
     public function fire()
     {
-        $themeName = $this->ask('Please enter the theme name in the following format: vendor/name');
-        list($vendor, $name) = $this->separateVendorAndName($themeName);
+        list($vendor, $name) = $this->askThemeName();
+
         $type = $this->choice('Would you like to create a front end or backend theme ?', ['Frontend', 'Backend'], 0);
 
         $this->themeScaffold->setName($name)->setVendor($vendor)->forType(strtolower($type))->generate();
 
-        $this->info("Generated a fresh theme called [$themeName]. You'll find it in the Themes/ folder");
+        $this->info("Generated a fresh theme called [$name]. You'll find it in the Themes/ folder");
+    }
+
+    /**
+     * Ask for the vendor and name, make sure it's the right format
+     * @return string
+     */
+    private function askThemeName()
+    {
+        do {
+            $themeName = $this->ask('Please enter the theme name in the following format: vendor/name');
+            if ($themeName == '') {
+                $this->command->error('Theme name is required in the following format: vendor/name');
+            }
+            $separatedVendorAndName = $this->separateVendorAndName($themeName);
+        } while (! is_array($separatedVendorAndName));
+
+        return $separatedVendorAndName;
     }
 
     /**

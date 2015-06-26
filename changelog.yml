@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.0.10":
+        added:
+            - Adding a theme scaffold command, you can use it with <code>php artisan asgard:theme:scaffold</code>
+        changed:
+            - Added protection on the module scaffold command for the vendor/name structure
     "1.0.9":
         changed:
             - Use the new Laravel-Sidebar api on the generated modules

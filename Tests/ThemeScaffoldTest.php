@@ -145,4 +145,21 @@ class ThemeScaffoldTest extends BaseTestCase
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/index.blade.php'));
     }
+
+    /** @test */
+    public function it_creates_empty_resources_folder()
+    {
+        $this->scaffold->setFiles(['resourcesFolder']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/resources'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/resources/css'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/resources/js'));
+        $this->assertTrue($this->finder->isDirectory($this->testThemePath . '/resources/images'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/css/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/js/.gitignore'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/resources/images/.gitignore'));
+    }
 }

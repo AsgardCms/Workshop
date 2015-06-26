@@ -16,6 +16,7 @@ class ThemeScaffold
         'composerJson',
         'masterBladeLayout',
         'basicView',
+        'resourcesFolder',
     ];
     /**
      * Options array containing:

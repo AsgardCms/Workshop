@@ -135,4 +135,14 @@ class ThemeScaffoldTest extends BaseTestCase
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/layouts/master.blade.php'));
     }
+
+    /** @test */
+    public function it_creates_basic_view()
+    {
+        $this->scaffold->setFiles(['masterBladeLayout', 'basicView']);
+
+        $this->generateFrontendTheme();
+
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/index.blade.php'));
+    }
 }

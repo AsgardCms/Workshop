@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.2.0":
+        changed:
+            - Setting the app.locale
     "1.1.0":
         changed:
             - Generated migrations now have the table engine specified

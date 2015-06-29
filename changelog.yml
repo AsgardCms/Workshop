@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.1.0":
+        changed:
+            - Generated migrations now have the table engine specified
     "1.0.11":
         changed:
             - Fixed case sensitive issue

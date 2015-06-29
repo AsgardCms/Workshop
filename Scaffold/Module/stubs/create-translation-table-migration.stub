@@ -13,6 +13,7 @@ class Create$MODULE_NAME$$CLASS_NAME$TranslationsTable extends Migration
 	public function up()
 	{
 		Schema::create('$LOWERCASE_MODULE_NAME$__$LOWERCASE_CLASS_NAME$_translations', function(Blueprint $table) {
+			$table->engine = 'InnoDB';
             $table->increments('id');
             // Your translatable fields
 

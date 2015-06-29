@@ -111,7 +111,7 @@ class ThemeScaffoldTest extends BaseTestCase
         $this->generateFrontendTheme();
 
         $this->assertTrue($this->finder->isFile($this->testThemePath . '/theme.json'));
-        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"name": "'.$this->testThemeName.'",'));
+        $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"name": "' . $this->testThemeName . '",'));
         $this->assertTrue(str_contains($this->finder->get($this->testThemePath . '/theme.json'), '"type": "frontend"'));
     }
 

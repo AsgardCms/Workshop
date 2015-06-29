@@ -2,7 +2,7 @@
 
 use Modules\Workshop\Scaffold\Theme\Traits\FindsThemePath;
 
-class assetsFolder extends BaseFileType implements FileType
+class AssetsFolder extends BaseFileType implements FileType
 {
     use FindsThemePath;
 

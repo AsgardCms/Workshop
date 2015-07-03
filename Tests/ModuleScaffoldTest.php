@@ -294,6 +294,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $viewComposer = $this->finder->get($this->testModulePath . '/Sidebar/SidebarExtender.php');
 
         $this->assertFalse(str_contains($viewComposer, '$menu->group'));
+        $this->assertTrue(str_contains($viewComposer, 'return $menu'));
     }
 
     /** @test */

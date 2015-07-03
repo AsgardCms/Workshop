@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.2.1":
+        changed:
+            - Return empty menu instance on generation of module with no entities
     "1.2.0":
         changed:
             - Remove the v from the version column to sort properly

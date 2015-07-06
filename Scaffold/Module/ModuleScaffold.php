@@ -93,7 +93,6 @@ class ModuleScaffold
 
         $this->artisan->call("module:make", ['name' => [$this->name]]);
 
-        $this->removeStartPhpFile();
         $this->addDataToComposerFile();
         $this->removeUnneededFiles();
         $this->addFolders();
@@ -102,7 +101,7 @@ class ModuleScaffold
             ->generateModuleProvider()
             ->generate($this->files);
 
-        $this->loadProviders();
+        $this->cleanUpModuleJson();
 
         $this->entityGenerator->forModule($this->name)->type($this->entityType)->generate($this->entities);
         $this->valueObjectGenerator->forModule($this->name)->type($this->entityType)->generate($this->valueObjects);
@@ -175,18 +174,6 @@ class ModuleScaffold
     }
 
     /**
-     * Remove the start.php start file
-     * Also removes the auto loading of that file
-     */
-    private function removeStartPhpFile()
-    {
-        $this->finder->delete($this->getModulesPath('start.php'));
-        $moduleJsonContent = $this->finder->get($this->getModulesPath('module.json'));
-        $moduleJsonContent = str_replace('"start.php"', '', $moduleJsonContent);
-        $this->finder->put($this->getModulesPath('module.json'), $moduleJsonContent);
-    }
-
-    /**
      * Rename the default vendor name 'pingpong-modules'
      * by the input vendor name
      */
@@ -219,19 +206,63 @@ class ModuleScaffold
         $this->finder->delete($this->getModulesPath("Http/Controllers/{$this->name}Controller.php"));
     }
 
-    private function loadProviders()
+    /**
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function cleanUpModuleJson()
     {
-        $providerContent = $this->finder->get($this->getModulesPath('module.json'));
+        $moduleJson = $this->finder->get($this->getModulesPath('module.json'));
+
+        $moduleJson = $this->loadProviders($moduleJson);
+        $moduleJson = $this->setModuleOrderOrder($moduleJson);
+        $moduleJson = $this->removeStartPhpFile($moduleJson);
+
+        $this->finder->put($this->getModulesPath('module.json'), $moduleJson);
+    }
+
+    /**
+     * Load the routing service provider
+     * @param string $content
+     * @return string
+     */
+    private function loadProviders($content)
+    {
         $newProviders = <<<JSON
 "Modules\\\\{$this->name}\\\Providers\\\\{$this->name}ServiceProvider",
         "Modules\\\\{$this->name}\\\Providers\\\RouteServiceProvider"
 JSON;
 
         $oldProvider = '"Modules\\\\' . $this->name . '\\\\Providers\\\\' . $this->name . 'ServiceProvider"';
-        $providerContent = str_replace($oldProvider, $newProviders, $providerContent);
-        $this->finder->put($this->getModulesPath('module.json'), $providerContent);
+
+        return  str_replace($oldProvider, $newProviders, $content);
     }
 
+    /**
+     * Set the module order to 1
+     * @param string $content
+     * @return string
+     */
+    private function setModuleOrderOrder($content)
+    {
+        return str_replace('"order": 0,', '"order": 1,', $content);
+    }
+
+    /**
+     * Remove the start.php start file
+     * Also removes the auto loading of that file
+     * @param string $content
+     * @return string
+     */
+    private function removeStartPhpFile($content)
+    {
+        $this->finder->delete($this->getModulesPath('start.php'));
+
+        return str_replace('"start.php"', '', $content);
+    }
+
+    /**
+     * Add required folders
+     */
     private function addFolders()
     {
         $this->finder->makeDirectory($this->getModulesPath('Sidebar'));

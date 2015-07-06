@@ -419,6 +419,16 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue($composerJson->$key);
     }
 
+    /** @test */
+    public function it_sets_module_order_to_1_in_module_json_file()
+    {
+        $this->scaffoldModuleWithEloquent();
+
+        $moduleJson = $this->getModuleFile();
+
+        $this->assertEquals(1, $moduleJson->order);
+    }
+
     /**
      * Get the contents of composer.json file
      * @return string
@@ -427,6 +437,18 @@ class ModuleScaffoldTest extends BaseTestCase
     private function getComposerFile()
     {
         $composerJson = $this->finder->get($this->testModulePath . '/composer.json');
+
+        return json_decode($composerJson);
+    }
+
+    /**
+     * Get the contents of module.json file
+     * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function getModuleFile()
+    {
+        $composerJson = $this->finder->get($this->testModulePath . '/module.json');
 
         return json_decode($composerJson);
     }

@@ -4,7 +4,9 @@ use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;
 use FloatingPoint\Stylist\Theme\Loader;
 use FloatingPoint\Stylist\Theme\Theme;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Parser;
 
 class StylistThemeManager implements ThemeManager
 {
@@ -67,6 +69,7 @@ class StylistThemeManager implements ThemeManager
         );
         $theme->version = $themeJson->getJsonAttribute('version');
         $theme->type = $themeJson->getJsonAttribute('type');
+        $theme->changelog = $this->getChangelog($directory);
 
         return $theme;
     }
@@ -80,5 +83,39 @@ class StylistThemeManager implements ThemeManager
         $themePath = config('stylist.themes.paths', [base_path('/Themes')]);
 
         return $this->finder->directories($themePath[0]);
+    }
+
+    /**
+     * @param string $directory
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function getChangelog($directory)
+    {
+        try {
+            $this->finder->isFile($directory . '/changelog.yml');
+        } catch (FileNotFoundException $e) {
+            return [];
+        }
+
+        $yamlFile = $this->finder->get($directory . '/changelog.yml');
+
+        $yamlParser = new Parser();
+
+        $changelog = $yamlParser->parse($yamlFile);
+
+        $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
+
+        return $changelog;
+    }
+
+    /**
+     * Limit the versions to the last 5
+     * @param array $versions
+     * @return array
+     */
+    private function limitLastVersionsAmount(array $versions)
+    {
+        return array_slice($versions, 0, 5);
     }
 }

@@ -19,6 +19,20 @@ class ThemesController extends AdminBaseController
         $this->themeManager = $themeManager;
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $themes = $this->themeManager->all();
+
+        return view('workshop::admin.themes.index', compact('themes'));
+    }
+
+    /**
+     * @param Theme $theme
+     * @return \Illuminate\View\View
+     */
     public function show(Theme $theme)
     {
         return view('workshop::admin.themes.show', compact('theme'));

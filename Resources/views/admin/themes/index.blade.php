@@ -6,7 +6,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
-    <li class="active">{{ trans('workshop::modules.breadcrumb.themes') }}</li>
+    <li class="active">{{ trans('workshop::themes.breadcrumb.themes') }}</li>
 </ol>
 @stop
 
@@ -31,6 +31,7 @@
                         <thead>
                         <tr>
                             <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th width="15%">{{ trans('workshop::themes.type') }}</th>
                             <th width="15%">{{ trans('workshop::modules.table.version') }}</th>
                             <th width="15%">{{ trans('workshop::modules.table.enabled') }}</th>
                         </tr>
@@ -42,6 +43,11 @@
                                     <td>
                                         <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">
                                             {{ $theme->getName() }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">
+                                            {{ ucfirst($theme->type) }}
                                         </a>
                                     </td>
                                     <td>
@@ -58,6 +64,7 @@
                         <tfoot>
                         <tr>
                             <th>{{ trans('workshop::modules.table.name') }}</th>
+                            <th>{{ trans('workshop::themes.type') }}</th>
                             <th>{{ trans('workshop::modules.table.version') }}</th>
                             <th>{{ trans('workshop::modules.table.enabled') }}</th>
                         </tr>

@@ -8,6 +8,7 @@ return [
         'enable',
     ],
     'workshop.themes' => [
+        'index',
         'show',
     ],
     /*'workshop.workbench' => [

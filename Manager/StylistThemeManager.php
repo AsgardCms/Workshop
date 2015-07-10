@@ -70,6 +70,7 @@ class StylistThemeManager implements ThemeManager
         $theme->version = $themeJson->getJsonAttribute('version');
         $theme->type = ucfirst($themeJson->getJsonAttribute('type'));
         $theme->changelog = $this->getChangelog($directory);
+        $theme->active = $this->getStatus($theme);
 
         return $theme;
     }
@@ -117,5 +118,19 @@ class StylistThemeManager implements ThemeManager
     private function limitLastVersionsAmount(array $versions)
     {
         return array_slice($versions, 0, 5);
+    }
+
+    /**
+     * Check if the theme is active based on its type
+     * @param Theme $theme
+     * @return bool
+     */
+    private function getStatus(Theme $theme)
+    {
+        if ($theme->type !== 'Backend') {
+            return setting('core::template') === $theme->getName();
+        }
+
+        return config('asgard.core.core.admin-theme') === $theme->getName();
     }
 }

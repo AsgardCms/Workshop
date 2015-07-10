@@ -38,7 +38,6 @@
                         <tbody>
                         <?php if (isset($modules)): ?>
                         <?php foreach ($modules as $module): ?>
-
                         <tr>
                             <td>
                                 <a href="{{ route('admin.workshop.modules.show', [$module->getLowerName()]) }}">

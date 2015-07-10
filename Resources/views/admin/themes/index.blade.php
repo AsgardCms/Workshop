@@ -56,6 +56,11 @@
                                         </a>
                                     </td>
                                     <td>
+                                        <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">
+                                            <span class="label label-{{$theme->active ? 'success' : 'danger'}}">
+                                                {{ $theme->active ? trans('workshop::modules.enabled') : trans('workshop::modules.disabled') }}
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

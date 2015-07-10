@@ -6,4 +6,5 @@ return [
         'themes' => 'Thèmes',
     ],
     'theme' => 'Thème',
+    'viewing theme' => 'Affichage du thème :theme',
 ];

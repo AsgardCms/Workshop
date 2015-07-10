@@ -5,6 +5,8 @@ use Modules\Core\Services\Composer;
 use Modules\Workshop\Console\ModuleScaffoldCommand;
 use Modules\Workshop\Console\ThemeScaffoldCommand;
 use Modules\Workshop\Console\UpdateModuleCommand;
+use Modules\Workshop\Manager\StylistThemeManager;
+use Modules\Workshop\Manager\ThemeManager;
 use Modules\Workshop\Scaffold\Module\Generators\EntityGenerator;
 use Modules\Workshop\Scaffold\Module\Generators\FilesGenerator;
 use Modules\Workshop\Scaffold\Module\Generators\ValueObjectGenerator;
@@ -29,6 +31,7 @@ class WorkshopServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerCommands();
+        $this->bindThemeManager();
     }
 
     /**
@@ -88,6 +91,16 @@ class WorkshopServiceProvider extends ServiceProvider
 
         $this->app->bindShared('command.asgard.theme.scaffold', function ($app) {
             return new ThemeScaffoldCommand($app['asgard.theme.scaffold']);
+        });
+    }
+
+    /**
+     * Bind the theme manager
+     */
+    private function bindThemeManager()
+    {
+        $this->app->singleton(ThemeManager::class, function($app) {
+            return new StylistThemeManager($app['files']);
         });
     }
 }

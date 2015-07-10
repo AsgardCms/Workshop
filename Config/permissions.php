@@ -7,6 +7,9 @@ return [
         'disable',
         'enable',
     ],
+    'workshop.themes' => [
+        'show',
+    ],
     /*'workshop.workbench' => [
         'index',
         'generate',

@@ -4,7 +4,7 @@ interface ThemeManager
 {
     /**
      * Get all themes
-     * @return mixed
+     * @return array
      */
     public function all();
 }

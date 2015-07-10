@@ -2,5 +2,6 @@
 
 return [
     'title' => 'Workshop',
-    'modules' => 'Modules'
+    'modules' => 'Modules',
+    'themes' => 'Thèmes',
 ];

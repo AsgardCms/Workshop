@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 $router->bind('module', function ($module) {
-    return app('Pingpong\Modules\Repository')->find($module);
+    return app(\Pingpong\Modules\Repository::class)->find($module);
 });
 
 $router->group(['prefix' => '/workshop'],

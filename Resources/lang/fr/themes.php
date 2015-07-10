@@ -7,4 +7,5 @@ return [
     ],
     'theme' => 'Thème',
     'viewing theme' => 'Affichage du thème :theme',
+    'type' => 'Type',
 ];

@@ -5,6 +5,9 @@ use Illuminate\Routing\Router;
 $router->bind('module', function ($module) {
     return app(\Pingpong\Modules\Repository::class)->find($module);
 });
+$router->bind('theme', function ($theme) {
+    return app(\Modules\Workshop\Manager\ThemeManager::class)->find($theme);
+});
 
 $router->group(['prefix' => '/workshop'],
     function (Router $router) {

@@ -68,7 +68,7 @@ class StylistThemeManager implements ThemeManager
             $themeJson->getJsonAttribute('parent')
         );
         $theme->version = $themeJson->getJsonAttribute('version');
-        $theme->type = $themeJson->getJsonAttribute('type');
+        $theme->type = ucfirst($themeJson->getJsonAttribute('type'));
         $theme->changelog = $this->getChangelog($directory);
 
         return $theme;

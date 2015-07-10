@@ -31,10 +31,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
     {
         $menu->group(trans('workshop::workshop.title'), function (Group $group) {
             $group->weight(100);
-            $group->authorize(
-                $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.workbench.index')
-            );
-
             $group->item(trans('workshop::workshop.modules'), function (Item $item) {
                 $item->icon('fa fa-cogs');
                 $item->weight(100);
@@ -43,6 +39,28 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                     $this->auth->hasAccess('workshop.modules.index')
                 );
             });
+            $group->item(trans('workshop::workshop.themes'), function (Item $item) {
+                $item->icon('fa fa-cogs');
+                $item->weight(100);
+                $item->route('admin.workshop.themes.index');
+                $item->authorize(
+                    $this->auth->hasAccess('workshop.themes.index')
+                );
+            });
+//            $group->item(trans('workshop::workshop.title'), function (Item $item) {
+//                $item->weight(100);
+//                $item->authorize(
+//                    $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.themes.index')
+//                );
+//                $item->item(trans('workshop::workshop.modules'), function (Item $item) {
+//                    $item->icon('fa fa-cogs');
+//                    $item->weight(100);
+//                    $item->route('admin.workshop.modules.index');
+//                    $item->authorize(
+//                        $this->auth->hasAccess('workshop.modules.index')
+//                    );
+//                });
+//            });
         });
 
         return $menu;

@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
-    "1.5.0":
+    "1.4.0":
         added:
             - Theme can now be managed from UI
             - Theme assets can be be published from UI

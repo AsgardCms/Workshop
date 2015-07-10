@@ -3,17 +3,17 @@
 @section('content-header')
     <h1>
         <small>
-            <a href="{{ route('admin.workshop.modules.index') }}" data-toggle="tooltip"
+            <a href="{{ route('admin.workshop.themes.index') }}" data-toggle="tooltip"
                title="" data-original-title="{{ trans('core::core.back') }}">
                 <i class="fa fa-reply"></i>
             </a>
         </small>
-        {{ $theme->getName() }} <small>{{ trans('workshop::modules.module') }}</small>
+        {{ $theme->getName() }} <small>{{ trans('workshop::themes.theme') }}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('user::users.breadcrumb.home') }}</a></li>
-        <li><a href="{{ route('admin.workshop.modules.index') }}">{{ trans('workshop::modules.breadcrumb.modules') }}</a></li>
-        <li class="active">{{ trans('workshop::modules.viewing module') }} {{ $theme->getName() }}</li>
+        <li><a href="{{ route('admin.workshop.themes.index') }}">{{ trans('workshop::themes.breadcrumb.themes') }}</a></li>
+        <li class="active">{{ trans('workshop::themes.viewing theme', ['theme' => $theme->getName()]) }}</li>
     </ol>
 @stop
 
@@ -28,6 +28,9 @@
         .module-type i {
             font-size: 124px;
             margin-right: 20px;
+        }
+        .module-type span {
+            margin-left: -20px;
         }
         form {
             display: inline;
@@ -53,13 +56,18 @@
                         <div class="col-sm-6 module-details">
                             <div class="module-type pull-left">
                                 <i class="fa fa-picture-o"></i>
-                                <span>{{ $theme->version }}</span>
+                                <span>
+                                    {{ $theme->version }}
+                                </span>
                             </div>
                             <h2>{{ ucfirst($theme->getName()) }}</h2>
                             <p>{{ $theme->getDescription() }}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p><em>More coming soon...</em></p>
+                            <dl class="dl-horizontal">
+                                <dt>{{ trans('workshop::themes.type') }}:</dt>
+                                <dd>{{ $theme->type }}</dd>
+                            </dl>
                         </div>
                     </div>
                 </div>

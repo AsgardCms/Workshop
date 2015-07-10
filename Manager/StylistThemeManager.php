@@ -1,5 +1,6 @@
 <?php namespace Modules\Workshop\Manager;
 
+use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;
 use FloatingPoint\Stylist\Theme\Loader;
 use FloatingPoint\Stylist\Theme\Theme;
@@ -22,8 +23,7 @@ class StylistThemeManager implements ThemeManager
      */
     public function all()
     {
-        $themePath = config('stylist.themes.paths', [base_path('/Themes')]);
-        $directories = $this->finder->directories($themePath[0]);
+        $directories = $this->getDirectories();
 
         $themes = [];
         foreach ($directories as $directory) {
@@ -31,6 +31,24 @@ class StylistThemeManager implements ThemeManager
         }
 
         return $themes;
+    }
+
+    /**
+     * @param string $themeName
+     * @return Theme
+     * @throws ThemeNotFoundException
+     */
+    public function find($themeName)
+    {
+        foreach ($this->getDirectories() as $directory) {
+            if (! str_contains($directory, $themeName)) {
+                continue;
+            }
+
+            return $this->getThemeInfoForPath($directory);
+        }
+
+        throw new ThemeNotFoundException($themeName);
     }
 
     /**
@@ -51,5 +69,16 @@ class StylistThemeManager implements ThemeManager
         $theme->type = $themeJson->getJsonAttribute('type');
 
         return $theme;
+    }
+
+    /**
+     * Get all theme directories
+     * @return array
+     */
+    private function getDirectories()
+    {
+        $themePath = config('stylist.themes.paths', [base_path('/Themes')]);
+
+        return $this->finder->directories($themePath[0]);
     }
 }

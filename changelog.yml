@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.5.0":
+        added:
+            - Theme can now be managed from UI
+            - Theme assets can be be published from UI
     "1.3.0":
         changed:
             - Set module order to 1 in <code>module.json</code>

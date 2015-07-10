@@ -18,6 +18,7 @@ $router->group(['prefix' => '/workshop'],
         $router->post('modules/disable/{module}', ['as' => 'admin.workshop.modules.disable', 'uses' => 'ModulesController@disable']);
         $router->post('modules/enable/{module}', ['as' => 'admin.workshop.modules.enable', 'uses' => 'ModulesController@enable']);
 
+        $router->get('themes', ['as' => 'admin.workshop.themes.index', 'uses' => 'ThemesController@index']);
         $router->get('themes/{theme}', ['as' => 'admin.workshop.themes.show', 'uses' => 'ThemesController@show']);
 
         # Workbench

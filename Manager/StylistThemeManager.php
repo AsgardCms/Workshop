@@ -48,6 +48,7 @@ class StylistThemeManager implements ThemeManager
             $themeJson->getJsonAttribute('parent')
         );
         $theme->version = $themeJson->getJsonAttribute('version');
+        $theme->type = $themeJson->getJsonAttribute('type');
 
         return $theme;
     }

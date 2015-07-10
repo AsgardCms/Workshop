@@ -2,11 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Workshop\Manager\ModuleManager;
+use Modules\Workshop\Manager\ThemeManager;
 use Pingpong\Modules\Module;
 use Pingpong\Modules\Repository;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -21,13 +21,18 @@ class ModulesController extends AdminBaseController
      * @var Repository
      */
     private $modules;
+    /**
+     * @var ThemeManager
+     */
+    private $themeManager;
 
-    public function __construct(ModuleManager $moduleManager, Repository $modules)
+    public function __construct(ModuleManager $moduleManager, Repository $modules, ThemeManager $themeManager)
     {
         parent::__construct();
 
         $this->moduleManager = $moduleManager;
         $this->modules = $modules;
+        $this->themeManager = $themeManager;
     }
 
     /**
@@ -37,8 +42,9 @@ class ModulesController extends AdminBaseController
     public function index()
     {
         $modules = $this->modules->all();
+        $themes = $this->themeManager->all();
 
-        return view('workshop::admin.modules.index', compact('modules'));
+        return view('workshop::admin.modules.index', compact('modules', 'themes'));
     }
 
     /**

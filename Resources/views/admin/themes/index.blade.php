@@ -47,7 +47,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">
-                                            {{ ucfirst($theme->type) }}
+                                            {{ $theme->type }}
                                         </a>
                                     </td>
                                     <td>

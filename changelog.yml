@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.4.1":
+        changed:
+            - Hardcoded the entity type to Eloquent. Due to broken Question class from Symfony
     "1.4.0":
         added:
             - Theme can now be managed from UI

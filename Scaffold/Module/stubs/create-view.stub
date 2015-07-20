@@ -24,12 +24,12 @@
                 @include('partials.form-tab-headers')
                 <div class="tab-content">
                     <?php $i = 0; ?>
-                    <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
-                    <?php $i++; ?>
-                    <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.partials.create-fields', ['lang' => $locale])
-                    </div>
-                    <?php endforeach; ?>
+                    @foreach (LaravelLocalization::getSupportedLocales() as $locale => $language)
+                        <?php $i++; ?>
+                        <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
+                            @include('$LOWERCASE_MODULE_NAME$::admin.$PLURAL_LOWERCASE_CLASS_NAME$.partials.create-fields', ['lang' => $locale])
+                        </div>
+                    @endforeach
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
@@ -38,8 +38,8 @@
                 </div>
             </div> {{-- end nav-tabs-custom --}}
         </div>
-    {!! Form::close() !!}
     </div>
+    {!! Form::close() !!}
 @stop
 
 @section('footer')

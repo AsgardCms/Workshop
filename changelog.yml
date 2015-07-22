@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.5.0":
+        changed:
+            - Added sidebar title as translatable text in generated modules
+            - Remove facade usage in generated modules
     "1.4.2":
         changed:
             - Use the <code>anticipate()</code> method instead of <code>choice()</code>

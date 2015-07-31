@@ -52,7 +52,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
     {
         $this->$LOWERCASE_CLASS_NAME$->create($request->all());
 
-        flash()->success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ created'));
+        flash()->success(trans('core::core.messages.resource created', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
 
         return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }
@@ -79,7 +79,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
     {
         $this->$LOWERCASE_CLASS_NAME$->update($$LOWERCASE_CLASS_NAME$, $request->all());
 
-        flash()->success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ updated'));
+        flash()->success(trans('core::core.messages.resource updated', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
 
         return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }
@@ -94,7 +94,7 @@ class $CLASS_NAME$Controller extends AdminBaseController
     {
         $this->$LOWERCASE_CLASS_NAME$->destroy($$LOWERCASE_CLASS_NAME$);
 
-        flash()->success(trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.messages.$LOWERCASE_CLASS_NAME$ deleted'));
+        flash()->success(trans('core::core.messages.resource deleted', ['name' => trans('$LOWERCASE_MODULE_NAME$::$PLURAL_LOWERCASE_CLASS_NAME$.title.$PLURAL_LOWERCASE_CLASS_NAME$')]));
 
         return redirect()->route('admin.$LOWERCASE_MODULE_NAME$.$LOWERCASE_CLASS_NAME$.index');
     }

@@ -407,6 +407,7 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertTrue(isset($composerJson->$key));
         $this->assertEquals('dev', $composerJson->$key);
     }
+
     /** @test */
     public function it_adds_prefer_stable_key_in_composer_file()
     {
@@ -429,6 +430,27 @@ class ModuleScaffoldTest extends BaseTestCase
         $this->assertEquals(1, $moduleJson->order);
     }
 
+    /** @test */
+    public function it_should_use_core_messages()
+    {
+        $this->scaffoldModuleWithEloquent(['Post']);
+
+        $controllerContents = $this->getAdminControllerFile('Post');
+        $lowercaseModuleName = strtolower($this->testModuleName);
+
+        $matches = [
+            "flash()->success(trans('core::core.messages.resource created', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+            "flash()->success(trans('core::core.messages.resource updated', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+            "flash()->success(trans('core::core.messages.resource deleted', ['name' => trans('{$lowercaseModuleName}::posts.title.posts')]));",
+        ];
+
+        foreach ($matches as $match) {
+            $this->assertContains($match, $controllerContents);
+        }
+
+        $this->cleanUp();
+    }
+
     /**
      * Get the contents of composer.json file
      * @return string
@@ -448,8 +470,20 @@ class ModuleScaffoldTest extends BaseTestCase
      */
     private function getModuleFile()
     {
-        $composerJson = $this->finder->get($this->testModulePath . '/module.json');
+        $moduleFile = $this->finder->get($this->testModulePath . '/module.json');
 
-        return json_decode($composerJson);
+        return json_decode($moduleFile);
+    }
+
+    /**
+     * Get a Controller
+     * @param string $controllerName
+     * @return mixed
+     */
+    private function getAdminControllerFile($controllerName = 'Post')
+    {
+        $controllerFile = $this->finder->get("{$this->testModulePath}/Http/Controllers/Admin/{$controllerName}Controller.php");
+
+        return $controllerFile;
     }
 }

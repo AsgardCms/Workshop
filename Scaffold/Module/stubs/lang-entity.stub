@@ -14,10 +14,6 @@ return [
     'form' => [
     ],
     'messages' => [
-        '$LOWERCASE_CLASS_NAME$ created' => '$CLASS_NAME$ successfully created.',
-        '$LOWERCASE_CLASS_NAME$ not found' => '$CLASS_NAME$ not found.',
-        '$LOWERCASE_CLASS_NAME$ updated' => '$CLASS_NAME$ successfully updated.',
-        '$LOWERCASE_CLASS_NAME$ deleted' => '$CLASS_NAME$ successfully deleted.',
     ],
     'validation' => [
     ],

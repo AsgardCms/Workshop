@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.6.0":
+        changed:
+            - Using the core messages rather than generating for every module
     "1.5.0":
         changed:
             - Added sidebar title as translatable text in generated modules

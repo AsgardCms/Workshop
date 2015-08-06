@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.6.1":
+        changed:
+            - Update eloquent-entity-translation.stub, fixing the translations table name in model
     "1.6.0":
         changed:
             - Using the core messages rather than generating for every module

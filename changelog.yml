@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.7.0":
+        added:
+            - Dutch and Portuguese language
     "1.6.1":
         changed:
             - Update eloquent-entity-translation.stub, fixing the translations table name in model

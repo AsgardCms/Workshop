@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                         <?php if (isset($themes)): ?>
-                            <?php foreach($themes as $theme): ?>
+                            <?php foreach ($themes as $theme): ?>
                                 <tr>
                                     <td>
                                         <a href="{{ route('admin.workshop.themes.show', [$theme->getName()]) }}">

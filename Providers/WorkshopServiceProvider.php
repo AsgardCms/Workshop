@@ -99,7 +99,7 @@ class WorkshopServiceProvider extends ServiceProvider
      */
     private function bindThemeManager()
     {
-        $this->app->singleton(ThemeManager::class, function($app) {
+        $this->app->singleton(ThemeManager::class, function ($app) {
             return new StylistThemeManager($app['files']);
         });
     }

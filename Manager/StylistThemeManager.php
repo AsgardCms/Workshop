@@ -2,9 +2,7 @@
 
 use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
 use FloatingPoint\Stylist\Theme\Json;
-use FloatingPoint\Stylist\Theme\Loader;
 use FloatingPoint\Stylist\Theme\Theme;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Parser;
 

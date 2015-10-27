@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.9.0":
+        added:
+            - Added Russian translations
+        changed:
+            - Fixing case sensitive issue
     "1.8.0":
         added:
             - Chinese Simplified language

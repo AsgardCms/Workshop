@@ -24,7 +24,6 @@
     "php": ">=5.4",
     "composer/installers": "~1.0",
     "asgardcms/core-module": "~1.0",
-    "asgardcms/menu-module": "~1.0",
     "pingpong/modules": "dev-feature/5.1"
   },
   "require-dev": {

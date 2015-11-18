@@ -47,20 +47,6 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
                     $this->auth->hasAccess('workshop.themes.index')
                 );
             });
-//            $group->item(trans('workshop::workshop.title'), function (Item $item) {
-//                $item->weight(100);
-//                $item->authorize(
-//                    $this->auth->hasAccess('workshop.modules.index') or $this->auth->hasAccess('workshop.themes.index')
-//                );
-//                $item->item(trans('workshop::workshop.modules'), function (Item $item) {
-//                    $item->icon('fa fa-cogs');
-//                    $item->weight(100);
-//                    $item->route('admin.workshop.modules.index');
-//                    $item->authorize(
-//                        $this->auth->hasAccess('workshop.modules.index')
-//                    );
-//                });
-//            });
         });
 
         return $menu;

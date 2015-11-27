@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.11.0":
+        changed:
+            - Using the new index template in scaffold
+            - Using manual routes over the resource helper in scaffold
     "1.10.0":
         changed:
             - Removed Menu module as a dependency

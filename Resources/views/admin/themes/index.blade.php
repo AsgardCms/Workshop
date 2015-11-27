@@ -11,7 +11,6 @@
 @stop
 
 @section('styles')
-    {!! Theme::style('css/vendor/iCheck/flat/blue.css') !!}
     <style>
         .jsUpdateModule {
             transition: all .5s ease-in-out;

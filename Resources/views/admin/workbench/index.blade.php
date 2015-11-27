@@ -10,10 +10,6 @@
 </ol>
 @stop
 
-@section('styles')
-    {!! Theme::style('css/vendor/iCheck/flat/blue.css') !!}
-@stop
-
 @section('content')
 <div class="row">
     <div class="col-md-12">

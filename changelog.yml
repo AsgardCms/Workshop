@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.12.0":
+        changed:
+            - Removed language files, they are now in the translation module
     "1.11.0":
         changed:
             - Using the new index template in scaffold

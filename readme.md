@@ -14,7 +14,6 @@
 | Branch | Travis-ci |
 | ---------------- | --------------- |
 | master  | [![Build Status](https://travis-ci.org/AsgardCms/Workshop.svg?branch=master)](https://travis-ci.org/AsgardCms/Workshop)  |
-| develop  | [![Build Status](https://travis-ci.org/AsgardCms/Workshop.svg?branch=develop)](https://travis-ci.org/AsgardCms/Workshop)   |
 
 ## Resources
 

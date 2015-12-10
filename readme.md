@@ -1,6 +1,6 @@
 # Workshop Module
 
-[![Latest Version](https://img.shields.io/github/release/asgardcms/workshop.svg?style=flat-square)](https://github.com/asgardcms/workshop/releases)
+[![Latest Version](https://img.shields.io/packagist/v/asgardcms/workshop-module.svg?style=flat-square)](https://github.com/asgardcms/workshop/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Quality Score](https://img.shields.io/scrutinizer/g/asgardcms/workshop.svg?style=flat-square)](https://scrutinizer-ci.com/g/asgardcms/workshop)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/d6258dc8-cd2a-4288-94a5-8a8089e6609e.svg)](https://insight.sensiolabs.com/projects/d6258dc8-cd2a-4288-94a5-8a8089e6609e)

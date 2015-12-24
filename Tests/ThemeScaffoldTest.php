@@ -143,7 +143,7 @@ class ThemeScaffoldTest extends BaseTestCase
 
         $this->generateFrontendTheme();
 
-        $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/index.blade.php'));
+        $this->assertTrue($this->finder->isFile($this->testThemePath . '/views/default.blade.php'));
     }
 
     /** @test */

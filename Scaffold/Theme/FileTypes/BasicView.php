@@ -14,6 +14,6 @@ class BasicView extends BaseFileType implements FileType
     {
         $stub = $this->finder->get(__DIR__ . '/../stubs/index.blade.stub');
 
-        $this->finder->put($this->themePathForFile($this->options['name'], '/views/index.blade.php'), $stub);
+        $this->finder->put($this->themePathForFile($this->options['name'], '/views/default.blade.php'), $stub);
     }
 }

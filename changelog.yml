@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.13.1":
+        changed:
+            - Renaming the basic generated view to default
     "1.13.0":
         added:
             - Reset button on the create and edit view stubs

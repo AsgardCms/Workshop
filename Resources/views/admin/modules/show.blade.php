@@ -58,16 +58,13 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-sm-6 module-details">
+                        <div class="col-sm-12 module-details">
                             <div class="module-type pull-left">
                                 <i class="fa fa-cube"></i>
                                 <span>{{ $module->version }}</span>
                             </div>
                             <h2>{{ ucfirst($module->getName()) }}</h2>
                             <p>{{ $module->getDescription() }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><em>More coming soon...</em></p>
                         </div>
                     </div>
                 </div>

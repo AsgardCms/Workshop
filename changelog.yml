@@ -4,6 +4,7 @@ versions:
         changed:
             - Remove unneeded icheck toggles for hidden input on view stubs
             - Removed 'More Coming Soon' message
+            - Removed the inclusing of old iCheck styles
     "1.13.1":
         changed:
             - Renaming the basic generated view to default

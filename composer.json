@@ -24,7 +24,8 @@
     "php": ">=5.4",
     "composer/installers": "~1.0",
     "asgardcms/core-module": "~1.0",
-    "pingpong/modules": "dev-feature/5.1"
+    "pingpong/modules": "dev-feature/5.1",
+    "symfony/yaml": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

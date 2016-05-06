@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.15.0":
+        added:
+            - Adding symfony/yaml dependency
+        changed:
+            - Use new middleware for permissions on module resource route scaffold stub
     "1.14.0":
         changed:
             - Remove unneeded icheck toggles for hidden input on view stubs

@@ -1,4 +1,4 @@
-    $router->bind('$PLURAL_LOWERCASE_CLASS_NAME$', function ($id) {
+    $router->bind('$LOWERCASE_CLASS_NAME$', function ($id) {
         return app('Modules\$MODULE_NAME$\Repositories\$CLASS_NAME$Repository')->find($id);
     });
     get('$PLURAL_LOWERCASE_CLASS_NAME$', [

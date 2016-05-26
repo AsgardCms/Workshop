@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.15.1":
+        changed:
+            - Use singular class name for model bindings in routes scaffolding
     "1.15.0":
         added:
             - Adding symfony/yaml dependency

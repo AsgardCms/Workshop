@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.16.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
+            - Use <code>$router</code> variable in routes stub file for module scaffolding
     "1.15.1":
         changed:
             - Use singular class name for model bindings in routes scaffolding

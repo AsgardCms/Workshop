@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
+/** @var Router $router */
 
 $router->bind('module', function ($module) {
     return app(\Pingpong\Modules\Repository::class)->find($module);

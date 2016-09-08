@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Workshop
 versions:
+    "1.17.1":
+        changed:
+            - Checking for user or setting group permissions on workshop sidebar group
     "1.17.0":
         changed:
             - Only list workshop in sidebar when accessible
